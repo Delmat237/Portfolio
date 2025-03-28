@@ -1,0 +1,356 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{lstautogobble}
+
+\geometry{margin=2cm}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  autogobble=true,
+  frame=single,
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red},
+  showstringspaces=false
+}
+
+\title{Rapport Technique : Portfolio React Next.js}
+\author{AZANGUE LEONEL DELMAT}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction}
+Ce portfolio a été développé avec React Next.js pour répondre aux besoins d'un étudiant en génie informatique spécialisé en science des données et cybersécurité. Il intègre une interface publique et une section admin protégée.
+
+\chapter{Architecture Globale}
+\section{Stack Technique}
+\begin{itemize}
+\item \textbf{Framework} : Next.js 14 (React Server Components)
+\item \textbf{Styling} : Tailwind CSS
+\item \textbf{Authentification} : Firebase Authentication
+\item \textbf{Base de données} : Firebase Firestore
+\item \textbf{Déploiement} : Vercel (publique) + Firebase Hosting (admin)
+\end{itemize}
+
+\chapter{Pages Publiques}
+\section{Accueil}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item Hero section avec présentation personnelle
+\item Grille de projets filtrables
+\item Call-to-action vers la section contact
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item \texttt{getStaticProps} pour le SEO
+\item Composants réutilisables (Header/Footer)
+\item Animations CSS avec Tailwind
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=TypeScript,caption=Hero Section]
+const HomePage = () => {
+  return (
+    <section className="bg-gradient-to-r from-blue-600 to-blue-900 text-white min-h-screen">
+      <div className="container mx-auto p-8 pt-24 md:p-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Votre Nom
+          </h1>
+          <p className="text-xl md:text-2xl mb-8">
+            Étudiant en Génie Informatique à l'ENSPY | Passionné par la Science des Données et la Cybersécurité
+          </p>
+          <a href="#contact" className="bg-blue-800 px-8 py-3 rounded-lg hover:bg-blue-900 transition-colors">
+            Contactez-moi
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+\end{lstlisting}
+
+\section{Projets}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item Cartes de projets avec détails techniques
+\item Filtres par catégorie (Data Science/Cybersécurité)
+\item Liens vers démos GitHub
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item \texttt{ProjectCard} : Composant réutilisable
+\item Grille responsive avec \texttt{grid-template-columns}
+\item Progress bars animées pour les compétences
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=TypeScript,caption=Composant ProjectCard]
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  techStack: string[];
+  link: string;
+}
+
+const ProjectCard = ({ title, description, techStack, link }: ProjectCardProps) => {
+  return (
+    <div className="project-card">
+      <h3 className="font-bold mb-2">{title}</h3>
+      <p className="text-gray-600 mb-4">{description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {techStack.map((tech) => (
+          <span key={tech} className="bg-gray-100 px-3 py-1 rounded-md text-sm">
+            {tech}
+          </span>
+        ))}
+      </div>
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:text-blue-800 transition-colors"
+      >
+        Voir le projet
+      </a>
+    </div>
+  );
+};
+\end{lstlisting}
+
+\section{Formations}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item Timeline éducative
+\item Section "En cours" pour formations actuelles
+\item Certifications avec badges
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item Timeline CSS personnalisée
+\item Composants \texttt{SkillBadge}
+\item Intégration de PDF (CV)
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=CSS,caption=Timeline CSS]
+.timeline {
+  @apply flex flex-col gap-8;
+}
+
+.timeline-item {
+  @apply relative pl-8;
+}
+
+.timeline-content {
+  @apply bg-white p-4 rounded-lg shadow-sm;
+}
+\end{lstlisting}
+
+\section{Contact}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item Formulaire de contact avec validation
+\item Carte interactive (Google Maps API)
+\item Liens sociaux
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item \texttt{Formik} pour la gestion des formulaires
+\item Validation côté client
+\item Intégration d'API externes
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=TypeScript,caption=Formulaire Contact]
+const ContactPage = () => {
+  return (
+    <form className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input 
+          type="text" 
+          placeholder="Nom" 
+          className="w-full p-2 border rounded-md"
+        />
+        <input 
+          type="email" 
+          placeholder="Email" 
+          className="w-full p-2 border rounded-md"
+        />
+      </div>
+      <textarea 
+        rows={5} 
+        placeholder="Message" 
+        className="w-full p-2 border rounded-md"
+      />
+      <button 
+        type="submit" 
+        className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Envoyer
+      </button>
+    </form>
+  );
+};
+\end{lstlisting}
+
+\chapter{Section Admin}
+\section{Dashboard}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item CRUD pour les formations
+\item Interface sécurisée avec Firebase Auth
+\item Historique des modifications
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item \texttt{react-firebase-hooks} pour l'authentification
+\item \texttt{Formik} avec validation
+\item Firebase Security Rules
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=TypeScript,caption=CRUD Formations]
+const Dashboard = () => {
+  const [user] = useAuthState(auth);
+  const db = getFirestore();
+
+  const formik = useFormik({
+    initialValues: {
+      nom: '',
+      dateDebut: '',
+      dateFin: '',
+      description: ''
+    },
+    onSubmit: async (values) => {
+      await addDoc(collection(db, 'formations'), {
+        ...values,
+        userId: user?.uid,
+        dateAjout: new Date().toISOString()
+      });
+    }
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label className="block mb-2">Nom de la formation</label>
+          <input
+            type="text"
+            name="nom"
+            onChange={formik.handleChange}
+            value={formik.values.nom}
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
+      </div>
+      <button type="submit">Enregistrer</button>
+    </form>
+  );
+};
+\end{lstlisting}
+
+\section{Login}
+\subsection{Fonctionnalités}
+\begin{itemize}
+\item Authentification par email/password
+\item Redirection conditionnelle
+\item Gestion des erreurs
+\end{itemize}
+
+\subsection{Technologies Utilisées}
+\begin{itemize}
+\item \texttt{getServerSideProps} pour l'authentification
+\item Firebase Auth SDK
+\item Protection des routes
+\end{itemize}
+
+\subsection{Extrait de Code}
+\begin{lstlisting}[language=TypeScript,caption=Authentification]
+const Login = () => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (email: string, password: string) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <input 
+        type="email" 
+        placeholder="Email" 
+        className="w-full p-2 border rounded-md"
+      />
+      <input 
+        type="password" 
+        placeholder="Mot de passe" 
+        className="w-full p-2 border rounded-md"
+      />
+      <button 
+        type="submit" 
+        onClick={() => handleSubmit('email', 'password')}
+      >
+        Se connecter
+      </button>
+    </form>
+  );
+};
+\end{lstlisting}
+
+\chapter{Bonnes Pratiques}
+\section{Cybersécurité}
+\begin{itemize}
+\item Chiffrement des données avec Firebase
+\item Validation côté serveur
+\item Protection contre les XSS
+\end{itemize}
+
+\section{Optimisation}
+\begin{itemize}
+\item Pré-réndering statique (Next.js)
+\item Lazy loading des images
+\item Compression des assets
+\end{itemize}
+
+\section{Maintenabilité}
+\begin{itemize}
+\item Architecture modulaire
+\item Typage TypeScript
+\item Documentation via JSDoc
+\end{itemize}
+
+\chapter{Conclusion}
+Ce portfolio démontre une intégration complète des compétences techniques en développement web moderne, avec une attention particulière à la sécurité et l'expérience utilisateur.
+
+\end{document}
