@@ -101,10 +101,12 @@ Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce portfoli
 ###  Contact
 
 Vous pouvez me contacter via les plateformes suivantes :
-- **WhatsApp** : [+237657450314](https://wa.me/237657450314)
-- **Email** : [azangueleonel9@gmail.com](mailto:azangueleonel9@gmail.com)
-- **GitHub** : [Delmat237](https://github.com/Delmat237)
-- **LinkedIn** : [Leonel Azangue](https://www.linkedin.com/in/leonel-azangue)
+
+*   <a href="https://wa.me/237657450314" target="_blank"> <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" width="20"/> WhatsApp</a>: +237657450314
+*   <a href="mailto:azangueleonel9@gmail.com"> <img src="https://img.icons8.com/color/24/000000/gmail-new.png" alt="Email" width="20"/> Email</a>: azangueleonel9@gmail.com
+*   <a href="https://github.com/Delmat237" target="_blank"> <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub" width="20"/> GitHub</a>: Delmat237
+*   <a href="https://www.linkedin.com/in/leonel-azangue" target="_blank"> <img src="https://img.icons8.com/color/24/000000/linkedin.png" alt="LinkedIn" width="20"/> LinkedIn</a>: Leonel Azangue
+
 
 
 ## Licence
