@@ -1,40 +1,113 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio de AZANGUE Leonel Delmat
 
-## Getting Started
+Bienvenue sur mon portfolio en ligne! Ce dépôt contient le code source de mon site web personnel, où je présente mes projets, mes compétences, ma formation et mes certifications.
 
-First, run the development server:
+## Aperçu
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Voici un aperçu de la page d'accueil de mon portfolio :
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Page d'accueil du portfolio](img/index.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+*Ce screenshot montre la section d'accueil, avec une brève introduction à mon parcours et un aperçu de mon profil.*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Sections principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Mon portfolio est organisé en plusieurs sections clés :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. À propos de moi
 
-## Deploy on Vercel
+*Présentation personnelle, parcours académique et professionnel.*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Section À propos](img/about.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# Portfolio
->>>>>>> 36fbb9278aedf1e873cdd9c9d6f3911df0908d44
+*Exemple de description : Cette section détaille mon expérience à l'ENSPY, mes motivations et mes objectifs professionnels.*
+
+
+
+### 2. Projets
+
+*Présentation de mes projets personnels et académiques, avec des liens vers les dépôts GitHub et les démos.*
+
+![Section Projets](img/about.png)
+
+*Exemple de description : Cette section met en avant mes compétences techniques à travers des exemples concrets de projets réalisés.*
+
+
+
+### 3. Formations
+
+*Détails de mon parcours académique, incluant les diplômes obtenus et les établissements fréquentés.*
+
+![Section Formations](img/formations.png)
+
+*Exemple de description : Cette section récapitule mon parcours scolaire, depuis la licence en mathématiques jusqu'à mon cursus actuel en Génie Informatique.*
+
+
+
+### 4. Compétences
+
+*Liste de mes compétences techniques et personnelles, avec une indication de mon niveau de maîtrise.*
+
+![Section Compétences](img/competences.png)
+
+*Exemple de description : Cette section met en évidence mes points forts, tels que la résolution de problèmes, le leadership d'équipe et la communication.*
+
+
+
+### 5. Certifications
+
+*Liste de mes certifications professionnelles, avec des liens vers les justificatifs.*
+
+![Section Certifications](img/certificats.png)
+
+*Exemple de description : Cette section présente mes certifications, notamment en programmation C, obtenues auprès d'organismes reconnus.*
+
+
+### 6. Contact
+
+*Formulaire de contact pour me joindre directement.*
+
+![Section Contact](img/contact.png)
+
+*Exemple de description : N'hésitez pas à me contacter via ce formulaire pour toute question ou opportunité de collaboration.*
+
+
+
+## Technologies utilisées
+
+Ce portfolio a été développé avec les technologies suivantes :
+
+*   **React** : Bibliothèque JavaScript pour la construction d'interfaces utilisateur.
+*   **Next.js** : Framework React pour le rendu côté serveur et la génération de sites statiques.
+*   **Tailwind CSS** : Framework CSS pour un styling rapide et efficace.
+*   **react-icons**: Bibliothèque d'icônes React.
+
+## Installation et utilisation
+
+Pour exécuter ce portfolio en local :
+
+1.  Clonez le dépôt : `git clone https://github.com/Delmat237/Portfolio.git`
+2.  Naviguez vers le répertoire : `cd Portfolio`
+3.  Installez les dépendances : `npm install` ou `yarn install`
+4.  Lancez le serveur de développement : `npm run dev` ou `yarn dev`
+5.  Ouvrez votre navigateur à l'adresse `http://localhost:3000`
+
+## Contribution
+
+Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce portfolio, n'hésitez pas à soumettre une *pull request*.
+
+###  Contact
+
+Vous pouvez me contacter via les plateformes suivantes :
+- **WhatsApp** : [+237657450314](https://wa.me/237657450314)
+- **Email** : [azangueleonel9@gmail.com](mailto:azangueleonel9@gmail.com)
+- **GitHub** : [Delmat237](https://github.com/Delmat237)
+- **LinkedIn** : [Leonel Azangue](https://www.linkedin.com/in/leonel-azangue)
+
+
+## Licence
+
+Ce projet est sous licence [MIT](LICENSE) - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
