@@ -16,7 +16,7 @@
       technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
       github: 'https://github.com/Delmat237/TO_DO_APP_Spring-React',
     status: "Terminé",
-      demo: 'https://hack-to-do-app.vercel.app/'
+      demo: 'https://hack-todo-app.vercel.app/'
     },
     {
           id :3,

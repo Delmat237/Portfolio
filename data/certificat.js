@@ -4,7 +4,7 @@ const certificationData = [
       source: "Open Classroom",
       description: "Maîtrise des concepts fondamentaux de la programmation en C",
       image: "/images/certiC.png",
-      reference: "https://www.coursera.org/account/accomplishments/verify/83JHP7MM86LS",
+      reference: "https://openclassrooms.com/fr/course-certificates/2277235695",
       file: "/c-programming-certification.pdf"
     },
     {
@@ -12,7 +12,7 @@ const certificationData = [
       source: "Open Classroom",
       description: "Fondamentaux des réseaux de neurones et applications pratiques",
       image: "/images/certiDL.png",
-      reference: "https://www.coursera.org/account/accomplishments/verify/83JHP7MM86LS",
+      reference: "https://openclassrooms.com/fr/course-certificates/6610372763",
       file: "/deep-learning-certification.pdf"
     },
     {
@@ -25,10 +25,10 @@ const certificationData = [
     },
     {
       title: "Certification en Développement Web",
-      source: "FreeCodeCamp",
+      source: "OpenClassroom",
       description: "Développement front-end avec React",
       image: "/images/certReact.png",
-      reference: "https://www.freecodecamp.org/certification",
+      reference: "https://openclassrooms.com/fr/course-certificates/2802769241",
       file: "/web-development-certification.pdf"
     },
     {
@@ -44,7 +44,7 @@ const certificationData = [
       source: "Open Classroom",
       description: "Conception des réseaux en implémentant les normes et protocoles TCP/IP",
       image: "/images/certTCP.png",
-      reference: "https://aws.amazon.com/certification",
+      reference: "https://openclassrooms.com/fr/course-certificates/8427591981",
       file: "/cloud-computing-certification.pdf"
     }
   ]
