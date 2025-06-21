@@ -2,10 +2,20 @@
 
 import { motion } from 'framer-motion'
 import { Calendar, MapPin } from 'lucide-react'
-import  experienceData from '@/data/experience'
+//import  experienceData from '@/data/experience'
 
 const Experience = () => {
-  const experiences = experienceData
+  //const experiences = experienceData
+  const experiences  = [
+    {
+          title: '',
+          company: '',
+          location: '',
+          period: '',
+          description: [
+          ]
+        }
+  ]
 
   return (
     <section id="experience" className="section-padding">

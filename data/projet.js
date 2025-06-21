@@ -5,18 +5,18 @@
       description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
       technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-      github: '#',
+      github: 'https://github.com/Delmat237/DB-Jewelry',
       status: "En cours",
-      demo: '#'
+      demo: 'https://db-jewelry.vercel.app/'
     },
     {  id :2,
       title: 'Task Management App',
       description: 'Application de gestion de tâches collaborative avec temps réel',
       image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
       technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-      github: '#',
+      github: 'https://github.com/Delmat237/TO_DO_APP_Spring-React',
     status: "Terminé",
-      demo: '#'
+      demo: 'https://hack-to-do-app.vercel.app/'
     },
     {
           id :3,
@@ -31,10 +31,10 @@
     {
           id :4,
       title: 'Social Media App',
-      description: 'Application de réseau social avec posts, likes et commentaires',
+      description: 'Application de réseau social  avec chat instantané et profils utilisateurs',
       image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600',
       technologies: ['React Native', 'Firebase', 'Redux'],
-      github: '#',
+      github: 'https://github.com/Delmat237/ALAANYA_COM',
      status: "Terminé",
       demo: '#'
     },
@@ -44,9 +44,9 @@
       description: 'Site portfolio responsive avec animations et design moderne',
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
       technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-      github: '#',
+      github: 'https://github.com/Delmat237/Portofolio',
      status: "Terminé",
-      demo: '#'
+      demo: 'https://azangue-leonel-portfolio.vercel.app/'
     },
     {
           id :6,
