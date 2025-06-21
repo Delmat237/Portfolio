@@ -1,0 +1,63 @@
+
+{
+  "header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "technical": "Techniques",
+    "languages": "Langues",
+    "education": "Formation",
+    "certifications": "Certifications",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "competitions": "Compétitions",
+    "association":"Engagement Associatives",
+    "contact": "Contact",
+    "admin": "Admin",
+    "adminSpace": "Espace Admin",
+    "menu": "Menu",
+    "switchToLight": "Passer en mode clair",
+    "switchToDark": "Passer en mode sombre",
+    "changeLanguage": "Changer la langue"
+  },
+  "hero": {
+    "welcome": "Salut, je suis",
+    "downloadCV": "Télécharger CV",
+    "viewProjects": "Voir mes projets"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "description": "Élève ingénieur en informatique passionné par les technologies émergentes."
+  },
+  "skills": {
+    "title": "Mes Compétences",
+    "description": "Technologies que j'utilise régulièrement"
+  },
+  "education": {
+    "title": "Parcours Académique",
+    "current": "Actuellement"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "viewCode": "Voir le code",
+    "liveDemo": "Voir en ligne",
+    "description": "Projets récents avec diverses technologies"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "language": {
+    "french": "Français",
+    "english": "Anglais"
+  }
+}

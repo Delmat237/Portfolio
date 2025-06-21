@@ -1,0 +1,64 @@
+
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "technical": "Technical",
+    "languages": "Languages",
+    "education": "Education",
+    "certifications": "Certifications",
+    "projects": "Projects",
+    "experience": "Experience",
+    "competitions": "Competitions",
+        "association":"Engagement Associatives",
+    "contact": "Contact",
+    "admin": "Admin",
+    "adminSpace": "Admin Space",
+    "menu": "Menu",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "changeLanguage": "Change language"
+  },
+  "hero": {
+    "welcome": "Hi, I'm",
+    "downloadCV": "Download CV",
+    "viewProjects": "View my projects",
+    "description":""
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Computer engineering student passionate about emerging technologies."
+  },
+  "skills": {
+    "title": "My Skills",
+    "description": "Technologies I regularly use"
+  },
+  "education": {
+    "title": "Education",
+    "current": "Currently"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewCode": "View code",
+    "liveDemo": "Live demo",
+    "description": "Recent projects with various technologies"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Message sent successfully!",
+    "error": "Error sending message"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "french": "French",
+    "english": "English"
+  }
+}
