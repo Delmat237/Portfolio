@@ -20,7 +20,7 @@ const certificationData = [
       source: "CISCO",
       description: "Maîtrise avancée de JavaScript et des frameworks modernes",
       image: "/images/certiJS.png",
-      reference: "https://www.coursera.org/account/accomplishments/verify/83JHP7MM86LS",
+      reference: "https://www.credly.com/badges/5e38ba20-36c9-4b1d-b525-f3f5181aa11d",
       file: "/javascript-certification.pdf"
     },
     {
@@ -36,7 +36,7 @@ const certificationData = [
       source: "CISCO",
       description: "Fondamentaux de la sécurité informatique et bonnes pratiques",
       image: "/images/certNetwork.png",
-      reference: "https://grow.google/certificates",
+      reference: "https://www.credly.com/badges/3c8ef4d9-d8c7-4ced-908f-f8d54f6b37b2",
       file: "/cybersecurity-certification.pdf"
     },
     {
