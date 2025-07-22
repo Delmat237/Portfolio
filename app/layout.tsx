@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { AppProvider } from  '@/contexts/Appcontext'
 import ScrollToTop from '@/components/ScrollToTop'
-
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -73,6 +73,7 @@ export default function RootLayout({
           <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800">
             {children}
             <ScrollToTop />
+            <Analytics />
           </div>
         </AppProvider>
       </body>

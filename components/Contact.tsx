@@ -11,6 +11,9 @@ const Contact = () => {
     subject: '',
     message: ''
   })
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'success' | 'error' | null>(null);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -19,10 +22,38 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null); // Reset status
+    setStatusMessage(''); // Reset message
+
+    try {
+      // 1. Send form data to your backend API
+      const response = await fetch('/api/contact', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setStatusMessage('Votre message a été envoyé avec succès !');
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+      } else {
+        const errorData = await response.json();
+        setStatus('error');
+        setStatusMessage(`Échec de l'envoi : ${errorData.message || 'Une erreur est survenue.'}`);
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi du formulaire:', error);
+      setStatus('error');
+      setStatusMessage('Une erreur réseau est survenue. Veuillez réessayer plus tard.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   const contactInfo = [
@@ -48,7 +79,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-padding bg-dark-800/50">
-      <div className="container-custom">
+      <div className="container-custom mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +90,7 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Contactez-<span className="gradient-text">moi</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
             Vous avez un projet en tête ? N'hésitez pas à me contacter pour
             discuter de vos besoins et voir comment je peux vous aider.
           </p>
@@ -186,14 +217,35 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Status messages */}
+              {status && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-3 rounded-lg text-center ${
+                    status === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+                  }`}
+                >
+                  {statusMessage}
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-gradient-to-r from-primary-500 to-purple-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-primary-600 hover:to-purple-600 transition-all duration-200 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-primary-500 to-purple-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-primary-600 hover:to-purple-600 transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={loading} // Disable button while loading
               >
-                <Send size={20} />
-                <span>Envoyer le message</span>
+                {loading ? (
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : (
+                  <Send size={20} />
+                )}
+                <span>{loading ? 'Envoi en cours...' : 'Envoyer le message'}</span>
               </motion.button>
             </form>
           </motion.div>

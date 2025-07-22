@@ -70,8 +70,8 @@ const skillData = [
       skills: [
           { name: 'Python', level: 82 },
          { name: 'Java', level: 82 },
-        { name: 'Node.js', level: 90 },
-        { name: 'Express.js', level: 85 },
+        { name: 'Node.js', level: 20 },
+        { name: 'Express.js', level: 35 },
         { name: 'PHP', level: 0 },
         { name: 'C#', level: 0 },
     
@@ -94,7 +94,7 @@ const skillData = [
       skills: [
          { name: 'Django', level: 82 },
         { name: 'Spring', level: 88 },
-        { name: 'Flask', level: 0 },
+        { name: 'FastAPI', level: 50 },
         { name: 'Laravel', level: 0 },
         { name: 'ASP.NET', level: 0 },
         { name: 'Ruby on Rails', level: 0 },

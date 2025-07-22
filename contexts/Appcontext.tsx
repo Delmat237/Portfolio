@@ -22,6 +22,16 @@ export   function AppProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark')
   const [language, setLanguage] = useState<Language>('fr')
 
+  // Initialize theme and language from localStorage on mount
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme') as Theme || 'dark';
+    const storedLanguage = localStorage.getItem('language') as Language || 'fr';
+    setTheme(storedTheme);
+    setLanguage(storedLanguage);
+    // Apply the theme class immediately
+    document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+  }, []);
+
   // Fonction de traduction avec support des chemins imbriqués (ex: 'header.home')
   const t = useMemo(() => {
     const translations = language === 'fr' ? frTranslations : enTranslations
