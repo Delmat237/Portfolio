@@ -6,7 +6,7 @@
       date: "Maai 2025",
       team: "Équipe de 3 personnes",
       technologies: ["Python", "Next", "MySql"],
-      link: "https://example.com/hackathon-ia",
+      link: "#",
       image: "/images/status.jpeg"
     },
     {
@@ -16,7 +16,7 @@
       date: "Mai 2023",
       team: "Solo",
       technologies: ["Python", "Pandas", "Scikit-learn"],
-      link: "https://example.com/data-challenge",
+      link: "#",
       image: "/images/kaggle.jpg"
     },
     {
@@ -26,7 +26,7 @@
       date: "Mars 2023",
       team: "Équipe de 3 personnes",
       technologies: ["C++", "Algorithmes", "Web"],
-      link: "https://example.com/prog-competition",
+      link: "#",
       image: "/images/hack.jpg"
     },
     {
@@ -36,7 +36,7 @@
       date: "Septembre 2023",
       team: "Équipe de 5 personnes",
       technologies: ["Présentation", "Innovation", "Informatique"],
-      link: "https://example.com/blockchain-hackathon",
+      link: "#",
       image: "/images/PITCH.png"
     }
    
