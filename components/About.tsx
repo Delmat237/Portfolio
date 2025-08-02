@@ -69,7 +69,7 @@ const About = () => {
             <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 w-full max-w-sm mx-auto md:mx-0 h-[300px] sm:h-[400px] md:h-auto"> {/* Added mx-auto for centering on small screens, and controlled height */}
               <img
                 alt="Profil"
-                src="/images/profile.jpg"
+                src="/images/profile.png"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" // h-full to fill container
               />
             </div>

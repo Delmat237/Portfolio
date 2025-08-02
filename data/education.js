@@ -6,8 +6,8 @@ const educationData = [
     location: "Yaoundé  , Cameroun",
     period: "2024-2025",
     description: "Formation généraliste en informatique couvrant la programmation, les systèmes et les réseaux.",
-    status: "En cours",
-    grade: "  ---- ",
+    status: "Terminé ",
+    grade: " `MGP: 3.16` ",
     skills: ["Programmation", "Systèmes", "Réseaux", "Mathématiques","Algorithmes", "IA", "Développement Web", "Base de données"]
   },
   {
