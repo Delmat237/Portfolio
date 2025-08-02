@@ -13,6 +13,7 @@ const Certifications = () => {
       
       <section id="certifications" className="section-padding bg-dark-800/50">
         <div className="container-custom">
+          
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +28,7 @@ const Certifications = () => {
               Mes acquis académiques et professionnels qui attestent de mes compétences
             </p>
           </motion.div>
-
+    
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((certification, index) => (
               <motion.div

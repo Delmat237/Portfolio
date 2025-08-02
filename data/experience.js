@@ -1,4 +1,5 @@
-  const experienceData = [
+/*
+const experienceData = [
     {
       title: 'Développeur Full Stack Senior',
       company: 'TechCorp Solutions',
@@ -36,5 +37,20 @@
       ]
     }
   ]
-
+*/
+  const experienceData = [
+   
+    {
+      title: 'Développeur Frontend',
+      company: 'TOGETTECH',
+      location: 'Yaoundé, Cameroun',
+      period: '2025 - ...',
+      description: [
+        'Création d\'interfaces utilisateur modernes avec FlutterFlow',
+        'Intégration d\'APIs REST et GraphQL',
+        'Optimisation des performances et SEO',
+        'Collaboration étroite avec les équipes Backend et Model'
+      ]
+    }
+  ]
   export default experienceData

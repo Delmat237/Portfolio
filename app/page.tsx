@@ -26,6 +26,7 @@ export default function Home() {
      <Associations/>
       <Contact />
       <Footer />
+      
     </main>
   );
 }

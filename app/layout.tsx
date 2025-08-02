@@ -9,10 +9,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Portfolio - Expert en IA & Cybersécurité',
-    template: '%s | Data Scientist & Pentester'
+    default: 'Portfolio AZANGUE L . D  - Élève-ingénieur de  Génie Informatique',
+    template: '%s | Data Scientist & Pentester & IA & Cybersecurity'
   },
-  description: 'Ingénieur spécialisé en Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.',
+  description: 'Élève Ingénieur exerçant dans les domaines : Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.',
   keywords: [
     'Machine Learning',
     'Deep Learning', 
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'Réseaux de Neurones',
     'Ethical Hacking'
   ],
-  authors: [{ name: 'Leonel Delmat AZANGUE', url: 'https://votresite.com' }],
+  authors: [{ name: 'Leonel Delmat AZANGUE', url: 'azangue-leonel-portfolio.vercel.app' }],
   openGraph: {
     title: 'Expert IA & Cybersécurité',
     description: 'Solutions avancées en intelligence artificielle et protection des systèmes',

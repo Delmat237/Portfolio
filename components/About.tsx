@@ -51,7 +51,7 @@ const About = () => {
             Mon <span className="gradient-text">Parcours</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            <span className="font-semibold text-primary-400">Élève-ingénieur en Génie Informatique</span> à l'ENSPY, 
+            <span className="font-semibold text-primary-400">Élève-ingénieur d Génie Informatique</span> à l'ENSPY, 
             titulaire d'une licence en Mathématiques.
           </p>
         </motion.div>

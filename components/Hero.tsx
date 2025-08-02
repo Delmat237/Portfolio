@@ -9,11 +9,28 @@ const Hero = () => {
    const { t } = useAppContext()
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      
       {/* Background Animation */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
+       {/* Particules d'arrière-plan */}
+            <div className="absolute inset-0">
+              {[...Array(50)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 3}s`,
+                    animationDuration: `${2 + Math.random() * 3}s`
+                  }}
+                />
+              ))}
+            </div>
 
       <div className="container-custom section-padding relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
