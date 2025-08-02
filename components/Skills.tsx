@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import skillData from '@/data/skill';
 import OrbitingIcons from '@/components/Orbit';
 import techData from '@/data/tech';
@@ -93,15 +92,24 @@ const Skills = () => {
                   {techGroup.title}
                 </h4>
                 <div className="space-y-2">
-                  {techGroup.skills.map((skill, skillIndex) => {
-                    const IconComponent = skill.icon;
-                    return (
-                      <div key={skill.name} className="flex items-center space-x-2 text-gray-300 text-xs py-1 hover:text-white transition-colors duration-200">
-                        <IconComponent className="w-3 h-3 text-blue-400 flex-shrink-0" />
-                        <span className="truncate">{skill.name}</span>
+                  {techGroup.skills.map((skill, skillIndex) => (
+                    <div key={skill.name} className="flex items-center space-x-2 text-gray-300 text-xs py-1 hover:text-white transition-colors duration-200 group">
+                      <div 
+                        className="w-4 h-4 rounded p-0.5 flex items-center justify-center flex-shrink-0"
+                        style={{
+                          background: `linear-gradient(135deg, ${skill.color}20, ${skill.color}40)`,
+                        }}
+                      >
+                        <img 
+                          src={skill.src} 
+                          alt={skill.name}
+                          className="w-3 h-3 object-contain"
+                          style={{ filter: 'drop-shadow(0 0 4px rgba(255,255,255,0.2))' }}
+                        />
                       </div>
-                    );
-                  })}
+                      <span className="truncate group-hover:text-white transition-colors duration-200">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
