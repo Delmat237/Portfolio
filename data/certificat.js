@@ -1,4 +1,12 @@
 const certificationData = [
+   {
+      title: "Supervised Machine Learning: Regression and Classification",
+      source: "Coursera",
+      description: "Build machine learning models in Python using popular machine learning libraries NumPy & scikit-learn,Build & train supervised machine learning models for prediction & binary classification tasks, including linear regression & logistic regression",
+      image: "/images/certiML.png",
+      reference: "https://www.coursera.org/account/accomplishments/verify/PBKIVRKQI0IE",
+      file: "/Coursera DeeplearingIA.pdf"
+    },
     {
       title: "Certification en Programmation C",
       source: "Open Classroom",
