@@ -7,12 +7,20 @@ const certificationData = [
       reference: "https://www.coursera.org/account/accomplishments/verify/PBKIVRKQI0IE",
       file: "/Coursera DeeplearingIA.pdf"
     },
+     {
+      title: "Introduction to Data Analysis using Microsoft Excel",
+      source: "Coursera",
+      description: "Create an account with Microsoft Office 365 online and upload a document; Use sorting and filtering tools to perform simple data analysis. ; Use functions such as IF, VLOOKUP and create PivotTables to perform more advanced data analysis.",
+      image: "/images/CertiExcel.png",
+      reference: "https://coursera.org/verify/UIW1509Q5FNE",
+      file: "/Coursera Excel.pdf"
+    },
     {
       title: "Certification en Programmation C",
       source: "Open Classroom",
       description: "Maîtrise des concepts fondamentaux de la programmation en C",
       image: "/images/certiC.png",
-      reference: "https://openclassrooms.com/fr/course-certificates/2277235695",
+      reference: "https://openclassroomscom/fr/course-certificates/2277235695",
       file: "/c-programming-certification.pdf"
     },
     {
