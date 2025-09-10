@@ -1,7 +1,7 @@
   const projectData = [
     {
         id :7,
-      title: 'E-Commerce Platform',
+      title: 'E-Commerce Platform :  Custom World',
       description: 'Plateforme e-commerce pour la customisation des appareils, pochettes,T-shirt, etc',
       image: '/images/Custom_World.png',
       technologies: ['Next.js', 'TypeScript', 'CinetPay', 'PostgreSQL','Java'],
@@ -21,7 +21,7 @@
     },
      {
         id :1,
-      title: 'E-Commerce Platform',
+      title: 'E-Commerce Platform :  Db Jewerly',
       description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
       image: '/images/DB_JEWELRY.png',
       technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
