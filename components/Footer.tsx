@@ -31,7 +31,7 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold gradient-text mb-4">Portfolio</h3>
             <p className="text-gray-300 mb-6">
-              Ingénieur spécialisé en Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.
+              Ingénieur ayant les connaissances et compétences  en Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (

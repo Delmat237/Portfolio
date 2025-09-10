@@ -261,7 +261,7 @@ const navItems = [
           </div>
 
           {/* Admin Button */}
-          <Link
+          {/* <Link
             href="/admin"
             className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors border
               ${theme === 'light'
@@ -270,7 +270,7 @@ const navItems = [
           >
             <Settings size={16} />
             <span className="hidden lg:inline text-sm">{t('header.admin')}</span>
-          </Link>
+          </Link> */}
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -351,7 +351,7 @@ const navItems = [
                 </div>
               ))}
 
-              <Link
+              {/* <Link
                 href="/admin"
                 onClick={handleNavLinkClick}
                 className={`mt-6 flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border
@@ -361,7 +361,7 @@ const navItems = [
               >
                 <Settings size={18} />
                 <span>{t('header.adminSpace')}</span>
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         )}

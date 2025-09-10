@@ -1,4 +1,15 @@
 const educationData = [
+   {
+    id: 6,
+    title: "4 ème année Génie Informatique",
+    institution: "Ecole National Supérieure Polytechnique de Yaoundé(ENSPY)",
+    location: "Yaoundé  , Cameroun",
+    period: "2025-2026",
+    description: "Formation généraliste en informatique couvrant la programmation, les systèmes,IoT et les réseaux.",
+    status: "En cours", 
+    grade: " ",
+    skills: ["Programmation", "Systèmes", "Réseaux", "Mathématiques","Algorithmes", "IA", "Développement Web", "Base de données","IoT"]
+  },
   {
     id: 1,
     title: "3 ème année Génie Informatique",

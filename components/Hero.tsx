@@ -58,7 +58,7 @@ const Hero = () => {
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
             >
               Titulaire d'une licence en mathématiques, je poursuis mes études à l'École Nationale Supérieure Polytechnique
-              de Yaoundé (ENSPY), où je suis actuellement en 3ème année de Génie informatique.
+              de Yaoundé (ENSPY), où je suis actuellement en 4ème année de Génie informatique.
             </motion.p>
 
             <motion.div

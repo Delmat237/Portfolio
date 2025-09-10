@@ -1,14 +1,15 @@
   const projectData = [
     {
-        id :1,
+        id :7,
       title: 'E-Commerce Platform',
-      description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-      github: 'https://github.com/Delmat237/DB-Jewelry',
-      status: "En cours",
-      demo: 'https://db-jewelry.vercel.app/'
+      description: 'Plateforme e-commerce pour la customisation des appareils, pochettes,T-shirt, etc',
+      image: '/images/Custom_World.png',
+      technologies: ['Next.js', 'TypeScript', 'CinetPay', 'PostgreSQL','Java'],
+      github: 'https://github.com/Delmat237/Custom_World',
+      status: "Terminé",
+      demo: 'https://customworld.vercel.app/'
     },
+   
     {  id :2,
       title: 'Task Management App',
       description: 'Application de gestion de tâches collaborative avec temps réel',
@@ -17,6 +18,16 @@
       github: 'https://github.com/Delmat237/TO_DO_APP_Spring-React',
     status: "Terminé",
       demo: 'https://hack-todo-app.vercel.app/'
+    },
+     {
+        id :1,
+      title: 'E-Commerce Platform',
+      description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
+      image: '/images/DB_JEWELRY.png',
+      technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+      github: 'https://github.com/Delmat237/DB-Jewelry',
+      status: "En cours",
+      demo: 'https://db-jewelry.vercel.app/'
     },
     {
           id :3,
