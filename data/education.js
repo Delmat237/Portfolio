@@ -28,8 +28,8 @@ const educationData = [
     location: "En ligne",
     period: "2024",
     description: "Formation complète sur React, Redux et les bonnes pratiques du développement frontend moderne.",
-    status: "En cours",
-    grade: "En cours",
+    status: "Terminé",
+    grade: "Certification obtenue",
     skills: ["React", "Redux", "TypeScript", "Testing"]
   },
   {
