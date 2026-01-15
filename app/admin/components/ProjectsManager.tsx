@@ -1,20 +1,17 @@
 'use client'
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2 } from 'lucide-react';
-import projectData from '@/data/projet';
-
 
 type ProjectsManagerProps = {
+  projects: any[];
+  onDelete: (id: number) => void;
   showForm: boolean;
   setShowForm: (show: boolean) => void;
   editingProject: any;
   setEditingProject: (project: any) => void;
 };
 
-export default function ProjectsManager({ showForm, setShowForm, editingProject, setEditingProject }: ProjectsManagerProps) {
-  const [projects] = useState(projectData);
-
+export default function ProjectsManager({ projects, onDelete, showForm, setShowForm, editingProject, setEditingProject }: ProjectsManagerProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -44,7 +41,7 @@ export default function ProjectsManager({ showForm, setShowForm, editingProject,
             <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
             <p className="text-gray-300 mb-3 text-sm">{project.description}</p>
             <div className="flex flex-wrap gap-1 mb-4">
-              {project.technologies.map((tech) => (
+              {project.technologies.map((tech: string) => (
                 <span
                   key={tech}
                   className="px-2 py-1 bg-blue-600/30 text-blue-300 rounded text-xs"
@@ -54,11 +51,10 @@ export default function ProjectsManager({ showForm, setShowForm, editingProject,
               ))}
             </div>
             <div className="flex justify-between items-center">
-              <span className={`px-2 py-1 rounded text-xs ${
-                project.status === 'Terminé' 
+              <span className={`px-2 py-1 rounded text-xs ${project.status === 'Terminé'
                   ? 'bg-green-600/30 text-green-300'
                   : 'bg-yellow-600/30 text-yellow-300'
-              }`}>
+                }`}>
                 {project.status}
               </span>
               <div className="flex space-x-2">
@@ -72,7 +68,11 @@ export default function ProjectsManager({ showForm, setShowForm, editingProject,
                 >
                   <Edit size={16} />
                 </button>
-                <button className="p-1 text-red-400 hover:text-red-300" title="Supprimer le projet">
+                <button
+                  onClick={() => onDelete(project.id)}
+                  className="p-1 text-red-400 hover:text-red-300"
+                  title="Supprimer le projet"
+                >
                   <Trash2 size={16} />
                 </button>
               </div>

@@ -1,18 +1,17 @@
 'use client'
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2 } from 'lucide-react';
-import educationData from '@/data/education'
 
 type EducationManagerProps = {
+  educations: any[];
+  onDelete: (id: number) => void;
   showForm: boolean;
   setShowForm: (show: boolean) => void;
   editingEducation: any;
   setEditingEducation: (education: any) => void;
 };
 
-export default function EducationManager({ showForm, setShowForm, editingEducation, setEditingEducation }: EducationManagerProps) {
-  const [educations] = useState(educationData);
+export default function EducationManager({ educations, onDelete, showForm, setShowForm, editingEducation, setEditingEducation }: EducationManagerProps) {
 
   return (
     <div>
@@ -42,11 +41,10 @@ export default function EducationManager({ showForm, setShowForm, editingEducati
                 <p className="text-gray-300 mb-3">{education.description}</p>
                 <div className="flex items-center space-x-4">
                   <span className="text-gray-400 text-sm">{education.period}</span>
-                  <span className={`px-2 py-1 rounded text-xs ${
-                    education.status === 'Terminé' 
+                  <span className={`px-2 py-1 rounded text-xs ${education.status === 'Terminé'
                       ? 'bg-green-600/30 text-green-300'
                       : 'bg-yellow-600/30 text-yellow-300'
-                  }`}>
+                    }`}>
                     {education.status}
                   </span>
                 </div>
@@ -62,7 +60,11 @@ export default function EducationManager({ showForm, setShowForm, editingEducati
                 >
                   <Edit size={16} />
                 </button>
-                <button className="p-2 text-red-400 hover:text-red-300" title="Supprimer la formation">
+                <button
+                  onClick={() => onDelete(education.id)}
+                  className="p-2 text-red-400 hover:text-red-300"
+                  title="Supprimer la formation"
+                >
                   <Trash2 size={16} />
                 </button>
               </div>

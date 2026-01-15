@@ -7,10 +7,11 @@ import { useForm } from 'react-hook-form';
 
 interface EducationFormProps {
   education?: any;
+  onSave: (education: any) => void;
   onClose: () => void;
 }
 
-export default function EducationForm({ education, onClose }: EducationFormProps) {
+export default function EducationForm({ education, onSave, onClose }: EducationFormProps) {
   const [skills, setSkills] = useState(education?.skills || []);
   const [newSkill, setNewSkill] = useState('');
 
@@ -23,8 +24,7 @@ export default function EducationForm({ education, onClose }: EducationFormProps
       ...data,
       skills
     };
-    console.log('Formation sauvegardée:', educationData);
-    onClose();
+    onSave(educationData);
   };
 
   const addSkill = () => {
@@ -161,22 +161,22 @@ export default function EducationForm({ education, onClose }: EducationFormProps
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
-                {skills.map((skill: string) => (
+              {skills.map((skill: string) => (
                 <span
                   key={skill}
                   className="flex items-center space-x-2 px-3 py-1 bg-blue-600/30 text-blue-300 rounded-full text-sm"
                 >
                   <span>{skill}</span>
                   <button
-                  type="button"
-                  onClick={() => removeSkill(skill)}
-                  className="text-blue-300 hover:text-white"
-                  title={`Supprimer la compétence ${skill}`}
+                    type="button"
+                    onClick={() => removeSkill(skill)}
+                    className="text-blue-300 hover:text-white"
+                    title={`Supprimer la compétence ${skill}`}
                   >
-                  <Trash2 size={12} />
+                    <Trash2 size={12} />
                   </button>
                 </span>
-                ))}
+              ))}
             </div>
           </div>
 

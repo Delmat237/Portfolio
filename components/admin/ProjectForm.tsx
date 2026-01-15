@@ -7,10 +7,11 @@ import { useForm } from 'react-hook-form';
 
 interface ProjectFormProps {
   project?: any;
+  onSave: (project: any) => void;
   onClose: () => void;
 }
 
-export default function ProjectForm({ project, onClose }: ProjectFormProps) {
+export default function ProjectForm({ project, onSave, onClose }: ProjectFormProps) {
   const [technologies, setTechnologies] = useState(project?.technologies || []);
   const [newTech, setNewTech] = useState('');
   const [imagePreview, setImagePreview] = useState(project?.image || '');
@@ -25,8 +26,7 @@ export default function ProjectForm({ project, onClose }: ProjectFormProps) {
       technologies,
       image: imagePreview
     };
-    console.log('Projet sauvegardé:', projectData);
-    onClose();
+    onSave(projectData);
   };
 
   const addTechnology = () => {
@@ -130,23 +130,23 @@ export default function ProjectForm({ project, onClose }: ProjectFormProps) {
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
-                {technologies.map((tech: string) => (
+              {technologies.map((tech: string) => (
                 <span
                   key={tech}
                   className="flex items-center space-x-2 px-3 py-1 bg-blue-600/30 text-blue-300 rounded-full text-sm"
                 >
                   <span>{tech}</span>
                   <button
-                  type="button"
-                  onClick={() => removeTechnology(tech)}
-                  className="text-blue-300 hover:text-white"
-                  title={`Supprimer ${tech}`}
-                  aria-label={`Supprimer ${tech}`}
+                    type="button"
+                    onClick={() => removeTechnology(tech)}
+                    className="text-blue-300 hover:text-white"
+                    title={`Supprimer ${tech}`}
+                    aria-label={`Supprimer ${tech}`}
                   >
-                  <Trash2 size={12} />
+                    <Trash2 size={12} />
                   </button>
                 </span>
-                ))}
+              ))}
             </div>
           </div>
 
