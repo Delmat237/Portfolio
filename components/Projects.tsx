@@ -9,7 +9,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section-padding bg-dark-800/50">
-      
+
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -43,6 +43,16 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
+                <div className="absolute top-4 right-4 z-10">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md ${project.status === 'Terminé'
+                      ? 'bg-green-500/80 text-white'
+                      : project.status === 'En cours'
+                        ? 'bg-blue-500/80 text-white'
+                        : 'bg-yellow-500/80 text-white'
+                    }`}>
+                    {project.status}
+                  </span>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex space-x-4">
                     <motion.a

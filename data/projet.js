@@ -1,74 +1,64 @@
-  const projectData = [
-    {
-        id :7,
-      title: 'E-Commerce Platform :  Custom World',
-      description: 'Plateforme e-commerce pour la customisation des appareils, pochettes,T-shirt, etc',
-      image: '/images/Custom_World.png',
-      technologies: ['Next.js', 'TypeScript', 'CinetPay', 'PostgreSQL','Java'],
-      github: 'https://github.com/Delmat237/Custom_World',
-      status: "Terminé",
-      demo: 'https://customworld.vercel.app/'
-    },
-   
-    {  id :2,
-      title: 'Task Management App',
-      description: 'Application de gestion de tâches collaborative avec temps réel',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-      github: 'https://github.com/Delmat237/TO_DO_APP_Spring-React',
+const projectData = [
+  {
+    id: 1,
+    title: 'Shopecart Web Project',
+    description: 'Plateforme E-commerce Fullstack développée avec Laravel.',
+    image: '/images/shopecart.png', // Assuming we might need an image, using a placeholder for now or existing
+    technologies: ['Laravel', 'PHP', 'MySQL', 'Bootstrap'],
+    github: '#', // User didn't provide, leaving #
     status: "Terminé",
-      demo: 'https://hack-todo-app.vercel.app/'
-    },
-     {
-        id :1,
-      title: 'E-Commerce Platform :  Db Jewerly',
-      description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
-      image: '/images/DB_JEWELRY.png',
-      technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-      github: 'https://github.com/Delmat237/DB-Jewelry',
-      status: "En cours",
-      demo: 'https://db-jewelry.vercel.app/'
-    },
-    {
-          id :3,
-      title: 'Weather Dashboard',
-      description: 'Dashboard météo avec prévisions et visualisations interactives',
-      image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Vue.js', 'Chart.js', 'OpenWeather API'],
-      github: '#',
+    demo: 'http://shopecart-web-project-tp-4-laravel-full-pyh9fx.laravel.cloud/'
+  },
+  {
+    id: 2,
+    title: 'Frontend XCCM & AI Assistant',
+    description: 'Application Fullstack intégrant un assistant IA pour le support utilisateur.',
+    image: '/images/xccm.png',
+    technologies: ['React', 'Next.js', 'AI Integration', 'Tailwind CSS'],
+    github: '#',
     status: "Terminé",
-      demo: '#'
-    },
-    {
-          id :4,
-      title: 'Social Media App',
-      description: 'Application de réseau social  avec chat instantané et profils utilisateurs',
-      image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      github: 'https://github.com/Delmat237/ALAANYA_COM',
-     status: "Terminé",
-      demo: '#'
-    },
-    {
-          id :5,
-      title: 'Portfolio Website',
-      description: 'Site portfolio responsive avec animations et design moderne',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-      github: 'https://github.com/Delmat237/Portofolio',
-     status: "Terminé",
-      demo: 'https://azangue-leonel-portfolio.vercel.app/'
-    },
-    {
-          id :6,
-      title: 'Learning Platform',
-      description: 'Plateforme d\'apprentissage en ligne avec cours et quiz interactifs',
-      image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['React', 'Express.js', 'MySQL', 'JWT'],
-      github: '#',
-    status: "planifié",
-      demo: '#'
-    }
-  ]
+    demo: 'https://frontend-xccm-12027.vercel.app/'
+  },
+  {
+    id: 3,
+    title: 'IoT Soil Backend',
+    description: 'API de prédiction pour les meilleures cultures en fonction des propriétés du sol avec recommandations.',
+    image: '/images/iot_soil.png',
+    technologies: ['Python', 'FastAPI/Flask', 'Machine Learning', 'Scikit-learn'],
+    github: '#',
+    status: "Terminé",
+    demo: 'https://iot-soil-backend.onrender.com/docs'
+  },
+  {
+    id: 4,
+    title: 'E-Commerce Platform :  Custom World',
+    description: 'Plateforme e-commerce pour la customisation des appareils, pochettes,T-shirt, etc',
+    image: '/images/Custom_World.png',
+    technologies: ['Next.js', 'TypeScript', 'CinetPay', 'PostgreSQL', 'Java'],
+    github: 'https://github.com/Delmat237/Custom_World',
+    status: "Terminé",
+    demo: 'https://customworld.vercel.app/'
+  },
+  {
+    id: 5,
+    title: 'E-Commerce Platform :  Db Jewerly',
+    description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
+    image: '/images/DB_JEWELRY.png',
+    technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+    github: 'https://github.com/Delmat237/DB-Jewelry',
+    status: "En cours",
+    demo: 'https://db-jewelry.vercel.app/'
+  },
+  {
+    id: 6,
+    title: 'Portfolio Website',
+    description: 'Site portfolio responsive avec animations et design moderne',
+    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
+    technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
+    github: 'https://github.com/Delmat237/Portofolio',
+    status: "Terminé",
+    demo: 'https://azangue-leonel-portfolio.vercel.app/'
+  }
+]
 
-  export default projectData
+export default projectData

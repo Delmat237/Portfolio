@@ -1,8 +1,8 @@
-import { 
-  Shield, 
-  Key, 
-  Wifi, 
-  Globe, 
+import {
+  Shield,
+  Key,
+  Wifi,
+  Globe,
   AlertTriangle,
   Brain,
   Eye,
@@ -22,65 +22,62 @@ import {
   ChevronRight
 } from 'lucide-react';
 
-// This file contains the skill data for the portfolio, including various skills and their levels.
 const skillData = [
   {
-    title: 'Sécurité Informatique',
+    title: 'Langages de Programmation',
     skills: [
-      { name: 'Ethical Hacking', level: 10, icon: Shield },
-      { name: 'Penetration Testing', level: 15, icon: Target },
-      { name: 'Cryptography', level: 50, icon: Key },
-      { name: 'Network Security', level: 65, icon: Wifi },
-      { name: 'Web Application Security', level: 80, icon: Globe },
-      { name: 'Incident Response', level: 60, icon: AlertTriangle },
+      { name: 'Python', level: 90, icon: Code },
+      { name: 'Java', level: 85, icon: Code },
+      { name: 'C/C++', level: 80, icon: Code },
+      { name: 'JavaScript/TypeScript', level: 85, icon: Code },
+      { name: 'PHP/Laravel', level: 75, icon: Globe },
     ]
   },
   {
-    title: 'Intelligence Artificielle',
+    title: 'Intelligence Artificielle & Data Science',
     skills: [
-      { name: 'Machine Learning', level: 25, icon: Brain },
-      { name: 'Deep Learning', level: 15, icon: Zap },
-      { name: 'NLP', level: 5, icon: MessageSquare },
-      { name: 'Computer Vision', level: 10, icon: Eye },
-      { name: 'Reinforcement Learning', level: 5, icon: TrendingUp },
+      { name: 'Machine Learning', level: 85, icon: Brain },
+      { name: 'Deep Learning', level: 80, icon: Zap },
+      { name: 'NLP', level: 70, icon: MessageSquare },
+      { name: 'Computer Vision', level: 65, icon: Eye },
+      { name: 'Data Analysis', level: 85, icon: BarChart3 },
     ]
   },
   {
-    title: 'Résolution de Problèmes',
+    title: 'Bases de Données',
     skills: [
-      { name: 'Algorithm Design', level: 90, icon: Code },
-      { name: 'Data Structures', level: 85, icon: Database },
-      { name: 'Problem Solving', level: 88, icon: Target },
+      { name: 'MySQL', level: 90, icon: Database },
+      { name: 'PostgreSQL', level: 85, icon: Database },
+      { name: 'MongoDB', level: 80, icon: Database },
+      { name: 'ScyllaDB', level: 60, icon: HardDrive },
+      { name: 'SQLite', level: 85, icon: Database },
     ]
   },
   {
-    title: "Leadership d'Équipe",
+    title: 'Mathématiques pour l\'IA',
     skills: [
-      { name: 'Team Management', level: 85, icon: Users },
-      { name: 'Project Management', level: 80, icon: Settings },
-      { name: 'Agile Methodologies', level: 75, icon: ChevronRight },
+      { name: 'Algèbre Linéaire', level: 90, icon: TrendingUp },
+      { name: 'Calcul Différentiel', level: 85, icon: TrendingUp },
+      { name: 'Probabilités & Statistiques', level: 85, icon: PieChart },
+      { name: 'Optimisation Convexe', level: 80, icon: Target },
     ]
   },
   {
-    title: "Communication",
+    title: "Leadership & Soft Skills",
     skills: [
-      { name: 'Interpersonal Skills', level: 80, icon: Users },
-      { name: 'Technical Writing', level: 55, icon: FileText },
-      { name: 'Presentation Skills', level: 80, icon: Presentation },
+      { name: 'Management', level: 85, icon: Users },
+      { name: 'Communication', level: 90, icon: MessageSquare },
+      { name: 'Gestion de Projet', level: 85, icon: Settings },
+      { name: 'Travail d\'équipe', level: 95, icon: Users },
     ]
   },
   {
-    title: 'Data Science',
+    title: "Langues",
     skills: [
-      { name: 'Data Analysis', level: 55, icon: BarChart3 },
-      { name: 'Data Visualization', level: 60, icon: PieChart },
-      { name: 'Big Data', level: 35, icon: HardDrive },
+      { name: "Français", level: 100, icon: MessageSquare },
+      { name: "Anglais", level: 85, icon: MessageSquare }
     ]
   }
-  
 ]
 
-
-
 export default skillData
-

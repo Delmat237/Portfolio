@@ -1,36 +1,35 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail,Phone } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
-import { useAppContext } from '@/contexts/Appcontext'
 
 const Hero = () => {
-   const { t } = useAppContext()
+  // const { t } = useAppContext()
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      
+
       {/* Background Animation */}
-      
+
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
-       {/* Particules d'arrière-plan */}
-            <div className="absolute inset-0">
-              {[...Array(50)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 3}s`,
-                    animationDuration: `${2 + Math.random() * 3}s`
-                  }}
-                />
-              ))}
-            </div>
+      {/* Particules d'arrière-plan */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container-custom section-padding relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -47,8 +46,8 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold text-white mb-6"
             >
-             {t('hero.welcome')}{' '}
-              <span className="gradient-text">Leonel Delmat <strong>AZANGUE</strong></span>
+              Salut, je suis{' '}
+              <span className="gradient-text block mt-2">Leonel Delmat AZANGUE</span>
             </motion.h1>
 
             <motion.p
@@ -57,8 +56,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
             >
-              Titulaire d'une licence en mathématiques, je poursuis mes études à l'École Nationale Supérieure Polytechnique
-              de Yaoundé (ENSPY), où je suis actuellement en 4ème année de Génie informatique.
+              Élève-Ingénieur en 4ème année de Génie Informatique à l'ENSPY. <br />
+              Expert en <span className="text-primary-400 font-semibold">Intelligence Artificielle</span>, <span className="text-primary-400 font-semibold">Data Science</span> et <span className="text-primary-400 font-semibold">Développement Full Stack</span>.
+              <br />Je transforme des données complexes en solutions innovantes.
             </motion.p>
 
             <motion.div
@@ -78,32 +78,32 @@ const Hero = () => {
                   }
                 }}
               >
-                {t('hero.viewProjects')}
+                Voir mes projets
               </motion.button>
               <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-200"
-                    onClick={async () => {
-                      try {
-                        const response = await fetch('/documents/CV.pdf')
-                        const blob = await response.blob()
-                        const url = window.URL.createObjectURL(blob)
-                        const link = document.createElement('a')
-                        link.href = url
-                        link.download = 'CV_Leonel_Delmat_AZANGUE.pdf'
-                        document.body.appendChild(link)
-                        link.click()
-                        window.URL.revokeObjectURL(url)
-                        document.body.removeChild(link)
-                      } catch (error) {
-                        console.error('Erreur lors du téléchargement:', error)
-                        alert('Le téléchargement a échoué. Veuillez réessayer.')
-                      }
-                    }}
-                  >
-                    {t('hero.downloadCV')}
-                  </motion.button>
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-200"
+                onClick={async () => {
+                  try {
+                    const response = await fetch('/documents/CV.pdf')
+                    const blob = await response.blob()
+                    const url = window.URL.createObjectURL(blob)
+                    const link = document.createElement('a')
+                    link.href = url
+                    link.download = 'CV_Leonel_Delmat_AZANGUE.pdf'
+                    document.body.appendChild(link)
+                    link.click()
+                    window.URL.revokeObjectURL(url)
+                    document.body.removeChild(link)
+                  } catch (error) {
+                    console.error('Erreur lors du téléchargement:', error)
+                    alert('Le téléchargement a échoué. Veuillez réessayer.')
+                  }
+                }}
+              >
+                Télécharger CV
+              </motion.button>
             </motion.div>
 
             <motion.div
