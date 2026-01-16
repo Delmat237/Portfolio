@@ -1,4 +1,4 @@
-# Portfolio de AZANGUE Leonel Delmat
+8# Portfolio de AZANGUE Leonel Delmat
 
 Bienvenue sur mon portfolio en ligne! Ce dépôt contient le code source de mon site web personnel, où je présente mes projets, mes compétences, ma formation et mes certifications.
 
@@ -117,7 +117,7 @@ Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce portfoli
 
 Vous pouvez me contacter via les plateformes suivantes :
 
-*   <a href="https://wa.me/237657450314" target="_blank"> <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" width="20"/> WhatsApp</a>: +237657450314
+*   <a href="https://wa.me/237694773472" target="_blank"> <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" width="20"/> WhatsApp</a>: +237694773472
 *   <a href="mailto:azangueleonel9@gmail.com"> <img src="https://img.icons8.com/color/24/000000/gmail-new.png" alt="Email" width="20"/> Email</a>: azangueleonel9@gmail.com
 *   <a href="https://github.com/Delmat237" target="_blank"> <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub" width="20"/> GitHub</a>: Delmat237
 *   <a href="https://www.linkedin.com/in/leonel-azangue" target="_blank"> <img src="https://img.icons8.com/color/24/000000/linkedin.png" alt="LinkedIn" width="20"/> LinkedIn</a>: Leonel Azangue
