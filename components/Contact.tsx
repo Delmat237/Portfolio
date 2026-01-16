@@ -30,7 +30,7 @@ const Contact = () => {
 
     try {
       // 1. Send form data to your backend API
-      const response = await fetch('/api/contact', { 
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Contact = () => {
       icon: Phone,
       title: 'Téléphone',
       value: '+237 657 45 03 14',
-      href: 'tel:+237657450314'
+      href: 'tel:+237694773472'
     },
     {
       icon: MapPin,
@@ -78,8 +78,8 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="section-padding bg-dark-800/50">
-      
+    <section id="contact" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
+
       <div className="container-custom mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -88,10 +88,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Contactez-<span className="gradient-text">moi</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
             Vous avez un projet en tête ? N'hésitez pas à me contacter pour
             discuter de vos besoins et voir comment je peux vous aider.
           </p>
@@ -107,10 +107,10 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
                 Informations de contact
               </h3>
-              <p className="text-gray-300 mb-8">
+              <p className="text-slate-600 dark:text-gray-300 mb-8">
                 Je suis toujours ouvert aux nouvelles opportunités et aux projets
                 intéressants. N'hésitez pas à me contacter !
               </p>
@@ -126,14 +126,14 @@ const Contact = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
-                  className="flex items-center space-x-4 p-4 glass-effect rounded-lg hover:bg-white/10 transition-all duration-200"
+                  className="flex items-center space-x-4 p-4 glass-effect rounded-lg hover:bg-white dark:hover:bg-white/10 transition-all duration-200 shadow-sm"
                 >
                   <div className="bg-primary-500/20 p-3 rounded-lg">
-                    <info.icon className="text-primary-400" size={24} />
+                    <info.icon className="text-primary-600 dark:text-primary-400" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold">{info.title}</h4>
-                    <p className="text-gray-300">{info.value}</p>
+                    <h4 className="text-slate-900 dark:text-white font-semibold">{info.title}</h4>
+                    <p className="text-slate-600 dark:text-gray-300">{info.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -146,16 +146,16 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect rounded-2xl p-8"
+            className="glass-effect rounded-2xl p-8 shadow-lg"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
               Envoyez-moi un message
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-white font-medium mb-2">
+                  <label htmlFor="name" className="block text-slate-700 dark:text-white font-medium mb-2">
                     Nom
                   </label>
                   <input
@@ -165,12 +165,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500 transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
                     placeholder="Votre nom"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-white font-medium mb-2">
+                  <label htmlFor="email" className="block text-slate-700 dark:text-white font-medium mb-2">
                     Email
                   </label>
                   <input
@@ -180,14 +180,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500 transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
                     placeholder="votre@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-white font-medium mb-2">
+                <label htmlFor="subject" className="block text-slate-700 dark:text-white font-medium mb-2">
                   Sujet
                 </label>
                 <input
@@ -197,13 +197,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500 transition-colors"
+                  className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
                   placeholder="Sujet de votre message"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-white font-medium mb-2">
+                <label htmlFor="message" className="block text-slate-700 dark:text-white font-medium mb-2">
                   Message
                 </label>
                 <textarea
@@ -213,7 +213,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors resize-none"
                   placeholder="Votre message..."
                 />
               </div>
@@ -223,9 +223,8 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`p-3 rounded-lg text-center ${
-                    status === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
-                  }`}
+                  className={`p-3 rounded-lg text-center ${status === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'
+                    }`}
                 >
                   {statusMessage}
                 </motion.div>

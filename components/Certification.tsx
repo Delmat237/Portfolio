@@ -8,12 +8,12 @@ import certificationData from '@/data/certificat'
 const Certifications = () => {
   const certifications = certificationData
   return (
-    <div className="min-h-screen bg-dark-900">
-   
-      
-      <section id="certifications" className="section-padding bg-dark-800/50">
+    <div className="min-h-screen">
+
+
+      <section id="certifications" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
         <div className="container-custom">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -21,14 +21,14 @@ const Certifications = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               Mes <span className="gradient-text">Certifications</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
               Mes acquis académiques et professionnels qui attestent de mes compétences
             </p>
           </motion.div>
-    
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((certification, index) => (
               <motion.div
@@ -45,7 +45,7 @@ const Certifications = () => {
                     alt={certification.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 dark:from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <div className="flex space-x-4">
                       <motion.a
                         href={certification.file}
@@ -73,14 +73,14 @@ const Certifications = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {certification.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-3">
+                  <p className="text-slate-500 dark:text-gray-400 text-sm mb-3">
                     <span className="font-medium">Source: </span>
                     {certification.source}
                   </p>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                  <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                     {certification.description}
                   </p>
                   <a
@@ -99,7 +99,7 @@ const Certifications = () => {
         </div>
       </section>
 
-   
+
     </div>
   )
 }

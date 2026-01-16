@@ -20,7 +20,7 @@ const Hero = () => {
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-slate-400 dark:bg-white/20 rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -44,7 +44,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6"
             >
               Salut, je suis{' '}
               <span className="gradient-text block mt-2">Leonel Delmat AZANGUE</span>
@@ -54,10 +54,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
+              className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
             >
               Élève-Ingénieur en 4ème année de Génie Informatique à l'ENSPY. <br />
-              Expert en <span className="text-primary-400 font-semibold">Intelligence Artificielle</span>, <span className="text-primary-400 font-semibold">Data Science</span> et <span className="text-primary-400 font-semibold">Développement Full Stack</span>.
+              Expert en <span className="text-primary-600 dark:text-primary-400 font-semibold">Intelligence Artificielle</span>, <span className="text-primary-600 dark:text-primary-400 font-semibold">Data Science</span> et <span className="text-primary-600 dark:text-primary-400 font-semibold">Développement Full Stack</span>.
               <br />Je transforme des données complexes en solutions innovantes.
             </motion.p>
 
@@ -123,7 +123,7 @@ const Hero = () => {
                   href={social.href}
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                  className="text-slate-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   <social.icon size={24} />
                 </motion.a>
@@ -162,7 +162,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-white"
+            className="text-gray-700 dark:text-white"
           >
             <ChevronDown size={32} />
           </motion.div>

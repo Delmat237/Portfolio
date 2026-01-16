@@ -6,27 +6,27 @@ import Education from '@/components/Education';
 import Certifications from '@/components/Certification';
 import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
-import  Competitions from '@/components/Compétitions';
+import Competitions from '@/components/Compétitions';
 import Associations from '@/components/Associations';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <main className="min-h-screen transition-colors duration-300">
       <Header />
       <Hero />
       <About />
       <Skills />
       <Education />
-      <Certifications/>
+      <Certifications />
       <Projects />
       <Experience />
       <Competitions />
-     <Associations/>
+      <Associations />
       <Contact />
       <Footer />
-      
+
     </main>
   );
 }

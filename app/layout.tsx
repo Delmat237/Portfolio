@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { AppProvider } from  '@/contexts/Appcontext'
+import { AppProvider } from '@/contexts/Appcontext'
 import ScrollToTop from '@/components/ScrollToTop'
 import { Analytics } from '@vercel/analytics/next';
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'Élève Ingénieur exerçant dans les domaines : Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.',
   keywords: [
     'Machine Learning',
-    'Deep Learning', 
+    'Deep Learning',
     'Pentest',
     'Sécurité Informatique',
     'Data Science',
@@ -66,11 +66,10 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#111827" />
-        <meta name="color-scheme" content="dark" /> {/* Forcé en mode sombre */}
       </head>
-      <body className={`${inter.className} bg-gray-900 text-gray-100`}>
+      <body className={inter.className}>
         <AppProvider>
-          <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800">
+          <div className="min-h-screen">
             {children}
             <ScrollToTop />
             <Analytics />

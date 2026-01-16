@@ -63,16 +63,16 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/20"
+        className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-white/20 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
             {project ? 'Modifier le Projet' : 'Nouveau Projet'}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-white transition-colors"
+            className="p-2 text-slate-400 hover:text-white transition-colors"
             title="Fermer"
             aria-label="Fermer"
           >
@@ -83,10 +83,10 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Titre */}
           <div>
-            <label className="block text-white mb-2">Titre du projet</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Titre du projet</label>
             <input
               {...register('title', { required: 'Le titre est requis' })}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: E-commerce Platform"
             />
             {typeof errors.title?.message === 'string' && (
@@ -96,11 +96,11 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
 
           {/* Description */}
           <div>
-            <label className="block text-white mb-2">Description</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Description</label>
             <textarea
               {...register('description', { required: 'La description est requise' })}
               rows={4}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 resize-none"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 resize-none"
               placeholder="Décrivez votre projet..."
             />
             {typeof errors.description?.message === 'string' && (
@@ -110,12 +110,12 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
 
           {/* Technologies */}
           <div>
-            <label className="block text-white mb-2">Technologies</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Technologies</label>
             <div className="flex space-x-2 mb-3">
               <input
                 value={newTech}
                 onChange={(e) => setNewTech(e.target.value)}
-                className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                className="flex-1 px-4 py-2 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
                 placeholder="Ex: React"
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
               />
@@ -152,7 +152,7 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
 
           {/* Image */}
           <div>
-            <label className="block text-white mb-2">Image du projet</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Image du projet</label>
             <div className="space-y-3">
               <input
                 type="file"
@@ -173,14 +173,14 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
                   />
                 ) : (
                   <div className="text-center">
-                    <Upload className="mx-auto mb-2 text-gray-400" size={24} />
-                    <p className="text-gray-400">Cliquez pour uploader une image</p>
+                    <Upload className="mx-auto mb-2 text-slate-400" size={24} />
+                    <p className="text-slate-400">Cliquez pour uploader une image</p>
                   </div>
                 )}
               </label>
               <input
                 {...register('imageUrl')}
-                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                className="w-full px-4 py-2 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
                 placeholder="Ou collez une URL d'image"
                 onChange={(e) => setImagePreview(e.target.value)}
               />
@@ -189,37 +189,37 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
 
           {/* URL du projet */}
           <div>
-            <label className="block text-white mb-2">URL du projet (optionnel)</label>
+            <label className="block text-slate-700 dark:text-white mb-2">URL du projet (optionnel)</label>
             <input
               {...register('url')}
               type="url"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="https://mon-projet.com"
             />
           </div>
 
           {/* URL GitHub */}
           <div>
-            <label className="block text-white mb-2">URL GitHub (optionnel)</label>
+            <label className="block text-slate-700 dark:text-white mb-2">URL GitHub (optionnel)</label>
             <input
               {...register('github')}
               type="url"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="https://github.com/username/repo"
             />
           </div>
 
           {/* Statut */}
           <div>
-            <label className="block text-white mb-2">Statut</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Statut</label>
             <select
               {...register('status')}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
             >
-              <option value="En cours" className="bg-gray-800">En cours</option>
-              <option value="Terminé" className="bg-gray-800">Terminé</option>
-              <option value="En pause" className="bg-gray-800">En pause</option>
-              <option value="Planifié" className="bg-gray-800">Planifié</option>
+              <option value="En cours" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">En cours</option>
+              <option value="Terminé" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">Terminé</option>
+              <option value="En pause" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">En pause</option>
+              <option value="Planifié" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">Planifié</option>
             </select>
           </div>
 
@@ -234,7 +234,7 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+              className="px-6 py-3 bg-slate-600 hover:bg-slate-700 text-white rounded-lg transition-colors"
             >
               Annuler
             </button>

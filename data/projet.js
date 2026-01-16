@@ -1,5 +1,15 @@
 const projectData = [
   {
+    id:7,
+    title:'Systeme de RAG Local',
+    description:'Systeme de RAG Local',
+    image:'/images/rag.png',
+    technologies:['Python','FastAPI/Flask','Machine Learning','Scikit-learn'],
+    github:'#',
+    status:"En cours",
+    demo:'https://rag-local.onrender.com/docs'
+  },
+  {
     id: 1,
     title: 'Shopecart Web Project',
     description: 'Plateforme E-commerce Fullstack développée avec Laravel.',

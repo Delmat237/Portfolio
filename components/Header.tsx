@@ -70,28 +70,28 @@ export default function Header() {
 
 
 
-const navItems = [
-  { href: '/#home', label: t('header.home') },
-  {
-    label: t('header.about'), // New consolidated "About Me" label
-    submenu: [
-      { href: '/#about', label: t('header.about') },
-      { href: '/#education', label: t('header.education') },
-      { href: '/#certifications', label: t('header.certifications') },
-      { href: '/#associations', label: t('header.association') },
-    ]
-  },
-  {
-    label: t('header.skills'),
-    submenu: [
-      { href: '/#skills', label: t('header.technical') },
-      { href: '/#languages', label: t('header.languages') }
-    ]
-  },
-  { href: '/#projects', label: t('header.projects') },
-  { href: '/#experience', label: t('header.experience') },
-  { href: '/#contact', label: t('header.contact') },
-]
+  const navItems = [
+    { href: '/#home', label: t('header.home') },
+    {
+      label: t('header.about'), // New consolidated "About Me" label
+      submenu: [
+        { href: '/#about', label: t('header.about') },
+        { href: '/#education', label: t('header.education') },
+        { href: '/#certifications', label: t('header.certifications') },
+        { href: '/#associations', label: t('header.association') },
+      ]
+    },
+    {
+      label: t('header.skills'),
+      submenu: [
+        { href: '/#skills', label: t('header.technical') },
+        { href: '/#languages', label: t('header.languages') }
+      ]
+    },
+    { href: '/#projects', label: t('header.projects') },
+    { href: '/#experience', label: t('header.experience') },
+    { href: '/#contact', label: t('header.contact') },
+  ]
 
 
 
@@ -115,11 +115,12 @@ const navItems = [
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-gradient-to-r from-gray-950/90 to-black/90 backdrop-blur-md border-b border-purple-800/20 shadow-lg'
-          : 'bg-transparent'
-      } ${theme === 'light' ? 'text-gray-900 bg-white/95 border-b border-gray-200 shadow-md' : 'text-white'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? (theme === 'light'
+          ? 'bg-white/80 backdrop-blur-lg border-b border-slate-200 shadow-sm'
+          : 'bg-slate-950/80 backdrop-blur-lg border-b border-purple-950/30 shadow-2xl')
+        : 'bg-transparent'
+        } ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}
     >
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo with images */}
@@ -154,8 +155,8 @@ const navItems = [
                 <motion.a
                   href={item.href}
                   whileHover={{ y: -2 }}
-                  className={`text-lg px-3 py-2 transition-colors relative group
-                    ${theme === 'light' ? 'text-gray-700 hover:text-gray-900' : 'text-gray-300 hover:text-white'}`}
+                  className={`text-sm lg:text-base font-medium px-2 lg:px-3 py-2 transition-all relative group
+                    ${theme === 'light' ? 'text-gray-600 hover:text-primary-600' : 'text-gray-400 hover:text-primary-400'}`}
                 >
                   {item.label}
                   <span className={`absolute -bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-primary-400 to-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300`}></span>
@@ -240,8 +241,8 @@ const navItems = [
                   <button
                     onClick={() => handleLanguageChange('fr')}
                     className={`block w-full text-left px-4 py-2 text-sm 
-                      ${language === 'fr' 
-                        ? 'text-primary-400 font-semibold' 
+                      ${language === 'fr'
+                        ? 'text-primary-400 font-semibold'
                         : (theme === 'light' ? 'text-gray-800 hover:bg-gray-100' : 'text-gray-300 hover:bg-gray-700 hover:text-white')}`}
                   >
                     {t('language.french')}
@@ -249,8 +250,8 @@ const navItems = [
                   <button
                     onClick={() => handleLanguageChange('en')}
                     className={`block w-full text-left px-4 py-2 text-sm 
-                      ${language === 'en' 
-                        ? 'text-primary-400 font-semibold' 
+                      ${language === 'en'
+                        ? 'text-primary-400 font-semibold'
                         : (theme === 'light' ? 'text-gray-800 hover:bg-gray-100' : 'text-gray-300 hover:bg-gray-700 hover:text-white')}`}
                   >
                     {t('language.english')}
@@ -276,11 +277,21 @@ const navItems = [
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.9 }}
-            className={`md:hidden p-2 relative z-60 transition-colors
-              ${theme === 'light' ? 'text-gray-700 hover:bg-gray-100' : 'text-white'}`}
+            className={`md:hidden p-2 rounded-xl transition-colors relative z-[70]
+              ${theme === 'light' ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-gray-800'}`}
             aria-label={t('header.menu')}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={isOpen ? 'close' : 'open'}
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </motion.div>
+            </AnimatePresence>
           </motion.button>
         </div>
       </div>
@@ -288,70 +299,78 @@ const navItems = [
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ type: 'spring', damping: 25 }}
-            className={`md:hidden fixed inset-0 pt-20 pb-10 px-6 overflow-y-auto z-40
-              ${theme === 'light' ? 'bg-white/95 backdrop-blur-md' : 'bg-gray-900/95 backdrop-blur-md'}`}
-            ref={mobileMenuRef} // Apply ref here
-          >
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <div key={item.label} className={`pb-3 ${theme === 'light' ? 'border-b border-gray-200' : 'border-b border-gray-800'}`}>
-                  {item.href ? (
-                    <Link // Changed from <a> to <Link> for Next.js routing best practices
-                      href={item.href}
-                      onClick={handleNavLinkClick}
-                      className={`block py-3 text-lg transition-colors
-                        ${theme === 'light' ? 'text-gray-800 hover:text-gray-950' : 'text-gray-300 hover:text-white'}`}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => toggleSubmenu(item.label)}
-                        className={`flex items-center justify-between w-full py-3 text-lg transition-colors
-                          ${theme === 'light' ? 'text-gray-800 hover:text-gray-950' : 'text-gray-300 hover:text-white'}`}
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className={`md:hidden fixed top-0 right-0 bottom-0 w-[280px] shadow-2xl z-50 flex flex-col pt-24 pb-10 px-6 overflow-y-auto
+                ${theme === 'light' ? 'bg-white' : 'bg-slate-950'}`}
+              ref={mobileMenuRef}
+            >
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <div key={item.label} className={`pb-3 ${theme === 'light' ? 'border-b border-slate-200' : 'border-b border-slate-800'}`}>
+                    {item.href ? (
+                      <Link // Changed from <a> to <Link> for Next.js routing best practices
+                        href={item.href}
+                        onClick={handleNavLinkClick}
+                        className={`block py-3 text-lg transition-colors
+                        ${theme === 'light' ? 'text-slate-700 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}
                       >
                         {item.label}
-                        <ChevronDown
-                          size={20}
-                          className={`transition-transform ${activeSubmenu === item.label ? 'rotate-180' : ''}
-                            ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
-                        />
-                      </button>
+                      </Link>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => toggleSubmenu(item.label)}
+                          className={`flex items-center justify-between w-full py-3 text-lg transition-colors
+                          ${theme === 'light' ? 'text-slate-700 hover:text-slate-900' : 'text-slate-300 hover:text-white'}`}
+                        >
+                          {item.label}
+                          <ChevronDown
+                            size={20}
+                            className={`transition-transform ${activeSubmenu === item.label ? 'rotate-180' : ''}
+                            ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}
+                          />
+                        </button>
 
-                      <AnimatePresence>
-                        {activeSubmenu === item.label && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden pl-4"
-                          >
-                            {item.submenu?.map((subItem) => (
-                              <Link // Changed from <a> to <Link>
-                                key={subItem.href}
-                                href={subItem.href}
-                                onClick={handleNavLinkClick}
-                                className={`block py-3 text-base 
-                                  ${theme === 'light' ? 'text-gray-700 hover:text-gray-900' : 'text-gray-400 hover:text-white'}`}
-                              >
-                                {subItem.label}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </>
-                  )}
-                </div>
-              ))}
+                        <AnimatePresence>
+                          {activeSubmenu === item.label && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden pl-4"
+                            >
+                              {item.submenu?.map((subItem) => (
+                                <Link // Changed from <a> to <Link>
+                                  key={subItem.href}
+                                  href={subItem.href}
+                                  onClick={handleNavLinkClick}
+                                  className={`block py-3 text-base 
+                                  ${theme === 'light' ? 'text-slate-600 hover:text-slate-900' : 'text-slate-400 hover:text-white'}`}
+                                >
+                                  {subItem.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    )}
+                  </div>
+                ))}
 
-              {/* <Link
+                {/* <Link
                 href="/admin"
                 onClick={handleNavLinkClick}
                 className={`mt-6 flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border
@@ -362,8 +381,9 @@ const navItems = [
                 <Settings size={18} />
                 <span>{t('header.adminSpace')}</span>
               </Link> */}
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

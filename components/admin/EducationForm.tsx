@@ -50,16 +50,16 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/20"
+        className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-white/20 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
             {education ? 'Modifier la Formation' : 'Nouvelle Formation'}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-white transition-colors"
+            className="p-2 text-slate-400 hover:text-white transition-colors"
             title="Fermer"
           >
             <X size={24} />
@@ -69,10 +69,10 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Titre */}
           <div>
-            <label className="block text-white mb-2">Titre de la formation</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Titre de la formation</label>
             <input
               {...register('title', { required: 'Le titre est requis' })}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: Master en Informatique"
             />
             {errors.title && typeof errors.title.message === 'string' && (
@@ -82,10 +82,10 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
 
           {/* Institution */}
           <div>
-            <label className="block text-white mb-2">Institution</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Institution</label>
             <input
               {...register('institution', { required: 'L\'institution est requise' })}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: Université de Technologie"
             />
             {errors.institution && typeof errors.institution.message === 'string' && (
@@ -95,20 +95,20 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
 
           {/* Localisation */}
           <div>
-            <label className="block text-white mb-2">Localisation</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Localisation</label>
             <input
               {...register('location')}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: Paris, France"
             />
           </div>
 
           {/* Période */}
           <div>
-            <label className="block text-white mb-2">Période</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Période</label>
             <input
               {...register('period', { required: 'La période est requise' })}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: 2020-2022"
             />
             {errors.period && typeof errors.period.message === 'string' && (
@@ -118,11 +118,11 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
 
           {/* Description */}
           <div>
-            <label className="block text-white mb-2">Description</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Description</label>
             <textarea
               {...register('description', { required: 'La description est requise' })}
               rows={4}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 resize-none"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 resize-none"
               placeholder="Décrivez la formation..."
             />
             {errors.description && typeof errors.description.message === 'string' && (
@@ -132,22 +132,22 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
 
           {/* Mention/Grade */}
           <div>
-            <label className="block text-white mb-2">Mention/Grade</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Mention/Grade</label>
             <input
               {...register('grade')}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
               placeholder="Ex: Mention Très Bien"
             />
           </div>
 
           {/* Compétences acquises */}
           <div>
-            <label className="block text-white mb-2">Compétences acquises</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Compétences acquises</label>
             <div className="flex space-x-2 mb-3">
               <input
                 value={newSkill}
                 onChange={(e) => setNewSkill(e.target.value)}
-                className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                className="flex-1 px-4 py-2 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
                 placeholder="Ex: React"
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
               />
@@ -182,15 +182,15 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
 
           {/* Statut */}
           <div>
-            <label className="block text-white mb-2">Statut</label>
+            <label className="block text-slate-700 dark:text-white mb-2">Statut</label>
             <select
               {...register('status')}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
             >
-              <option value="En cours" className="bg-gray-800">En cours</option>
-              <option value="Terminé" className="bg-gray-800">Terminé</option>
-              <option value="Planifié" className="bg-gray-800">Planifié</option>
-              <option value="Abandonné" className="bg-gray-800">Abandonné</option>
+              <option value="En cours" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">En cours</option>
+              <option value="Terminé" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">Terminé</option>
+              <option value="Planifié" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">Planifié</option>
+              <option value="Abandonné" className="bg-white dark:bg-gray-800 text-slate-900 dark:text-white">Abandonné</option>
             </select>
           </div>
 
@@ -205,7 +205,7 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+              className="px-6 py-3 bg-slate-600 hover:bg-slate-700 text-white rounded-lg transition-colors"
             >
               Annuler
             </button>

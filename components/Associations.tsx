@@ -8,8 +8,8 @@ const Associations = () => {
   const associations = associationData;
 
   return (
-    <section id="associations" className="section-padding bg-dark-800/50">
-      
+    <section id="associations" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
+
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -18,10 +18,10 @@ const Associations = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Mon <span className="gradient-text">Engagement</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
             Découvrez les associations et causes que je soutiens, témoignant de mon engagement envers la communauté
           </p>
         </motion.div>
@@ -29,33 +29,33 @@ const Associations = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {associations.map((association, index) => (
             <motion.div
-                        key={association.title}
-                        className="glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-transform duration-300"
-                        >
-                        <div className="relative overflow-hidden h-48">
-                            {/* Carrousel d'images */}
-                            <div className="relative h-full w-full overflow-hidden">
-                            {association.images.map((img, imgIndex) => (
-                                <motion.img
-                                key={imgIndex}
-                                src={img}
-                                alt={`${association.title} ${imgIndex + 1}`}
-                                className="absolute inset-0 w-full h-full object-cover"
-                                initial={{ opacity: 0 }}
-                                animate={{
-                                    opacity: [0, 1, 1, 0],
-                                    transition: {
-                                    duration: 20,
-                                    delay: imgIndex * 5,
-                                    repeat: Infinity,
-                                    repeatDelay: (association.images.length - 1) * 5
-                                    }
-                                }}
-                                />
-                            ))}
-                            </div>
+              key={association.title}
+              className="glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-transform duration-300"
+            >
+              <div className="relative overflow-hidden h-48">
+                {/* Carrousel d'images */}
+                <div className="relative h-full w-full overflow-hidden">
+                  {association.images.map((img, imgIndex) => (
+                    <motion.img
+                      key={imgIndex}
+                      src={img}
+                      alt={`${association.title} ${imgIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: [0, 1, 1, 0],
+                        transition: {
+                          duration: 20,
+                          delay: imgIndex * 5,
+                          repeat: Infinity,
+                          repeatDelay: (association.images.length - 1) * 5
+                        }
+                      }}
+                    />
+                  ))}
+                </div>
                 {association.link && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 dark:from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <div className="flex space-x-4">
                       <motion.a
                         href={association.link}
@@ -73,10 +73,10 @@ const Associations = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                   {association.title}
                 </h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                   {association.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -90,7 +90,7 @@ const Associations = () => {
                   ))}
                 </div>
                 {association.duration && (
-                  <p className="mt-4 text-xs text-gray-400">
+                  <p className="mt-4 text-xs text-slate-400">
                     {association.duration}
                   </p>
                 )}

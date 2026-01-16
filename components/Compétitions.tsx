@@ -8,10 +8,10 @@ const Competitions = () => {
   const competitions = competitionData;
 
   return (
-    <div className="min-h-screen bg-dark-900">
-     
-      
-      <section id="competitions" className="section-padding bg-dark-800/50">
+    <div className="min-h-screen">
+
+
+      <section id="competitions" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -20,10 +20,10 @@ const Competitions = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               Mes <span className="gradient-text">Compétitions</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
               Mes participations et résultats dans diverses compétitions techniques et hackathons
             </p>
           </motion.div>
@@ -44,7 +44,7 @@ const Competitions = () => {
                     alt={competition.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 dark:from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <div className="flex space-x-4">
                       <motion.a
                         href={competition.link}
@@ -63,16 +63,15 @@ const Competitions = () => {
 
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                       {competition.title}
                     </h3>
                     {competition.position && (
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center ${
-                        competition.position.includes("1ère") ? "bg-yellow-500/20 text-yellow-400" :
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center ${competition.position.includes("1ère") ? "bg-yellow-500/20 text-yellow-400" :
                         competition.position.includes("2ème") ? "bg-gray-500/20 text-gray-400" :
-                        competition.position.includes("3ème") ? "bg-amber-700/20 text-amber-500" :
-                        "bg-purple-500/20 text-purple-400"
-                      }`}>
+                          competition.position.includes("3ème") ? "bg-amber-700/20 text-amber-500" :
+                            "bg-purple-500/20 text-purple-400"
+                        }`}>
                         {competition.position.includes("ère") || competition.position.includes("ème") ? (
                           <Trophy size={14} className="mr-1" />
                         ) : (
@@ -82,11 +81,11 @@ const Competitions = () => {
                       </span>
                     )}
                   </div>
-                  
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+
+                  <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                     {competition.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-3">
                     {competition.technologies.map((tech) => (
                       <span
@@ -97,8 +96,8 @@ const Competitions = () => {
                       </span>
                     ))}
                   </div>
-                  
-                  <div className="flex flex-wrap gap-4 text-xs text-gray-400">
+
+                  <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-gray-400">
                     <div className="flex items-center">
                       <Calendar size={14} className="mr-1" />
                       {competition.date}

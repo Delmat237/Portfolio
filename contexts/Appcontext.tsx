@@ -18,7 +18,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined)
 
-export   function AppProvider({ children }: { children: ReactNode }) {
+export function AppProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark')
   const [language, setLanguage] = useState<Language>('fr')
 
@@ -30,16 +30,17 @@ export   function AppProvider({ children }: { children: ReactNode }) {
     setLanguage(storedLanguage);
     // Apply the theme class immediately
     document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    document.documentElement.style.colorScheme = storedTheme;
   }, []);
 
   // Fonction de traduction avec support des chemins imbriqués (ex: 'header.home')
   const t = useMemo(() => {
     const translations = language === 'fr' ? frTranslations : enTranslations
-    
+
     return (key: string): string => {
       return key.split('.').reduce((obj, keyPart) => {
-        return (obj && typeof obj === 'object' && keyPart in obj) 
-          ? obj[keyPart as keyof typeof obj] 
+        return (obj && typeof obj === 'object' && keyPart in obj)
+          ? obj[keyPart as keyof typeof obj]
           : key
       }, translations as any) as string
     }
@@ -49,6 +50,8 @@ export   function AppProvider({ children }: { children: ReactNode }) {
     setTheme(prev => {
       const newTheme = prev === 'light' ? 'dark' : 'light'
       localStorage.setItem('theme', newTheme)
+      document.documentElement.classList.toggle('dark', newTheme === 'dark');
+      document.documentElement.style.colorScheme = newTheme;
       return newTheme
     })
   }
@@ -62,7 +65,7 @@ export   function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null
     const savedLang = localStorage.getItem('language') as Language | null
-    
+
     if (savedTheme) setTheme(savedTheme)
     if (savedLang) setLanguage(savedLang)
   }, [])
@@ -77,9 +80,7 @@ export   function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppContext.Provider value={contextValue}>
-      <div className={theme}>
-        {children}
-      </div>
+      {children}
     </AppContext.Provider>
   )
 }

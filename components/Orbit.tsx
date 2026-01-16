@@ -73,7 +73,7 @@ const OrbitingIcons = () => {
         {orbitConfig.map((orbit, orbitIndex) => (
           <div
             key={`line-${orbitIndex}`}
-            className="absolute inset-0 rounded-full border border-white/10"
+            className="absolute inset-0 rounded-full border border-slate-200 dark:border-white/10"
             style={{
               width: `${orbit.radius * 2}px`,
               height: `${orbit.radius * 2}px`,
@@ -140,8 +140,8 @@ const OrbitingIcons = () => {
                         />
                       </div>
                       <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 pointer-events-none">
-                        <div className="bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/20 shadow-xl">
-                          <span className="text-xs text-white font-medium whitespace-nowrap">
+                        <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/20 shadow-xl">
+                          <span className="text-xs text-slate-900 dark:text-white font-medium whitespace-nowrap">
                             {tech.name}
                           </span>
                         </div>
@@ -181,7 +181,7 @@ const OrbitingIcons = () => {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
+            className="absolute w-1 h-1 bg-slate-400 dark:bg-white/30 rounded-full"
             style={{
               left: '50%',
               top: '50%',

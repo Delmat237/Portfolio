@@ -1,6 +1,6 @@
 const certificationData = [
   {
-    title: "ETTIAC 2025 - 2ème Édition",
+    title: "ETIIAC 2025 - 2ème Édition",
     source: "École Thématique Internationale sur l'IA au Cameroun",
     description: "Participation à la 2ème édition. Formation intensive sur les fondements mathématiques de l'IA, le Deep Learning et les systèmes autonomes. Attestation obtenue.",
     image: "/images/ettiacc.png",

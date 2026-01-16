@@ -112,18 +112,18 @@ export default function AdminDashboard() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center p-4 transition-colors duration-300">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-white/10 backdrop-blur-md p-8 rounded-2xl w-full max-w-md border border-white/20"
+          className="bg-gray-50 dark:bg-white/10 backdrop-blur-md p-8 rounded-2xl w-full max-w-md border border-gray-200 dark:border-white/20 shadow-xl"
         >
           <div className="flex justify-center mb-6">
             <div className="bg-blue-600/20 p-4 rounded-full">
               <Lock className="w-8 h-8 text-blue-400" />
             </div>
           </div>
-          <h2 className="text-2xl font-bold text-white text-center mb-6">Accès Administrateur</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">Accès Administrateur</h2>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <input
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Mot de passe"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
+                className="w-full px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all"
                 autoFocus
               />
             </div>
@@ -154,9 +154,9 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <main className="min-h-screen transition-colors duration-300">
       <Header />
-      <div className="mt-10 min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-6">
+      <div className="mt-10 min-h-screen p-6">
 
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -166,8 +166,8 @@ export default function AdminDashboard() {
             className="mb-8 flex justify-between items-end"
           >
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">Dashboard Admin</h1>
-              <p className="text-gray-300">Gérez votre portfolio et suivez vos projets</p>
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Dashboard Admin</h1>
+              <p className="text-gray-600 dark:text-gray-300">Gérez votre portfolio et suivez vos projets</p>
             </div>
             <button
               onClick={handleLogout}
@@ -179,7 +179,7 @@ export default function AdminDashboard() {
           </motion.div>
 
           {/* Tabs */}
-          <div className="flex space-x-1 mb-8 bg-white/10 backdrop-blur-sm rounded-lg p-1">
+          <div className="flex space-x-1 mb-8 bg-gray-100 dark:bg-white/10 backdrop-blur-sm rounded-lg p-1 border border-gray-200 dark:border-transparent">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -188,7 +188,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-all ${activeTab === tab.id
                     ? 'bg-blue-600 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10'
                     }`}
                 >
                   <Icon size={18} />

@@ -26,7 +26,7 @@ const About = () => {
       description: 'Applications full-stack avec architectures modernes'
     },
     {
-      icon: Activity, 
+      icon: Activity,
       title: 'Stratégie & Échecs',
       description: 'Pratique compétitive pour aiguiser ma pensée analytique'
     },
@@ -38,7 +38,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-dark-800/50">
+    <section id="about" className="section-padding bg-slate-50/50 dark:bg-gray-900/50 transition-colors duration-300">
       <div className="container-custom mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -47,11 +47,11 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Mon <span className="gradient-text">Parcours</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-            <span className="font-semibold text-primary-400">Élève-ingénieur d Génie Informatique</span> à l'ENSPY, 
+          <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <span className="font-semibold text-primary-400">Élève-ingénieur d Génie Informatique</span> à l'ENSPY,
             titulaire d'une licence en Mathématiques.
           </p>
         </motion.div>
@@ -65,8 +65,8 @@ const About = () => {
             viewport={{ once: true }}
             className="relative group flex justify-center md:justify-start"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-            <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 w-full max-w-sm mx-auto md:mx-0 h-[300px] sm:h-[400px] md:h-auto"> {/* Added mx-auto for centering on small screens, and controlled height */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl blur-xl opacity-10 dark:opacity-20 group-hover:opacity-30 transition-opacity"></div>
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-gray-700/50 w-full max-w-sm mx-auto md:mx-0 h-[300px] sm:h-[400px] md:h-auto"> {/* Added mx-auto for centering on small screens, and controlled height */}
               <img
                 alt="Profil"
                 src="/images/profile.png"
@@ -83,15 +83,15 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-              Passionné par les <span className="text-primary-400">technologies émergentes</span>, je me spécialise dans 
-              l'intersection entre l'IA, la cybersécurité et la science des données. Mon objectif est de développer 
+            <p className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
+              Passionné par les <span className="text-primary-400">technologies émergentes</span>, je me spécialise dans
+              l'intersection entre l'IA, la cybersécurité et la science des données. Mon objectif est de développer
               des solutions innovantes pour résoudre des problèmes sociétaux complexes.
             </p>
-            
-            <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-              Mon parcours en <span className="text-purple-400">mathématiques</span> me donne une approche analytique 
-              unique pour aborder les défis technologiques, tandis que ma pratique des échecs renforce ma capacité 
+
+            <p className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
+              Mon parcours en <span className="text-purple-400">mathématiques</span> me donne une approche analytique
+              unique pour aborder les défis technologiques, tandis que ma pratique des échecs renforce ma capacité
               à anticiper les problèmes et élaborer des stratégies efficaces.
             </p>
 
@@ -104,16 +104,16 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-start space-x-3 p-4 rounded-xl glass-effect hover:bg-dark-700/50 transition-colors"
+                  className="flex items-start space-x-3 p-4 rounded-xl glass-effect hover:bg-white dark:hover:bg-gray-800/50 transition-colors"
                 >
                   <div className="bg-primary-500/10 p-2 rounded-lg flex-shrink-0">
                     <feature.icon className="text-primary-400" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold mb-1">
+                    <h3 className="text-slate-900 dark:text-white font-semibold mb-1">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-400 text-sm">{feature.description}</p>
+                    <p className="text-slate-400 text-sm">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -122,20 +122,14 @@ const About = () => {
         </div>
 
         {/* Hobbies section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center bg-dark-700/50 px-6 py-3 rounded-full border border-gray-700/50 text-sm sm:text-base">
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center bg-white dark:bg-gray-800/50 px-6 py-3 rounded-full border border-slate-200 dark:border-gray-700/50 text-sm sm:text-base shadow-sm">
             <Film className="text-purple-400 mr-2" size={20} />
-            <span className="text-gray-300">
+            <span className="text-slate-600 dark:text-gray-300">
               Cinéphile - particulièrement intéressé par les films de sci-fi et les documentaires tech
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

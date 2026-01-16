@@ -15,7 +15,7 @@ export default function ProjectsManager({ projects, onDelete, showForm, setShowF
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">Gestion des Projets</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Gestion des Projets</h2>
         <button
           onClick={() => setShowForm(true)}
           className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
@@ -31,15 +31,15 @@ export default function ProjectsManager({ projects, onDelete, showForm, setShowF
             key={project.id}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20"
+            className="bg-gray-100 dark:bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-gray-200 dark:border-white/20"
           >
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-32 object-cover rounded-lg mb-4"
             />
-            <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-            <p className="text-gray-300 mb-3 text-sm">{project.description}</p>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">{project.description}</p>
             <div className="flex flex-wrap gap-1 mb-4">
               {project.technologies.map((tech: string) => (
                 <span
@@ -52,8 +52,8 @@ export default function ProjectsManager({ projects, onDelete, showForm, setShowF
             </div>
             <div className="flex justify-between items-center">
               <span className={`px-2 py-1 rounded text-xs ${project.status === 'Terminé'
-                  ? 'bg-green-600/30 text-green-300'
-                  : 'bg-yellow-600/30 text-yellow-300'
+                ? 'bg-green-600/30 text-green-300'
+                : 'bg-yellow-600/30 text-yellow-300'
                 }`}>
                 {project.status}
               </span>

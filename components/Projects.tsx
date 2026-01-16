@@ -8,7 +8,7 @@ const Projects = () => {
   const projects = projectData;
 
   return (
-    <section id="projects" className="section-padding bg-dark-800/50">
+    <section id="projects" className="section-padding bg-slate-100/50 dark:bg-dark-800/50 transition-colors duration-300">
 
       <div className="container-custom">
         <motion.div
@@ -18,10 +18,10 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Mes <span className="gradient-text">Projets</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
             Découvrez quelques-uns de mes projets récents qui démontrent mes
             compétences et ma passion pour le développement web
           </p>
@@ -45,15 +45,15 @@ const Projects = () => {
                 />
                 <div className="absolute top-4 right-4 z-10">
                   <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md ${project.status === 'Terminé'
-                      ? 'bg-green-500/80 text-white'
-                      : project.status === 'En cours'
-                        ? 'bg-blue-500/80 text-white'
-                        : 'bg-yellow-500/80 text-white'
+                    ? 'bg-green-500/80 text-white'
+                    : project.status === 'En cours'
+                      ? 'bg-blue-500/80 text-white'
+                      : 'bg-yellow-500/80 text-white'
                     }`}>
                     {project.status}
                   </span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 dark:from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex space-x-4">
                     <motion.a
                       href={project.github}
@@ -76,10 +76,10 @@ const Projects = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
