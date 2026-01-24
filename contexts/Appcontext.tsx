@@ -24,13 +24,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   // Initialize theme and language from localStorage on mount
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme || 'dark';
-    const storedLanguage = localStorage.getItem('language') as Language || 'fr';
-    setTheme(storedTheme);
-    setLanguage(storedLanguage);
-    // Apply the theme class immediately
-    document.documentElement.classList.toggle('dark', storedTheme === 'dark');
-    document.documentElement.style.colorScheme = storedTheme;
+    const savedTheme = localStorage.getItem('theme') as Theme | null
+    const savedLang = localStorage.getItem('language') as Language | null
+
+    if (savedTheme) {
+      setTheme(savedTheme)
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      document.documentElement.style.colorScheme = savedTheme;
+    } else {
+      // Default to dark if no preference is saved
+      setTheme('dark')
+      document.documentElement.classList.add('dark')
+      document.documentElement.style.colorScheme = 'dark'
+    }
+
+    if (savedLang) setLanguage(savedLang)
   }, []);
 
   // Fonction de traduction avec support des chemins imbriqués (ex: 'header.home')
@@ -61,14 +69,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('language', lang)
   }
 
-  // Chargement des préférences au montage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null
-    const savedLang = localStorage.getItem('language') as Language | null
-
-    if (savedTheme) setTheme(savedTheme)
-    if (savedLang) setLanguage(savedLang)
-  }, [])
+  // redundant effect removed
 
   const contextValue = useMemo(() => ({
     theme,

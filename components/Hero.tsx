@@ -141,7 +141,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full blur-2xl opacity-20 -z-10"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary-500/30 overflow-hidden">
               <Image
-                src="/images/profile.jpg" // Remplacez par le chemin de votre image
+                src="/images/me.png" // Remplacez par le chemin de votre image
                 alt="Leonel Delmat AZANGUE"
                 width={320}
                 height={320}

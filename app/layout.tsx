@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Expert IA & Cybersécurité',
     description: 'Solutions avancées en intelligence artificielle et protection des systèmes',
-    url: 'https://votresite.com',
+    url: 'https://azangue-leonel-portfolio.vercel.app/',
     siteName: 'Portfolio Ingénieur IA',
     images: [{
-      url: 'https://votresite.com/og-ia.jpg',
+      url: 'https://azangue-leonel-portfolio.vercel.app/og-ia.jpg',
       width: 1200,
       height: 630,
       alt: 'Expert en Intelligence Artificielle',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Data Scientist & Pentester',
     description: 'Détection d\'anomalies • Modèles prédictifs • Sécurité des systèmes',
-    images: ['https://votresite.com/twitter-ia.jpg'],
+    images: ['https://azangue-leonel-portfolio.vercel.app/twitter-ia.jpg'],
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     icon: '/favicon-ai.ico',
     apple: '/apple-touch-icon-ai.png',
   },
-  metadataBase: new URL('https://votresite.com'),
+  metadataBase: new URL('https://azangue-leonel-portfolio.vercel.app/'),
 }
 
 export default function RootLayout({
@@ -65,7 +65,22 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#111827" />
+        <meta name="theme-color" content="#020617" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                  document.documentElement.style.colorScheme = 'dark'
+                } else {
+                  document.documentElement.classList.remove('dark')
+                  document.documentElement.style.colorScheme = 'light'
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <AppProvider>
