@@ -1,5 +1,15 @@
 const competitionData = [
   {
+    title: "WiSE HACK’25",
+    position: "1er Prix",
+    description: "Conception d'un moteur d'Instrumentation Dynamique de Binaires (DBI) avec DynamoRIO. Analyse instruction, détection de hotspots et hot-patching.",
+    date: "2025",
+    team: "Équipe",
+    technologies: ["Cybersécurité", "DynamoRIO", "System", "C++"],
+    link: "https://www.linkedin.com/posts/leonel-azangue_wisehack25-cybersaezcuritaez-dynamorio-activity-7418334432962633728-AhkW?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE2muccBTMTwBQrbAFsEQk5VT-Dry95HEkk",
+    image: "/images/wise.jpeg"
+  },
+  {
     title: "DataTour Competition 2025",
     position: "3ème place",
     description: "Compétition Panafricaine de Data Science. Analyse de datasets complexes, modélisation prédictive avancée, et travail en équipe sur des problématiques data-driven à fort impact.",
