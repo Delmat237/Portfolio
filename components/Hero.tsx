@@ -116,7 +116,7 @@ const Hero = () => {
                 { icon: Github, href: 'https://github.com/Delmat237', label: 'Delmat237' },
                 { icon: Linkedin, href: 'https://linkedin.com/leonel-azangue', label: 'leonel-azangue' },
                 { icon: Mail, href: 'mailto:azangueleonel9@gmail.com', label: 'azangueleonel9@gmail.com' },
-                { icon: Phone, href: 'tel:+237657450314', label: '+237 657450314' },
+                { icon: Phone, href: 'tel:+237694773472', label: '+237 694773472' },
               ].map((social) => (
                 <motion.a
                   key={social.label}
