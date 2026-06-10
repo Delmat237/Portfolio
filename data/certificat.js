@@ -8,6 +8,14 @@ const certificationData = [
     file: "#"
   },
   {
+    title: "Cursor Hackathon — J.U.I.N 2026",
+    source: "Cursor · Université de Yaoundé I",
+    description: "Certificat de participation au Cursor Hackathon J.U.I.N 2026 (Université de Yaoundé I). Développement rapide de solutions avec des outils d'IA, sous contraintes de hackathon.",
+    image: "/images/cusor.png",
+    reference: "#",
+    file: "#"
+  },
+  {
     title: "ETIIAC 2025 - 2ème Édition",
     source: "École Thématique Internationale sur l'IA au Cameroun",
     description: "Participation à la 2ème édition. Formation intensive sur les fondements mathématiques de l'IA, le Deep Learning et les systèmes autonomes. Attestation obtenue.",
