@@ -1,5 +1,15 @@
 const competitionData = [
   {
+    title: "Cursor Hackathon — J.U.I.N 2026",
+    position: "2ème place",
+    description: "2ème place (Prix : 600 $ de crédits Cursor) avec « DataPipe », une solution d'ETL (Extract, Transform, Load) visuel pour les flux de données bancaires complexes. Interface web nodale en glisser-déposer pour orchestrer l'import (CSV/JSON/SQL), le nettoyage, le filtrage et l'anonymisation sécurisée, augmentée d'un assistant IA traduisant des instructions en langage naturel en code de transformation (requêtes SQL, scripts de nettoyage). Université de Yaoundé I.",
+    date: "2026",
+    team: "Équipe « Les Avengers »",
+    technologies: ["ETL", "Data Engineering", "Assistant IA", "Next.js", "SQL"],
+    link: "https://github.com/Delmat237/DataPipe---ETL-Visuel-pour-Pipelines-Bancaires",
+    image: "/images/datapipe.jpg"
+  },
+  {
     title: "WiSE HACK’25",
     position: "1er Prix",
     description: "Conception d'un moteur d'Instrumentation Dynamique de Binaires (DBI) avec DynamoRIO. Analyse instruction, détection de hotspots et hot-patching.",
