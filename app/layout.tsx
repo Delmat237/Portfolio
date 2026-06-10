@@ -25,34 +25,33 @@ export const metadata: Metadata = {
     'Réseaux de Neurones',
     'Ethical Hacking'
   ],
-  authors: [{ name: 'Leonel Delmat AZANGUE', url: 'azangue-leonel-portfolio.vercel.app' }],
+  authors: [{ name: 'Leonel Delmat AZANGUE', url: 'https://azangue-leonel-portfolio.vercel.app' }],
+  creator: 'Leonel Delmat AZANGUE',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Expert IA & Cybersécurité',
-    description: 'Solutions avancées en intelligence artificielle et protection des systèmes',
+    title: 'Leonel Delmat AZANGUE — Ingénieur IA & Full-Stack',
+    description: 'IA Agentique, Computer Vision, DevOps : des solutions technologiques à impact social et inclusif.',
     url: 'https://azangue-leonel-portfolio.vercel.app/',
-    siteName: 'Portfolio Ingénieur IA',
-    images: [{
-      url: 'https://azangue-leonel-portfolio.vercel.app/og-ia.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Expert en Intelligence Artificielle',
-    }],
+    siteName: 'Portfolio — Leonel Delmat AZANGUE',
     locale: 'fr_FR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Data Scientist & Pentester',
-    description: 'Détection d\'anomalies • Modèles prédictifs • Sécurité des systèmes',
-    images: ['https://azangue-leonel-portfolio.vercel.app/twitter-ia.jpg'],
+    title: 'Leonel Delmat AZANGUE — Ingénieur IA & Full-Stack',
+    description: 'IA Agentique • Computer Vision • DevOps • Technologies à impact social',
   },
   robots: {
     index: true,
     follow: true,
-  },
-  icons: {
-    icon: '/favicon-ai.ico',
-    apple: '/apple-touch-icon-ai.png',
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   metadataBase: new URL('https://azangue-leonel-portfolio.vercel.app/'),
 }
@@ -83,6 +82,43 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Leonel Delmat AZANGUE',
+              alternateName: 'AZANGUE Leonel Delmat',
+              url: 'https://azangue-leonel-portfolio.vercel.app',
+              image: 'https://azangue-leonel-portfolio.vercel.app/images/profile.png',
+              jobTitle: 'Ingénieur en IA & Full-Stack',
+              description:
+                "Élève-ingénieur en Génie Informatique (ENSPY) et Mathématiques (Université de Yaoundé I), spécialisé en IA Agentique, Computer Vision et DevOps, pour des solutions technologiques à impact social et inclusif.",
+              knowsAbout: [
+                'Intelligence Artificielle',
+                'Machine Learning',
+                'Deep Learning',
+                'Computer Vision',
+                'Systèmes Multi-Agents',
+                'RAG',
+                'DevOps',
+                'Full-Stack Development',
+                'Cybersécurité',
+                'Data Science',
+              ],
+              alumniOf: [
+                { '@type': 'CollegeOrUniversity', name: "École Nationale Supérieure Polytechnique de Yaoundé (ENSPY)" },
+                { '@type': 'CollegeOrUniversity', name: 'Université de Yaoundé I' },
+              ],
+              nationality: { '@type': 'Country', name: 'Cameroun' },
+              sameAs: [
+                'https://github.com/Delmat237',
+                'https://www.linkedin.com/in/leonel-azangue',
+              ],
+            }),
+          }}
+        />
         <AppProvider>
           <div className="min-h-screen">
             {children}
