@@ -5,8 +5,8 @@ const associationData = [
       "/images/gi.jpeg",
       "/images/gi2.jpeg", // Keeping existing image paths, assuming they might exist or handled by FE
     ],
-    description: "Coordonateur de projet. Membre actif de la cellule projet du club Génie Informatique de l'ENSPY. Participation au développement de solutions tech innovantes et organisation d'événements techniques.",
-    roles: ["Coordonateur de projet", "Membre Actif"],
+    description: "Coordinateur de la cellule projet du Club Génie Informatique de l'ENSPY : pilotage et encadrement des équipes projets, animation de la cellule IA (formations Python/ML, ateliers RAG & IA Agentique) et organisation d'événements techniques (hackathons internes, sessions de mentorat).",
+    roles: ["Coordinateur de projet", "Formateur IA", "Membre Actif"],
     duration: "2025 - Présent",
     link: "#"
   },

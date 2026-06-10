@@ -1,23 +1,53 @@
 const projectData = [
   {
-    id:7,
-    title:'Systeme de RAG Local',
-    description:'Systeme de RAG Local',
-    image:'/images/rag.png',
-    technologies:['Python','FastAPI/Flask','Machine Learning','Scikit-learn'],
-    github:'#',
-    status:"En cours",
-    demo:'https://rag-local.onrender.com/docs'
+    id: 8,
+    title: 'AgroVoice-IA',
+    description:
+      "IA vocale hors-ligne pour l'inclusion agricole. Permet aux agriculteurs en zones blanches (sans réseau) d'effectuer un suivi complet de leurs cultures via des commandes vocales en langues locales, grâce à de la reconnaissance vocale légère et à de l'analyse prédictive 100% en local.",
+    image: '/images/agrovoice.png',
+    technologies: ['Python', 'FastAPI', 'Offline Speech-to-Text', 'Machine Learning', 'Docker'],
+    category: 'Intelligence Artificielle',
+    tag: 'IA Responsable & Inclusive',
+    github: '#',
+    status: 'En cours',
+    demo: '#'
   },
   {
-    id: 1,
-    title: 'Shopecart Web Project',
-    description: 'Plateforme E-commerce Fullstack développée avec Laravel.',
-    image: '/images/shopecart.png', // Assuming we might need an image, using a placeholder for now or existing
-    technologies: ['Laravel', 'PHP', 'MySQL', 'Bootstrap'],
-    github: '#', // User didn't provide, leaving #
-    status: "Terminé",
-    demo: 'http://shopecart-web-project-tp-4-laravel-full-pyh9fx.laravel.cloud/'
+    id: 9,
+    title: 'Hearless (SignAI)',
+    description:
+      "Traduction de la langue des signes en temps réel par vision par ordinateur, pour faciliter l'intégration académique des étudiants sourds et malentendants. Capture des repères corporels (mains, visage, pose) et traduction instantanée en texte et en parole via un modèle de Deep Learning optimisé pour la fluidité du flux vidéo.",
+    image: '/images/signai.png',
+    technologies: ['Deep Learning', 'Computer Vision', 'MediaPipe', 'OpenCV', 'Next.js'],
+    category: 'Intelligence Artificielle',
+    tag: 'IA Responsable & Inclusive',
+    github: '#',
+    status: 'En cours',
+    demo: '#'
+  },
+  {
+    id: 7,
+    title: 'Système de RAG Local',
+    description:
+      "Système de Retrieval-Augmented Generation fonctionnant entièrement en local : indexation de documents, recherche sémantique et génération de réponses sourcées, sans dépendance à une API externe.",
+    image: '/images/rag.png',
+    technologies: ['Python', 'FastAPI', 'RAG', 'Machine Learning', 'LLM'],
+    category: 'Intelligence Artificielle',
+    github: 'https://github.com/Delmat237/AI_Agent_RAG_SYSTEM',
+    status: 'En cours',
+    demo: 'https://rag-local.onrender.com/docs'
+  },
+  {
+    id: 3,
+    title: 'IoT Soil Backend',
+    description:
+      "API de recommandation agricole : prédit la culture la plus adaptée à partir des propriétés du sol (capteurs IoT) et fournit des recommandations exploitables grâce à un modèle de Machine Learning.",
+    image: '/images/iot_soil.png',
+    technologies: ['Python', 'FastAPI', 'Machine Learning', 'Scikit-learn'],
+    category: 'Intelligence Artificielle',
+    github: 'https://github.com/Delmat237/IOT_SOIL_BACKEND',
+    status: 'Terminé',
+    demo: 'https://iot-soil-backend.onrender.com/docs'
   },
   {
     id: 2,
@@ -25,49 +55,33 @@ const projectData = [
     description: 'Application Fullstack intégrant un assistant IA pour le support utilisateur.',
     image: '/images/xccm.png',
     technologies: ['React', 'Next.js', 'AI Integration', 'Tailwind CSS'],
-    github: '#',
-    status: "Terminé",
+    category: 'Full-Stack',
+    github: 'https://github.com/Delmat237/XCCM1-BACKEND',
+    status: 'Terminé',
     demo: 'https://frontend-xccm-12027.vercel.app/'
   },
   {
-    id: 3,
-    title: 'IoT Soil Backend',
-    description: 'API de prédiction pour les meilleures cultures en fonction des propriétés du sol avec recommandations.',
-    image: '/images/iot_soil.png',
-    technologies: ['Python', 'FastAPI/Flask', 'Machine Learning', 'Scikit-learn'],
-    github: '#',
-    status: "Terminé",
-    demo: 'https://iot-soil-backend.onrender.com/docs'
-  },
-  {
     id: 4,
-    title: 'E-Commerce Platform :  Custom World',
-    description: 'Plateforme e-commerce pour la customisation des appareils, pochettes,T-shirt, etc',
+    title: 'E-Commerce Platform : Custom World',
+    description:
+      'Plateforme e-commerce pour la personnalisation d\'appareils, pochettes, t-shirts, etc., avec paiement intégré et gestion des commandes.',
     image: '/images/Custom_World.png',
     technologies: ['Next.js', 'TypeScript', 'CinetPay', 'PostgreSQL', 'Java'],
+    category: 'Full-Stack',
     github: 'https://github.com/Delmat237/Custom_World',
-    status: "Terminé",
+    status: 'Terminé',
     demo: 'https://customworld.vercel.app/'
   },
   {
     id: 5,
-    title: 'E-Commerce Platform :  Db Jewerly',
-    description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes',
+    title: 'E-Commerce Platform : DB Jewelry',
+    description: 'Plateforme e-commerce complète avec panier, paiement et gestion des commandes.',
     image: '/images/DB_JEWELRY.png',
     technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+    category: 'Full-Stack',
     github: 'https://github.com/Delmat237/DB-Jewelry',
-    status: "En cours",
+    status: 'En cours',
     demo: 'https://db-jewelry.vercel.app/'
-  },
-  {
-    id: 6,
-    title: 'Portfolio Website',
-    description: 'Site portfolio responsive avec animations et design moderne',
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-    technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-    github: 'https://github.com/Delmat237/Portofolio',
-    status: "Terminé",
-    demo: 'https://azangue-leonel-portfolio.vercel.app/'
   }
 ]
 

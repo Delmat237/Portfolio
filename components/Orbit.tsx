@@ -1,202 +1,149 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import orbitIcons from '@/data/orbitIcons';
 
-// Composant Orbite 3D
+// Sphère 3D de technologies — vraie profondeur (distribution de Fibonacci + rotation 3D projetée)
 const OrbitingIcons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [time, setTime] = useState(0);
+  const rotation = useRef({ x: -0.3, y: 0 });
+  const velocity = useRef({ x: 0.0015, y: 0.004 });
+  const hovering = useRef(false);
+  const [, setTick] = useState(0);
+
+  const RADIUS = 170;
+
+  // Positions de base sur une sphère unité (spirale de Fibonacci) — calculées une seule fois
+  const basePositions = useMemo(() => {
+    const count = orbitIcons.length;
+    const increment = Math.PI * (3 - Math.sqrt(5)); // angle d'or
+    return orbitIcons.map((_, i) => {
+      const y = 1 - (i / (count - 1)) * 2; // de 1 à -1
+      const r = Math.sqrt(1 - y * y);
+      const phi = i * increment;
+      return { x: Math.cos(phi) * r, y, z: Math.sin(phi) * r };
+    });
+  }, []);
 
   useEffect(() => {
-    interface MousePosition {
-      x: number;
-      y: number;
-    }
-
-    interface MouseEventWithClient extends MouseEvent {
-      clientX: number;
-      clientY: number;
-    }
-
-    const handleMouseMove = (e: MouseEventWithClient) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        setMousePosition({
-          x: (e.clientX - centerX) / 15,
-          y: (e.clientY - centerY) / 15,
-        });
-      }
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      // La position du curseur pilote la vitesse/direction de rotation
+      velocity.current.y = ((e.clientX - centerX) / rect.width) * 0.018;
+      velocity.current.x = -((e.clientY - centerY) / rect.height) * 0.018;
     };
 
-    let animationId: number | undefined;
+    let animationId: number;
     const animate = () => {
-      setTime(Date.now() * 0.001);
+      // Au survol direct : on ralentit fortement pour laisser lire les icônes
+      const damping = hovering.current ? 0.15 : 1;
+      rotation.current.x += velocity.current.x * damping;
+      rotation.current.y += velocity.current.y * damping;
+      setTick((t) => (t + 1) % 1000000);
       animationId = requestAnimationFrame(animate);
     };
     animate();
 
     window.addEventListener('mousemove', handleMouseMove);
-
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
+      cancelAnimationFrame(animationId);
     };
   }, []);
 
-  // Configuration des orbites
-  const orbitConfig = [
-    { radius: 90, icons: 7, speed: 0.5, direction: 1, color: 'rgba(60, 110, 200, 0.2)' },
-    { radius: 130, icons: 7, speed: 0.3, direction: -1, color: 'rgba(140, 60, 200, 0.2)' },
-    { radius: 170, icons: orbitIcons.length - 14, speed: 0.2, direction: 1, color: 'rgba(230, 80, 150, 0.2)' },
-  ];
+  const { x: rx, y: ry } = rotation.current;
+  const cosX = Math.cos(rx), sinX = Math.sin(rx);
+  const cosY = Math.cos(ry), sinY = Math.sin(ry);
 
-  let iconIndex = 0;
+  // Projette chaque icône : rotation 3D autour de Y puis X, puis profondeur -> échelle/opacité/z-index
+  const projected = basePositions.map((p, i) => {
+    // rotation autour de Y
+    const x1 = p.x * cosY - p.z * sinY;
+    const z1 = p.x * sinY + p.z * cosY;
+    // rotation autour de X
+    const y2 = p.y * cosX - z1 * sinX;
+    const z2 = p.y * sinX + z1 * cosX;
+    const depth = (z2 + 1) / 2; // 0 (arrière) -> 1 (avant)
+    return {
+      tech: orbitIcons[i],
+      px: x1 * RADIUS,
+      py: y2 * RADIUS,
+      scale: 0.55 + depth * 0.55,
+      opacity: 0.3 + depth * 0.7,
+      blur: (1 - depth) * 2.5,
+      zIndex: Math.round(depth * 100),
+    };
+  });
 
   return (
-    <div className="relative w-full h-96 flex justify-center items-center mb-16 overflow-hidden">
+    <div className="relative w-full h-[28rem] flex justify-center items-center mb-16 overflow-hidden">
       <div
         ref={containerRef}
         className="relative w-96 h-96"
-        style={{
-          perspective: '1200px',
-          transformStyle: 'preserve-3d',
-          transform: `rotateX(${mousePosition.y * 0.02}deg) rotateY(${mousePosition.x * 0.02}deg)`,
-        }}
+        style={{ perspective: '1000px' }}
+        onMouseEnter={() => (hovering.current = true)}
+        onMouseLeave={() => (hovering.current = false)}
       >
-        {/* Lignes d'orbite pour la visualisation */}
-        {orbitConfig.map((orbit, orbitIndex) => (
+        {/* Halo central pour donner du volume à la sphère */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div
-            key={`line-${orbitIndex}`}
-            className="absolute inset-0 rounded-full border border-slate-200 dark:border-white/10"
-            style={{
-              width: `${orbit.radius * 2}px`,
-              height: `${orbit.radius * 2}px`,
-              top: `calc(50% - ${orbit.radius}px)`,
-              left: `calc(50% - ${orbit.radius}px)`,
-              transform: `rotateX(75deg)`,
-              // Animation pour la rotation de l'orbite
-              animation: `rotate-line-${orbitIndex} ${30 / orbit.speed}s linear infinite`,
-              animationDirection: orbit.direction === 1 ? 'normal' : 'reverse',
-            }}
+            className="w-56 h-56 rounded-full blur-3xl opacity-20"
+            style={{ background: 'radial-gradient(circle, #6366f1, #8b5cf6 40%, transparent 70%)' }}
           />
-        ))}
-
-        {/* Génération des icônes */}
-        {orbitConfig.map((orbit, orbitIndex) => {
-          const startIconIndex = iconIndex;
-          iconIndex += orbit.icons;
-          const orbitIconsSlice = orbitIcons.slice(startIconIndex, iconIndex);
-
-          return (
-            <div
-              key={orbitIndex}
-              className="absolute inset-0"
-              style={{
-                transformStyle: 'preserve-3d',
-                transform: `rotateZ(${time * orbit.speed * 50 * orbit.direction}deg)`, // Animation de rotation de l'orbite
-              }}
-            >
-              {orbitIconsSlice.map((tech, index) => {
-                const angle = (index * 360) / orbit.icons;
-                const offsetAngle = (orbitIndex * 20);
-                const iconPositionX = Math.cos((angle + offsetAngle) * Math.PI / 180) * orbit.radius;
-                const iconPositionY = Math.sin((angle + offsetAngle) * Math.PI / 180) * orbit.radius;
-
-                return (
-                  <div
-                    key={tech.name}
-                    className="absolute w-16 h-16 flex items-center justify-center group cursor-pointer"
-                    style={{
-                      left: '50%',
-                      top: '50%',
-                      transform: `translate(-50%, -50%) translate3d(${iconPositionX}px, ${iconPositionY}px, 0px)`,
-                      transformStyle: 'preserve-3d',
-                      animation: `wobble-${orbitIndex} ${50 / orbit.speed}s linear infinite`, // Ajout d'une oscillation
-                    }}
-                  >
-                    <div className="relative">
-                      <div
-                        className="w-12 h-12 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center transform transition-all duration-300 group-hover:scale-125 group-hover:rotate-12 shadow-lg"
-                        style={{
-                          background: `linear-gradient(135deg, ${tech.color}15, ${tech.color}35)`,
-                          boxShadow: `0 8px 32px ${tech.color}25, inset 0 1px 0 rgba(255,255,255,0.1)`,
-                          transform: `rotateZ(${-time * orbit.speed * 50 * orbit.direction}deg)` // Contre-rotation de l'icône
-                        }}
-                      >
-                        <img
-                          src={tech.src}
-                          alt={tech.name}
-                          className="w-7 h-7 object-contain transition-transform duration-300 group-hover:scale-110"
-                          style={{
-                            filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.3))',
-                            imageRendering: 'crisp-edges',
-                          }}
-                        />
-                      </div>
-                      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 pointer-events-none">
-                        <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/20 shadow-xl">
-                          <span className="text-xs text-slate-900 dark:text-white font-medium whitespace-nowrap">
-                            {tech.name}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-
-        {/* Centre lumineux amélioré */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className="w-20 h-20 rounded-full opacity-15 blur-2xl"
-            style={{
-              background: `conic-gradient(from ${time * 50}deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #3b82f6)`,
-            }}
-          ></div>
-          <div
-            className="absolute w-8 h-8 rounded-full"
-            style={{
-              background: 'conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)',
-              transform: `rotate(${time * 100}deg)`,
-            }}
-          ></div>
-          <div
-            className="absolute w-4 h-4 rounded-full bg-white/80"
-            style={{
-              opacity: 0.5 + 0.5 * Math.sin(time * 2),
-            }}
-          ></div>
         </div>
 
-        {/* Particules flottantes */}
-        {[...Array(20)].map((_, i) => (
+        {/* Icônes réparties sur la sphère */}
+        {projected.map(({ tech, px, py, scale, opacity, blur, zIndex }) => (
           <div
-            key={i}
-            className="absolute w-1 h-1 bg-slate-400 dark:bg-white/30 rounded-full"
+            key={tech.name}
+            className="absolute left-1/2 top-1/2 group cursor-pointer"
             style={{
-              left: '50%',
-              top: '50%',
-              transform: `
-                translate(-50%, -50%) 
-                translate3d(
-                  ${Math.cos(time * 0.5 + i) * (150 + i * 10)}px,
-                  ${Math.sin(time * 0.3 + i) * (150 + i * 10)}px,
-                  ${Math.sin(time * 0.7 + i) * 50}px
-                )
-              `,
-              opacity: 0.3 + 0.3 * Math.sin(time * 2 + i),
+              transform: `translate(-50%, -50%) translate3d(${px}px, ${py}px, 0) scale(${scale})`,
+              opacity,
+              zIndex,
+              willChange: 'transform, opacity',
+            }}
+          >
+            <div className="relative">
+              <div
+                className="w-12 h-12 rounded-xl backdrop-blur-sm border border-white/20 flex items-center justify-center transition-transform duration-300 group-hover:scale-125 shadow-lg"
+                style={{
+                  background: `linear-gradient(135deg, ${tech.color}20, ${tech.color}40)`,
+                  boxShadow: `0 8px 32px ${tech.color}30, inset 0 1px 0 rgba(255,255,255,0.15)`,
+                  filter: blur > 0.05 ? `blur(${blur}px)` : undefined,
+                }}
+              >
+                <img
+                  src={tech.src}
+                  alt={tech.name}
+                  className="w-7 h-7 object-contain"
+                  style={{ filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.25))' }}
+                />
+              </div>
+              <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 pointer-events-none">
+                <div className="bg-white dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/20 shadow-xl">
+                  <span className="text-xs text-slate-900 dark:text-white font-medium whitespace-nowrap">
+                    {tech.name}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Noyau lumineux */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 50 }}>
+          <div
+            className="w-5 h-5 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, #ffffff, #a5b4fc 60%, transparent)',
+              boxShadow: '0 0 24px 6px rgba(139,92,246,0.5)',
             }}
           />
-        ))}
+        </div>
       </div>
     </div>
   );

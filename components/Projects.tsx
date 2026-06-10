@@ -1,11 +1,19 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import projectData from '@/data/projet'
 
 const Projects = () => {
-  const projects = projectData;
+  // Construit la liste des filtres à partir des catégories réellement présentes
+  const categories = ['Tous', ...Array.from(new Set(projectData.map((p) => p.category).filter(Boolean)))]
+  const [activeCategory, setActiveCategory] = useState('Tous')
+
+  const projects =
+    activeCategory === 'Tous'
+      ? projectData
+      : projectData.filter((project) => project.category === activeCategory)
 
   return (
     <section id="projects" className="section-padding bg-slate-100/50 dark:bg-dark-800/50 transition-colors duration-300">
@@ -16,21 +24,45 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             Mes <span className="gradient-text">Projets</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Découvrez quelques-uns de mes projets récents qui démontrent mes
-            compétences et ma passion pour le développement web
+            Des systèmes d'IA à impact social aux plateformes Full-Stack : une sélection
+            de projets qui illustrent ma vision d'une technologie utile et inclusive.
           </p>
+        </motion.div>
+
+        {/* Filtres par catégorie */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                activeCategory === category
+                  ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
+                  : 'glass-effect text-slate-600 dark:text-gray-300 hover:text-primary-500'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
+              layout
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -53,6 +85,13 @@ const Projects = () => {
                     {project.status}
                   </span>
                 </div>
+                {project.tag && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md bg-purple-500/80 text-white">
+                      {project.tag}
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 dark:from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <div className="flex space-x-4">
                     <motion.a

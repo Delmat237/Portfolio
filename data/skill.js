@@ -19,7 +19,15 @@ import {
   FileText,
   Presentation,
   TrendingUp,
-  ChevronRight
+  ChevronRight,
+  Bot,
+  Workflow,
+  Network,
+  Server,
+  GitBranch,
+  Cloud,
+  Boxes,
+  Terminal
 } from 'lucide-react';
 
 const skillData = [
@@ -41,6 +49,26 @@ const skillData = [
       { name: 'NLP', level: 70, icon: MessageSquare },
       { name: 'Computer Vision', level: 65, icon: Eye },
       { name: 'Data Analysis', level: 85, icon: BarChart3 },
+    ]
+  },
+  {
+    title: 'IA Agentique & Multi-Agents (MAS)',
+    skills: [
+      { name: 'Systèmes Multi-Agents (JADE)', level: 75, icon: Network },
+      { name: 'Orchestration d\'Agents', level: 75, icon: Workflow },
+      { name: 'RAG (Retrieval-Augmented Generation)', level: 80, icon: Bot },
+      { name: 'Intégration de LLMs', level: 80, icon: Brain },
+      { name: 'Agentic Workflows', level: 70, icon: Workflow },
+    ]
+  },
+  {
+    title: 'DevOps & Infrastructure',
+    skills: [
+      { name: 'Docker & Conteneurs', level: 80, icon: Boxes },
+      { name: 'Nginx (Reverse Proxy)', level: 75, icon: Server },
+      { name: 'Linux & Déploiement VPS', level: 80, icon: Terminal },
+      { name: 'CI/CD (GitHub Actions)', level: 75, icon: GitBranch },
+      { name: 'Cloud (Vercel, Render)', level: 85, icon: Cloud },
     ]
   },
   {

@@ -1,5 +1,13 @@
 const certificationData = [
   {
+    title: "Humboldt Kolleg — Humboldt Research Hub Network Meeting",
+    source: "Alexander von Humboldt Stiftung & Federal Ministry of Education and Research (Allemagne), ENSPY",
+    description: "Facilitateur lors de la conférence « Beyond Extraction: Designing Culturally-Resilient Technologies for Africa's Digital Sovereignty » (Yaoundé, 11-13 mai 2026). Animation d'échanges sur la souveraineté numérique africaine et les technologies culturellement résilientes.",
+    image: "/images/humboldt.png",
+    reference: "#",
+    file: "#"
+  },
+  {
     title: "ETIIAC 2025 - 2ème Édition",
     source: "École Thématique Internationale sur l'IA au Cameroun",
     description: "Participation à la 2ème édition. Formation intensive sur les fondements mathématiques de l'IA, le Deep Learning et les systèmes autonomes. Attestation obtenue.",
