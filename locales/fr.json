@@ -157,7 +157,8 @@
     "quickLinks": "Liens rapides",
     "contact": "Contact",
     "madeWith": "Fait avec",
-    "by": "par Delmat. Tous droits réservés"
+    "byPrefix": "par ",
+    "bySuffix": ". Tous droits réservés"
   },
   "theme": {
     "light": "Clair",

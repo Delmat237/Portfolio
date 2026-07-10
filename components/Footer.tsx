@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart, Phone } from 'lucide-react'
+import Link from 'next/link'
 import { useAppContext } from '@/contexts/Appcontext'
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
+import { CONTACT_EMAIL, CONTACT_MAP_URL, CONTACT_PHONE, CONTACT_WHATSAPP } from '@/lib/contact'
 
 const Footer = () => {
   const { t } = useAppContext()
@@ -12,7 +13,7 @@ const Footer = () => {
     { icon: Github, href: 'https://github.com/Delmat237', label: 'Delmat237' },
     { icon: Linkedin, href: 'https://linkedin.com/leonel-azangue', label: 'leonel-azangue' },
     { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
-    { icon: Phone, href: CONTACT_PHONE_TEL, label: CONTACT_PHONE },
+    { icon: Phone, href: CONTACT_WHATSAPP, label: CONTACT_PHONE, external: true },
   ]
 
   const quickLinks = [
@@ -41,6 +42,9 @@ const Footer = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  {...('external' in social && social.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
                   whileHover={{ scale: 1.2, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   className="text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
@@ -82,7 +86,16 @@ const Footer = () => {
             <div className="space-y-2 text-slate-600 dark:text-gray-300">
               <p>{CONTACT_EMAIL}</p>
               <p>{CONTACT_PHONE}</p>
-              <p>{t('contact.locationValue')}</p>
+              <p>
+                <a
+                  href={CONTACT_MAP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                >
+                  {t('contact.locationValue')}
+                </a>
+              </p>
             </div>
           </motion.div>
         </div>
@@ -97,7 +110,14 @@ const Footer = () => {
           <p className="text-slate-400 flex items-center justify-center">
             © {new Date().getFullYear()} {t('footer.brand')}. {t('footer.madeWith')}{' '}
             <Heart className="text-red-500 mx-2" size={16} fill="currentColor" />
-            {t('footer.by')}
+            {t('footer.byPrefix')}
+            <Link
+              href="/admin"
+              className="hover:text-slate-500 dark:hover:text-slate-200 transition-colors duration-200"
+            >
+              Delmat
+            </Link>
+            {t('footer.bySuffix')}
           </p>
         </motion.div>
       </div>

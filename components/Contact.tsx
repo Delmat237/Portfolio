@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { useState } from 'react'
 import { useAppContext } from '@/contexts/Appcontext'
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
+import { CONTACT_EMAIL, CONTACT_MAP_URL, CONTACT_PHONE, CONTACT_WHATSAPP } from '@/lib/contact'
 
 const Contact = () => {
   const { t } = useAppContext()
@@ -69,13 +69,15 @@ const Contact = () => {
       icon: Phone,
       title: t('contact.phone'),
       value: CONTACT_PHONE,
-      href: CONTACT_PHONE_TEL
+      href: CONTACT_WHATSAPP,
+      external: true
     },
     {
       icon: MapPin,
       title: t('contact.location'),
       value: t('contact.locationValue'),
-      href: '#'
+      href: CONTACT_MAP_URL,
+      external: true
     }
   ]
 
@@ -119,6 +121,9 @@ const Contact = () => {
                 <motion.a
                   key={info.title}
                   href={info.href}
+                  {...('external' in info && info.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}

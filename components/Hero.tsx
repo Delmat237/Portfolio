@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
 import { useAppContext } from '@/contexts/Appcontext'
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_WHATSAPP } from '@/lib/contact'
 
 const Hero = () => {
   const { t } = useAppContext()
@@ -114,11 +114,14 @@ const Hero = () => {
                 { icon: Github, href: 'https://github.com/Delmat237', label: 'Delmat237' },
                 { icon: Linkedin, href: 'https://linkedin.com/leonel-azangue', label: 'leonel-azangue' },
                 { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
-                { icon: Phone, href: CONTACT_PHONE_TEL, label: CONTACT_PHONE },
+                { icon: Phone, href: CONTACT_WHATSAPP, label: CONTACT_PHONE, external: true },
               ].map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
+                  {...('external' in social && social.external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
                   className="text-slate-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
