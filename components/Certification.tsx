@@ -2,18 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { FileText, ExternalLink } from 'lucide-react'
-import certificationData from '@/data/certificat'
-
+import certificationData from '@/data/certification'
+import { useAppContext } from '@/contexts/Appcontext'
 
 const Certifications = () => {
+  const { t } = useAppContext()
   const certifications = certificationData
+
   return (
     <div className="min-h-screen">
-
-
       <section id="certifications" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
         <div className="container-custom">
-
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -22,10 +21,10 @@ const Certifications = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Mes <span className="gradient-text">Certifications</span>
+              {t('certifications.title')} <span className="gradient-text">{t('certifications.titleHighlight')}</span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Mes acquis académiques et professionnels qui attestent de mes compétences
+              {t('certifications.description')}
             </p>
           </motion.div>
 
@@ -53,7 +52,7 @@ const Certifications = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                        title="Télécharger le certificat"
+                        title={t('certifications.download')}
                       >
                         <FileText size={20} />
                       </motion.a>
@@ -64,7 +63,7 @@ const Certifications = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                        title="Vérifier en ligne"
+                        title={t('certifications.verifyOnline')}
                       >
                         <ExternalLink size={20} />
                       </motion.a>
@@ -77,7 +76,7 @@ const Certifications = () => {
                     {certification.title}
                   </h3>
                   <p className="text-slate-500 dark:text-gray-400 text-sm mb-3">
-                    <span className="font-medium">Source: </span>
+                    <span className="font-medium">{t('certifications.source')}: </span>
                     {certification.source}
                   </p>
                   <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
@@ -89,7 +88,7 @@ const Certifications = () => {
                     rel="noopener noreferrer"
                     className="text-primary-400 hover:text-primary-300 text-xs font-medium inline-flex items-center"
                   >
-                    Vérifier cette certification
+                    {t('certifications.verify')}
                     <ExternalLink size={14} className="ml-1" />
                   </a>
                 </div>
@@ -98,8 +97,6 @@ const Certifications = () => {
           </div>
         </div>
       </section>
-
-
     </div>
   )
 }

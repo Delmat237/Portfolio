@@ -11,7 +11,7 @@
     "projects": "Projects",
     "experience": "Experience",
     "competitions": "Competitions",
-        "association":"Engagement Associatives",
+    "association": "Community Engagement",
     "contact": "Contact",
     "admin": "Admin",
     "adminSpace": "Admin Space",
@@ -22,36 +22,142 @@
   },
   "hero": {
     "welcome": "Hi, I'm",
+    "name": "Leonel Delmat AZANGUE",
+    "description": "4th-year Computer Engineering student at ENSPY.",
+    "expertise": "Expert in Artificial Intelligence, Data Science, and Full Stack Development.",
+    "tagline": "I turn complex data into innovative solutions.",
     "downloadCV": "Download CV",
     "viewProjects": "View my projects",
-    "description":""
+    "cvDownloadError": "Download failed. Please try again."
   },
   "about": {
-    "title": "About Me",
-    "description": "Computer engineering student passionate about emerging technologies."
+    "title": "My",
+    "titleHighlight": "Journey",
+    "subtitle": "Computer engineering student at ENSPY, with a Bachelor's degree in Mathematics.",
+    "paragraph1": "Passionate about emerging technologies, I specialize at the intersection of AI, cybersecurity, and data science. My goal is to develop innovative solutions to solve complex societal problems.",
+    "paragraph2": "My background in mathematics gives me a unique analytical approach to technological challenges, while my chess practice strengthens my ability to anticipate problems and develop effective strategies.",
+    "featureAiTitle": "Artificial Intelligence",
+    "featureAiDesc": "ML/DL model development and AI research",
+    "featureCyberTitle": "Cybersecurity",
+    "featureCyberDesc": "Pentesting, system security, and cryptography",
+    "featureDataTitle": "Data Science",
+    "featureDataDesc": "Complex data analysis and advanced visualizations",
+    "featureDevTitle": "Development",
+    "featureDevDesc": "Full-stack applications with modern architectures",
+    "featureChessTitle": "Strategy & Chess",
+    "featureChessDesc": "Competitive practice to sharpen analytical thinking",
+    "featureSportTitle": "Sports & Fitness",
+    "featureSportDesc": "Daily physical activity for mental balance",
+    "hobby": "Film enthusiast — especially sci-fi movies and tech documentaries"
   },
   "skills": {
-    "title": "My Skills",
-    "description": "Technologies I regularly use"
+    "title": "My",
+    "titleHighlight": "Skills",
+    "description": "Technologies and tools I use to create exceptional experiences",
+    "technologiesTitle": "Tech",
+    "technologiesHighlight": "Stack",
+    "softSkillsTitle": "Soft",
+    "softSkillsHighlight": "Skills",
+    "spokenLanguagesTitle": "Spoken",
+    "spokenLanguagesHighlight": "Languages",
+    "categories": {
+      "programming": "Languages",
+      "ai": "AI & Data Science",
+      "agentic": "Agentic AI",
+      "devops": "DevOps & Infra",
+      "databases": "Databases",
+      "math": "Mathematics",
+      "softSkills": "Leadership & Soft Skills",
+      "spokenLanguages": "Languages"
+    },
+    "techCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "framework": "Frameworks",
+      "mobile": "Mobile",
+      "devops": "DevOps & Cloud",
+      "collaboration": "Collaboration",
+      "deployment": "Deployment",
+      "other": "Other"
+    },
+    "levels": {
+      "expert": "Proficient",
+      "intermediate": "Intermediate",
+      "learning": "Learning",
+      "native": "Native"
+    }
   },
   "education": {
     "title": "Education",
+    "description": "My educational journey and continuous training to stay up to date with the latest technologies",
     "current": "Currently"
   },
   "projects": {
-    "title": "My Projects",
+    "title": "My",
+    "titleHighlight": "Projects",
+    "description": "From social-impact AI systems to Full-Stack platforms: a selection of projects illustrating my vision of useful and inclusive technology.",
     "viewCode": "View code",
     "liveDemo": "Live demo",
-    "description": "Recent projects with various technologies"
+    "filterAll": "All"
+  },
+  "experience": {
+    "title": "My",
+    "titleHighlight": "Experience",
+    "description": "Professional journey and experiences that shaped my web development skills"
+  },
+  "competitions": {
+    "title": "My",
+    "titleHighlight": "Competitions",
+    "description": "My participations and results in various technical competitions and hackathons",
+    "viewDetails": "View details"
+  },
+  "associations": {
+    "title": "My",
+    "titleHighlight": "Engagement",
+    "description": "Discover the associations and causes I support, reflecting my commitment to the community"
+  },
+  "certifications": {
+    "title": "My",
+    "titleHighlight": "Certifications",
+    "description": "My academic and professional achievements that attest to my skills",
+    "source": "Source",
+    "verify": "Verify this certification",
+    "download": "Download certificate",
+    "verifyOnline": "Verify online"
   },
   "contact": {
-    "title": "Contact Me",
-    "name": "Name",
+    "title": "Contact",
+    "titleHighlight": "Me",
+    "subtitle": "Have a project in mind? Feel free to contact me to discuss your needs and see how I can help.",
+    "contactInfo": "Contact information",
+    "contactInfoDesc": "I'm always open to new opportunities and interesting projects. Don't hesitate to reach out!",
+    "sendMessage": "Send me a message",
     "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Yaounde, Cameroon",
+    "name": "Name",
+    "subject": "Subject",
     "message": "Message",
-    "send": "Send",
-    "success": "Message sent successfully!",
-    "error": "Error sending message"
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Your message was sent successfully!",
+    "error": "Error sending message",
+    "networkError": "A network error occurred. Please try again later.",
+    "sendFailed": "Send failed",
+    "placeholderName": "Your name",
+    "placeholderEmail": "your@email.com",
+    "placeholderSubject": "Message subject",
+    "placeholderMessage": "Your message..."
+  },
+  "footer": {
+    "brand": "Portfolio",
+    "description": "Engineer with expertise in Artificial Intelligence, Cybersecurity, and Data Analysis. Innovative solutions for complex problems.",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "madeWith": "Made with",
+    "by": "by Delmat. All rights reserved"
   },
   "theme": {
     "light": "Light",

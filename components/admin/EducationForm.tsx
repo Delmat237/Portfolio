@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 import { X, Plus, Trash2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
+import type { Education } from '@/data/types';
+
 interface EducationFormProps {
-  education?: any;
-  onSave: (education: any) => void;
+  education?: Education | null;
+  onSave: (education: Education) => void;
   onClose: () => void;
 }
 
@@ -16,13 +18,22 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
   const [newSkill, setNewSkill] = useState('');
 
   const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: education || {}
+    defaultValues: (education || {}) as Partial<Education>
   });
 
-  const onSubmit = (data: any) => {
-    const educationData = {
+  const onSubmit = (data: Partial<Education>) => {
+    const educationData: Education = {
+      ...(education || {}),
       ...data,
-      skills
+      id: education?.id ?? 0,
+      skills,
+      grade: data.grade || '',
+      location: data.location || '',
+      title: data.title || '',
+      institution: data.institution || '',
+      period: data.period || '',
+      description: data.description || '',
+      status: data.status || 'En cours',
     };
     onSave(educationData);
   };

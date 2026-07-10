@@ -1,4 +1,6 @@
-const educationData = [
+import type { Education } from './types'
+
+const educationData: Education[] = [
   {
     id: 1,
     title: "4 ème année Génie Informatique",
@@ -54,6 +56,6 @@ const educationData = [
     grade: "Mention: Bien",
     skills: ["Mathématiques", "Sciences Physiques", "Informatique", "Anglais", "Français"]
   }
-];
+]
 
-export default educationData;
+export default educationData

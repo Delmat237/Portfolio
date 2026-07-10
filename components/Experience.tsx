@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion'
 import { Calendar, MapPin } from 'lucide-react'
 import experienceData from '@/data/experience'
+import { useAppContext } from '@/contexts/Appcontext'
 
 const Experience = () => {
+  const { t } = useAppContext()
   const experiences = experienceData
-
 
   return (
     <section id="experience" className="section-padding">
@@ -19,11 +20,10 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Mon <span className="gradient-text">Expérience</span>
+            {t('experience.title')} <span className="gradient-text">{t('experience.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Parcours professionnel et expériences qui ont façonné mes compétences
-            en développement web
+            {t('experience.description')}
           </p>
         </motion.div>
 
@@ -37,18 +37,15 @@ const Experience = () => {
               viewport={{ once: true }}
               className="relative mb-12 last:mb-0"
             >
-              {/* Timeline line */}
               {index !== experiences.length - 1 && (
                 <div className="absolute left-8 top-16 w-0.5 h-full bg-slate-200 dark:bg-gradient-to-b dark:from-primary-500 dark:to-purple-500"></div>
               )}
 
               <div className="flex items-start space-x-6">
-                {/* Timeline dot */}
                 <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
                   <div className="w-8 h-8 bg-white dark:bg-gray-900 rounded-full"></div>
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 glass-effect rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>

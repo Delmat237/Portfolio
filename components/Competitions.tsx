@@ -3,14 +3,14 @@
 import { motion } from 'framer-motion'
 import { Trophy, Award, Calendar, Users, ExternalLink } from 'lucide-react'
 import competitionData from '@/data/competition'
+import { useAppContext } from '@/contexts/Appcontext'
 
 const Competitions = () => {
-  const competitions = competitionData;
+  const { t } = useAppContext()
+  const competitions = competitionData
 
   return (
     <div className="min-h-screen">
-
-
       <section id="competitions" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
         <div className="container-custom">
           <motion.div
@@ -21,10 +21,10 @@ const Competitions = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Mes <span className="gradient-text">Compétitions</span>
+              {t('competitions.title')} <span className="gradient-text">{t('competitions.titleHighlight')}</span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Mes participations et résultats dans diverses compétitions techniques et hackathons
+              {t('competitions.description')}
             </p>
           </motion.div>
 
@@ -53,7 +53,7 @@ const Competitions = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                        title="Voir les détails"
+                        title={t('competitions.viewDetails')}
                       >
                         <ExternalLink size={20} />
                       </motion.a>
@@ -67,12 +67,12 @@ const Competitions = () => {
                       {competition.title}
                     </h3>
                     {competition.position && (
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center ${competition.position.includes("1ère") ? "bg-yellow-500/20 text-yellow-400" :
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center ${competition.position.includes("1ère") || competition.position.includes("1er") ? "bg-yellow-500/20 text-yellow-400" :
                         competition.position.includes("2ème") ? "bg-gray-500/20 text-gray-400" :
                           competition.position.includes("3ème") ? "bg-amber-700/20 text-amber-500" :
                             "bg-purple-500/20 text-purple-400"
                         }`}>
-                        {competition.position.includes("ère") || competition.position.includes("ème") ? (
+                        {competition.position.includes("ère") || competition.position.includes("ème") || competition.position.includes("er") ? (
                           <Trophy size={14} className="mr-1" />
                         ) : (
                           <Award size={14} className="mr-1" />
@@ -113,8 +113,6 @@ const Competitions = () => {
           </div>
         </div>
       </section>
-
-
     </div>
   )
 }

@@ -2,16 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
-import educationData from '@/data/education'
-
-const educations = educationData;
+import { useAppContext } from '@/contexts/Appcontext';
+import { useEducation } from '@/hooks/useEducation';
 
 export default function Education() {
+  const { t } = useAppContext();
+  const educations = useEducation();
+
   return (
     <section id="education" className="py-20 px-6">
-
       <div className="max-w-6xl mx-auto">
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,10 +20,10 @@ export default function Education() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Formation
+            {t('education.title')}
           </h2>
           <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Mon parcours éducatif et mes formations continues pour rester à jour avec les dernières technologies
+            {t('education.description')}
           </p>
         </motion.div>
 
@@ -39,7 +39,6 @@ export default function Education() {
             >
               <div className="bg-slate-100/50 dark:bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 dark:border-white/20 hover:border-slate-300 dark:hover:border-white/30 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-6">
-                  {/* Icon */}
                   <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center mb-4 lg:mb-0 ${education.status === 'Terminé'
                     ? 'bg-green-600/20 text-green-400'
                     : education.status === 'En cours'
@@ -49,7 +48,6 @@ export default function Education() {
                     <GraduationCap size={24} />
                   </div>
 
-                  {/* Content */}
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
                       <div>
@@ -80,7 +78,7 @@ export default function Education() {
                           }`}>
                           {education.status}
                         </span>
-                        {education.grade !== 'À venir' && education.grade !== 'En cours' && (
+                        {education.grade !== 'À venir' && education.grade !== 'En cours' && education.grade && (
                           <div className="flex items-center space-x-1 text-yellow-400">
                             <Award size={14} />
                             <span className="text-sm">{education.grade}</span>
@@ -93,7 +91,6 @@ export default function Education() {
                       {education.description}
                     </p>
 
-                    {/* Skills */}
                     <div className="flex flex-wrap gap-2">
                       {education.skills.map((skill) => (
                         <span
@@ -108,7 +105,6 @@ export default function Education() {
                 </div>
               </div>
 
-              {/* Timeline connector */}
               {index < educations.length - 1 && (
                 <div className="absolute left-8 top-24 w-0.5 h-8 bg-gradient-to-b from-white/30 to-transparent"></div>
               )}

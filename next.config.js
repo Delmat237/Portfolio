@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    //appDir: true,
-    swcMinify: false,
-  },
   images: {
-    domains: ['images.pexels.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+    ],
   },
 }
 

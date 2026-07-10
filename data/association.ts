@@ -1,9 +1,11 @@
-const associationData = [
+import type { Association } from './types'
+
+const associationData: Association[] = [
   {
     title: "Cellule Projet - Club GI ENSPY",
     images: [
       "/images/gi.jpeg",
-      "/images/gi2.jpeg", // Keeping existing image paths, assuming they might exist or handled by FE
+      "/images/gi2.jpeg",
     ],
     description: "Coordinateur de la cellule projet du Club Génie Informatique de l'ENSPY : pilotage et encadrement des équipes projets, animation de la cellule IA (formations Python/ML, ateliers RAG & IA Agentique) et organisation d'événements techniques (hackathons internes, sessions de mentorat).",
     roles: ["Coordinateur de projet", "Formateur IA", "Membre Actif"],
@@ -24,12 +26,12 @@ const associationData = [
   },
   {
     title: "Chef de Classe / Délégué",
-    images: ["/images/delegue.png"], // Placeholder
+    images: ["/images/delegue.png"],
     description: "Délégué de classe, Niveau 1 et 2 ENSPY. Représentation des étudiants, communication avec l'administration, et organisation.",
     roles: ["Délégué"],
     duration: "2022 - 2024",
     link: "#"
   }
-];
+]
 
-export default associationData;
+export default associationData

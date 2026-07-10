@@ -1,4 +1,6 @@
-const experienceData = [
+import type { Experience } from './types'
+
+const experienceData: Experience[] = [
   {
     title: 'Formateur Python & Machine Learning',
     company: 'Cellule IA — Club GI, ENSPY',
@@ -13,7 +15,7 @@ const experienceData = [
   {
     title: 'Stagiaire en Machine Learning',
     company: 'Codveda',
-    location: 'Yaoundé, Cameroun', // Assumed location or Remote
+    location: 'Yaoundé, Cameroun',
     period: 'Octobre - Décembre 2025',
     description: [
       'Collecte et Préparation des Données (Web Scraping, Nettoyage (Preprocessing), Analyse Exploratoire (EDA))',
@@ -46,4 +48,5 @@ const experienceData = [
     ]
   }
 ]
+
 export default experienceData

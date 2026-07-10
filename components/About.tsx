@@ -2,39 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { BrainCircuit, ShieldCheck, Database, Code, Film, Dumbbell, Activity } from 'lucide-react'
+import { useAppContext } from '@/contexts/Appcontext'
 
 const About = () => {
+  const { t } = useAppContext()
+
   const features = [
-    {
-      icon: BrainCircuit,
-      title: 'Intelligence Artificielle',
-      description: 'Développement de modèles de ML/DL et recherche en IA'
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Cybersécurité',
-      description: 'Pentesting, sécurisation des systèmes et cryptographie'
-    },
-    {
-      icon: Database,
-      title: 'Science des Données',
-      description: 'Analyse de données complexes et visualisations avancées'
-    },
-    {
-      icon: Code,
-      title: 'Développement',
-      description: 'Applications full-stack avec architectures modernes'
-    },
-    {
-      icon: Activity,
-      title: 'Stratégie & Échecs',
-      description: 'Pratique compétitive pour aiguiser ma pensée analytique'
-    },
-    {
-      icon: Dumbbell,
-      title: 'Sport & Fitness',
-      description: 'Activité physique quotidienne pour équilibre mental'
-    }
+    { icon: BrainCircuit, titleKey: 'about.featureAiTitle', descKey: 'about.featureAiDesc' },
+    { icon: ShieldCheck, titleKey: 'about.featureCyberTitle', descKey: 'about.featureCyberDesc' },
+    { icon: Database, titleKey: 'about.featureDataTitle', descKey: 'about.featureDataDesc' },
+    { icon: Code, titleKey: 'about.featureDevTitle', descKey: 'about.featureDevDesc' },
+    { icon: Activity, titleKey: 'about.featureChessTitle', descKey: 'about.featureChessDesc' },
+    { icon: Dumbbell, titleKey: 'about.featureSportTitle', descKey: 'about.featureSportDesc' },
   ]
 
   return (
@@ -48,16 +27,14 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Mon <span className="gradient-text">Parcours</span>
+            {t('about.title')} <span className="gradient-text">{t('about.titleHighlight')}</span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            <span className="font-semibold text-primary-400">Élève-ingénieur d Génie Informatique</span> à l'ENSPY,
-            titulaire d'une licence en Mathématiques.
+            <span className="font-semibold text-primary-400">{t('about.subtitle')}</span>
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Profile photo with effect */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -66,16 +43,15 @@ const About = () => {
             className="relative group flex justify-center md:justify-start"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl blur-xl opacity-10 dark:opacity-20 group-hover:opacity-30 transition-opacity"></div>
-            <div className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-gray-700/50 w-full max-w-sm mx-auto md:mx-0 h-[300px] sm:h-[400px] md:h-auto"> {/* Added mx-auto for centering on small screens, and controlled height */}
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-gray-700/50 w-full max-w-sm mx-auto md:mx-0 h-[300px] sm:h-[400px] md:h-auto">
               <img
                 alt="Profil"
                 src="/images/profile.png"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" // h-full to fill container
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </motion.div>
 
-          {/* Text content */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,22 +60,17 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
-              Passionné par les <span className="text-primary-400">technologies émergentes</span>, je me spécialise dans
-              l'intersection entre l'IA, la cybersécurité et la science des données. Mon objectif est de développer
-              des solutions innovantes pour résoudre des problèmes sociétaux complexes.
+              {t('about.paragraph1')}
             </p>
 
             <p className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed">
-              Mon parcours en <span className="text-purple-400">mathématiques</span> me donne une approche analytique
-              unique pour aborder les défis technologiques, tandis que ma pratique des échecs renforce ma capacité
-              à anticiper les problèmes et élaborer des stratégies efficaces.
+              {t('about.paragraph2')}
             </p>
 
-            {/* Skills grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {features.map((feature, index) => (
                 <motion.div
-                  key={feature.title}
+                  key={feature.titleKey}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -111,9 +82,9 @@ const About = () => {
                   </div>
                   <div>
                     <h3 className="text-slate-900 dark:text-white font-semibold mb-1">
-                      {feature.title}
+                      {t(feature.titleKey)}
                     </h3>
-                    <p className="text-slate-400 text-sm">{feature.description}</p>
+                    <p className="text-slate-400 text-sm">{t(feature.descKey)}</p>
                   </div>
                 </motion.div>
               ))}
@@ -121,12 +92,11 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Hobbies section */}
         <div className="mt-16 text-center">
           <div className="inline-flex items-center bg-white dark:bg-gray-800/50 px-6 py-3 rounded-full border border-slate-200 dark:border-gray-700/50 text-sm sm:text-base shadow-sm">
             <Film className="text-purple-400 mr-2" size={20} />
             <span className="text-slate-600 dark:text-gray-300">
-              Cinéphile - particulièrement intéressé par les films de sci-fi et les documentaires tech
+              {t('about.hobby')}
             </span>
           </div>
         </div>

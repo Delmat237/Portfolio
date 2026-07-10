@@ -1,17 +1,18 @@
 'use client'
 import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2 } from 'lucide-react';
+import type { Project } from '@/data/types';
 
 type ProjectsManagerProps = {
-  projects: any[];
+  projects: Project[];
   onDelete: (id: number) => void;
   showForm: boolean;
   setShowForm: (show: boolean) => void;
-  editingProject: any;
-  setEditingProject: (project: any) => void;
+  editingProject: Project | null;
+  setEditingProject: (project: Project | null) => void;
 };
 
-export default function ProjectsManager({ projects, onDelete, showForm, setShowForm, editingProject, setEditingProject }: ProjectsManagerProps) {
+export default function ProjectsManager({ projects, onDelete, setShowForm, setEditingProject }: ProjectsManagerProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
@@ -41,7 +42,7 @@ export default function ProjectsManager({ projects, onDelete, showForm, setShowF
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">{project.description}</p>
             <div className="flex flex-wrap gap-1 mb-4">
-              {project.technologies.map((tech: string) => (
+              {project.technologies.map((tech) => (
                 <span
                   key={tech}
                   className="px-2 py-1 bg-blue-600/30 text-blue-300 rounded text-xs"

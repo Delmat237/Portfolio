@@ -6,7 +6,7 @@ import Education from '@/components/Education';
 import Certifications from '@/components/Certification';
 import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
-import Competitions from '@/components/Compétitions';
+import Competitions from '@/components/Competitions';
 import Associations from '@/components/Associations';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';

@@ -3,21 +3,28 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
-import projectData from '@/data/projet'
+import { useAppContext } from '@/contexts/Appcontext'
+import { useProjects } from '@/hooks/useProjects'
+
+const FILTER_ALL = '__all__'
 
 const Projects = () => {
-  // Construit la liste des filtres à partir des catégories réellement présentes
-  const categories = ['Tous', ...Array.from(new Set(projectData.map((p) => p.category).filter(Boolean)))]
-  const [activeCategory, setActiveCategory] = useState('Tous')
+  const { t } = useAppContext()
+  const projectData = useProjects()
+  const categoryNames = Array.from(new Set(projectData.map((p) => p.category).filter(Boolean)))
+  const categories = [
+    { key: FILTER_ALL, label: t('projects.filterAll') },
+    ...categoryNames.map((name) => ({ key: name, label: name })),
+  ]
+  const [activeCategory, setActiveCategory] = useState(FILTER_ALL)
 
   const projects =
-    activeCategory === 'Tous'
+    activeCategory === FILTER_ALL
       ? projectData
       : projectData.filter((project) => project.category === activeCategory)
 
   return (
     <section id="projects" className="section-padding bg-slate-100/50 dark:bg-dark-800/50 transition-colors duration-300">
-
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -27,15 +34,13 @@ const Projects = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Mes <span className="gradient-text">Projets</span>
+            {t('projects.title')} <span className="gradient-text">{t('projects.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Des systèmes d'IA à impact social aux plateformes Full-Stack : une sélection
-            de projets qui illustrent ma vision d'une technologie utile et inclusive.
+            {t('projects.description')}
           </p>
         </motion.div>
 
-        {/* Filtres par catégorie */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,15 +50,15 @@ const Projects = () => {
         >
           {categories.map((category) => (
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
+              key={category.key}
+              onClick={() => setActiveCategory(category.key)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeCategory === category
+                activeCategory === category.key
                   ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
                   : 'glass-effect text-slate-600 dark:text-gray-300 hover:text-primary-500'
               }`}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </motion.div>
@@ -99,6 +104,7 @@ const Projects = () => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-colors"
+                      title={t('projects.viewCode')}
                     >
                       <Github size={20} />
                     </motion.a>
@@ -107,6 +113,7 @@ const Projects = () => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       className="bg-white/20 backdrop-blur-sm p-2 rounded-full text-white hover:bg-white/30 transition-colors"
+                      title={t('projects.liveDemo')}
                     >
                       <ExternalLink size={20} />
                     </motion.a>

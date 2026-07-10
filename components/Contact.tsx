@@ -3,17 +3,20 @@
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 import { useState } from 'react'
+import { useAppContext } from '@/contexts/Appcontext'
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
 
 const Contact = () => {
+  const { t } = useAppContext()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<'success' | 'error' | null>(null);
-  const [statusMessage, setStatusMessage] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState<'success' | 'error' | null>(null)
+  const [statusMessage, setStatusMessage] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -23,63 +26,61 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus(null); // Reset status
-    setStatusMessage(''); // Reset message
+    e.preventDefault()
+    setLoading(true)
+    setStatus(null)
+    setStatusMessage('')
 
     try {
-      // 1. Send form data to your backend API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (response.ok) {
-        setStatus('success');
-        setStatusMessage('Votre message a été envoyé avec succès !');
-        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+        setStatus('success')
+        setStatusMessage(t('contact.success'))
+        setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
-        const errorData = await response.json();
-        setStatus('error');
-        setStatusMessage(`Échec de l'envoi : ${errorData.message || 'Une erreur est survenue.'}`);
+        const errorData = await response.json()
+        setStatus('error')
+        setStatusMessage(`${t('contact.sendFailed')}: ${errorData.message || t('contact.error')}`)
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi du formulaire:', error);
-      setStatus('error');
-      setStatusMessage('Une erreur réseau est survenue. Veuillez réessayer plus tard.');
+      console.error('Erreur lors de l\'envoi du formulaire:', error)
+      setStatus('error')
+      setStatusMessage(t('contact.networkError'))
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'azangueleonel9@gmail.com',
-      href: 'mailto:azangueleonel9@gmail.com'
+      title: t('contact.email'),
+      value: CONTACT_EMAIL,
+      href: `mailto:${CONTACT_EMAIL}`
     },
     {
       icon: Phone,
-      title: 'Téléphone',
-      value: '+237 657 45 03 14',
-      href: 'tel:+237694773472'
+      title: t('contact.phone'),
+      value: CONTACT_PHONE,
+      href: CONTACT_PHONE_TEL
     },
     {
       icon: MapPin,
-      title: 'Localisation',
-      value: 'Yaounde, Cameroun',
+      title: t('contact.location'),
+      value: t('contact.locationValue'),
       href: '#'
     }
   ]
 
   return (
     <section id="contact" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
-
       <div className="container-custom mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -89,16 +90,14 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Contactez-<span className="gradient-text">moi</span>
+            {t('contact.title')}<span className="gradient-text">{t('contact.titleHighlight')}</span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Vous avez un projet en tête ? N'hésitez pas à me contacter pour
-            discuter de vos besoins et voir comment je peux vous aider.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -108,11 +107,10 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                Informations de contact
+                {t('contact.contactInfo')}
               </h3>
               <p className="text-slate-600 dark:text-gray-300 mb-8">
-                Je suis toujours ouvert aux nouvelles opportunités et aux projets
-                intéressants. N'hésitez pas à me contacter !
+                {t('contact.contactInfoDesc')}
               </p>
             </div>
 
@@ -140,7 +138,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -149,14 +146,14 @@ const Contact = () => {
             className="glass-effect rounded-2xl p-8 shadow-lg"
           >
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-              Envoyez-moi un message
+              {t('contact.sendMessage')}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-slate-700 dark:text-white font-medium mb-2">
-                    Nom
+                    {t('contact.name')}
                   </label>
                   <input
                     type="text"
@@ -166,12 +163,12 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
-                    placeholder="Votre nom"
+                    placeholder={t('contact.placeholderName')}
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-slate-700 dark:text-white font-medium mb-2">
-                    Email
+                    {t('contact.email')}
                   </label>
                   <input
                     type="email"
@@ -181,14 +178,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
-                    placeholder="votre@email.com"
+                    placeholder={t('contact.placeholderEmail')}
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="subject" className="block text-slate-700 dark:text-white font-medium mb-2">
-                  Sujet
+                  {t('contact.subject')}
                 </label>
                 <input
                   type="text"
@@ -198,13 +195,13 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors"
-                  placeholder="Sujet de votre message"
+                  placeholder={t('contact.placeholderSubject')}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-slate-700 dark:text-white font-medium mb-2">
-                  Message
+                  {t('contact.message')}
                 </label>
                 <textarea
                   id="message"
@@ -214,11 +211,10 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-slate-200 dark:border-dark-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors resize-none"
-                  placeholder="Votre message..."
+                  placeholder={t('contact.placeholderMessage')}
                 />
               </div>
 
-              {/* Status messages */}
               {status && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
@@ -235,7 +231,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full bg-gradient-to-r from-primary-500 to-purple-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-primary-600 hover:to-purple-600 transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={loading} // Disable button while loading
+                disabled={loading}
               >
                 {loading ? (
                   <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -245,7 +241,7 @@ const Contact = () => {
                 ) : (
                   <Send size={20} />
                 )}
-                <span>{loading ? 'Envoi en cours...' : 'Envoyer le message'}</span>
+                <span>{loading ? t('contact.sending') : t('contact.send')}</span>
               </motion.button>
             </form>
           </motion.div>

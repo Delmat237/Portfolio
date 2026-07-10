@@ -1,18 +1,18 @@
 'use client'
 import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2 } from 'lucide-react';
+import type { Education } from '@/data/types';
 
 type EducationManagerProps = {
-  educations: any[];
+  educations: Education[];
   onDelete: (id: number) => void;
   showForm: boolean;
   setShowForm: (show: boolean) => void;
-  editingEducation: any;
-  setEditingEducation: (education: any) => void;
+  editingEducation: Education | null;
+  setEditingEducation: (education: Education | null) => void;
 };
 
-export default function EducationManager({ educations, onDelete, showForm, setShowForm, editingEducation, setEditingEducation }: EducationManagerProps) {
-
+export default function EducationManager({ educations, onDelete, setShowForm, setEditingEducation }: EducationManagerProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">

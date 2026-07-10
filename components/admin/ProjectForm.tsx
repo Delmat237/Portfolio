@@ -5,9 +5,16 @@ import { motion } from 'framer-motion';
 import { X, Upload, Plus, Trash2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
+import type { Project } from '@/data/types';
+
+type ProjectFormValues = Partial<Project> & {
+  imageUrl?: string;
+  url?: string;
+};
+
 interface ProjectFormProps {
-  project?: any;
-  onSave: (project: any) => void;
+  project?: Project | null;
+  onSave: (project: Project) => void;
   onClose: () => void;
 }
 
@@ -16,15 +23,27 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
   const [newTech, setNewTech] = useState('');
   const [imagePreview, setImagePreview] = useState(project?.image || '');
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: project || {}
+  const { register, handleSubmit, formState: { errors } } = useForm<ProjectFormValues>({
+    defaultValues: {
+      ...project,
+      url: project?.demo,
+      imageUrl: project?.image,
+    }
   });
 
-  const onSubmit = (data: any) => {
-    const projectData = {
-      ...data,
+  const onSubmit = (data: ProjectFormValues) => {
+    const projectData: Project = {
+      ...(project || {}),
+      id: project?.id ?? 0,
       technologies,
-      image: imagePreview
+      image: imagePreview,
+      category: data.category || project?.category || 'Full-Stack',
+      github: data.github || '#',
+      demo: data.url || project?.demo || '#',
+      status: data.status || 'En cours',
+      title: data.title || '',
+      description: data.description || '',
+      tag: data.tag,
     };
     onSave(projectData);
   };

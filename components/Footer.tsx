@@ -2,36 +2,39 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Heart, Phone } from 'lucide-react'
+import { useAppContext } from '@/contexts/Appcontext'
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
 
 const Footer = () => {
+  const { t } = useAppContext()
+
   const socialLinks = [
     { icon: Github, href: 'https://github.com/Delmat237', label: 'Delmat237' },
     { icon: Linkedin, href: 'https://linkedin.com/leonel-azangue', label: 'leonel-azangue' },
-    { icon: Mail, href: 'mailto:azangueleonel9@gmail.com', label: 'azangueleonel9@gmail.com' },
-    { icon: Phone, href: 'tel:+237694773472', label: '+237 694773472' },
+    { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
+    { icon: Phone, href: CONTACT_PHONE_TEL, label: CONTACT_PHONE },
   ]
 
   const quickLinks = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'À propos', href: '#about' },
-    { name: 'Projets', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('header.home'), href: '#home' },
+    { name: t('header.about'), href: '#about' },
+    { name: t('header.projects'), href: '#projects' },
+    { name: t('header.contact'), href: '#contact' },
   ]
 
   return (
     <footer className="bg-white dark:bg-dark-900 border-t border-slate-200 dark:border-dark-700 transition-colors duration-300">
       <div className="container-custom section-padding py-12">
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold gradient-text mb-4">Portfolio</h3>
+            <h3 className="text-2xl font-bold gradient-text mb-4">{t('footer.brand')}</h3>
             <p className="text-slate-600 dark:text-gray-300 mb-6">
-              Ingénieur ayant les connaissances et compétences  en Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -48,17 +51,16 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Liens rapides</h4>
+            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <a
                     href={link.href}
                     className="text-slate-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
@@ -70,18 +72,17 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">{t('footer.contact')}</h4>
             <div className="space-y-2 text-slate-600 dark:text-gray-300">
-              <p>azangueleonel9@gmail.com</p>
-              <p>+237 657 45 03 14</p>
-              <p>Yaoundé, Cameroun</p>
+              <p>{CONTACT_EMAIL}</p>
+              <p>{CONTACT_PHONE}</p>
+              <p>{t('contact.locationValue')}</p>
             </div>
           </motion.div>
         </div>
@@ -94,9 +95,9 @@ const Footer = () => {
           className="border-t border-slate-200 dark:border-dark-700 mt-8 pt-8 text-center"
         >
           <p className="text-slate-400 flex items-center justify-center">
-            © {new Date().getFullYear()} Portfolio. Fait avec{' '}
+            © {new Date().getFullYear()} {t('footer.brand')}. {t('footer.madeWith')}{' '}
             <Heart className="text-red-500 mx-2" size={16} fill="currentColor" />
-            par Delmat. Tout droit réservés
+            {t('footer.by')}
           </p>
         </motion.div>
       </div>

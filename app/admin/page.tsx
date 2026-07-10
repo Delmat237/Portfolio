@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, Calendar, Clock, LogOut, Lock } from 'lucide-react';
 import ProjectForm from '@/components/admin/ProjectForm';
@@ -10,8 +10,9 @@ import ProjectsManager from 'app/admin/components/ProjectsManager';
 import EducationManager from 'app/admin/components/EducationManager';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import projectData from '@/data/projet';
-import educationData from '@/data/education';
+import { useProjectsStorage } from '@/hooks/useProjects';
+import { useEducationStorage } from '@/hooks/useEducation';
+import type { Project, Education } from '@/data/types';
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,47 +20,25 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('projects');
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showEducationForm, setShowEducationForm] = useState(false);
-  const [editingProject, setEditingProject] = useState(null);
-  const [editingEducation, setEditingEducation] = useState(null);
+  const [editingProject, setEditingProject] = useState<Project | null>(null);
+  const [editingEducation, setEditingEducation] = useState<Education | null>(null);
 
-  // State for data
-  const [projects, setProjects] = useState<any[]>([]);
-  const [educations, setEducations] = useState<any[]>([]);
+  const { projects, setProjects } = useProjectsStorage();
+  const { educations, setEducations } = useEducationStorage();
 
-  // Initialize data from localStorage or default files
   useEffect(() => {
     const isAuth = localStorage.getItem('adminAuth');
     if (isAuth === 'true') setIsAuthenticated(true);
-
-    const storedProjects = localStorage.getItem('projects');
-    if (storedProjects) {
-      setProjects(JSON.parse(storedProjects));
-    } else {
-      setProjects(projectData);
-      localStorage.setItem('projects', JSON.stringify(projectData));
-    }
-
-    const storedEducations = localStorage.getItem('educations');
-    if (storedEducations) {
-      setEducations(JSON.parse(storedEducations));
-    } else {
-      setEducations(educationData);
-      localStorage.setItem('educations', JSON.stringify(educationData));
-    }
   }, []);
 
-  // Persist data when it changes
-  useEffect(() => {
-    if (projects.length > 0) localStorage.setItem('projects', JSON.stringify(projects));
-  }, [projects]);
-
-  useEffect(() => {
-    if (educations.length > 0) localStorage.setItem('educations', JSON.stringify(educations));
-  }, [educations]);
-
-  const handleLogin = (e: any) => {
+  const handleLogin = (e: FormEvent) => {
     e.preventDefault();
-    if (password === 'admin') { // Simple checks for demo purposes
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+    if (!adminPassword) {
+      alert('Mot de passe admin non configuré. Définissez NEXT_PUBLIC_ADMIN_PASSWORD dans .env.local');
+      return;
+    }
+    if (password === adminPassword) {
       setIsAuthenticated(true);
       localStorage.setItem('adminAuth', 'true');
     } else {
@@ -72,14 +51,11 @@ export default function AdminDashboard() {
     localStorage.removeItem('adminAuth');
   };
 
-  // CRUD Operations - Projects
-  const handleSaveProject = (project: any) => {
+  const handleSaveProject = (project: Project) => {
     if (project.id) {
-      // Update
       setProjects(projects.map(p => p.id === project.id ? project : p));
     } else {
-      // Create
-      const newProject = { ...project, id: Date.now() };
+      const newProject: Project = { ...project, id: Date.now() };
       setProjects([...projects, newProject]);
     }
     setShowProjectForm(false);
@@ -92,12 +68,11 @@ export default function AdminDashboard() {
     }
   };
 
-  // CRUD Operations - Education
-  const handleSaveEducation = (education: any) => {
+  const handleSaveEducation = (education: Education) => {
     if (education.id) {
       setEducations(educations.map(e => e.id === education.id ? education : e));
     } else {
-      const newEducation = { ...education, id: Date.now() };
+      const newEducation: Education = { ...education, id: Date.now() };
       setEducations([...educations, newEducation]);
     }
     setShowEducationForm(false);
@@ -157,9 +132,7 @@ export default function AdminDashboard() {
     <main className="min-h-screen transition-colors duration-300">
       <Header />
       <div className="mt-10 min-h-screen p-6">
-
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -178,7 +151,6 @@ export default function AdminDashboard() {
             </button>
           </motion.div>
 
-          {/* Tabs */}
           <div className="flex space-x-1 mb-8 bg-gray-100 dark:bg-white/10 backdrop-blur-sm rounded-lg p-1 border border-gray-200 dark:border-transparent">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -198,7 +170,6 @@ export default function AdminDashboard() {
             })}
           </div>
 
-          {/* Content */}
           <AnimatePresence mode='wait'>
             <motion.div
               key={activeTab}
@@ -234,7 +205,6 @@ export default function AdminDashboard() {
           </AnimatePresence>
         </div>
 
-        {/* Modals */}
         <AnimatePresence>
           {showProjectForm && (
             <ProjectForm
@@ -263,4 +233,3 @@ export default function AdminDashboard() {
     </main>
   );
 }
-

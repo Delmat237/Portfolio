@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import associationData from '@/data/association'
+import { useAppContext } from '@/contexts/Appcontext'
 
 const Associations = () => {
-  const associations = associationData;
+  const { t } = useAppContext()
+  const associations = associationData
 
   return (
     <section id="associations" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">
-
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -19,21 +20,20 @@ const Associations = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Mon <span className="gradient-text">Engagement</span>
+            {t('associations.title')} <span className="gradient-text">{t('associations.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Découvrez les associations et causes que je soutiens, témoignant de mon engagement envers la communauté
+            {t('associations.description')}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {associations.map((association, index) => (
+          {associations.map((association) => (
             <motion.div
               key={association.title}
               className="glass-effect rounded-2xl overflow-hidden group hover:scale-105 transition-transform duration-300"
             >
               <div className="relative overflow-hidden h-48">
-                {/* Carrousel d'images */}
                 <div className="relative h-full w-full overflow-hidden">
                   {association.images.map((img, imgIndex) => (
                     <motion.img

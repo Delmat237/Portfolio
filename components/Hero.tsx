@@ -3,19 +3,18 @@
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
+import { useAppContext } from '@/contexts/Appcontext'
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/lib/contact'
 
 const Hero = () => {
-  // const { t } = useAppContext()
+  const { t } = useAppContext()
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-
-      {/* Background Animation */}
-
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
-      {/* Particules d'arrière-plan */}
       <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
           <div
@@ -33,7 +32,6 @@ const Hero = () => {
 
       <div className="container-custom section-padding relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          {/* Texte de présentation */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -46,8 +44,8 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6"
             >
-              Salut, je suis{' '}
-              <span className="gradient-text block mt-2">Leonel Delmat AZANGUE</span>
+              {t('hero.welcome')}{' '}
+              <span className="gradient-text block mt-2">{t('hero.name')}</span>
             </motion.h1>
 
             <motion.p
@@ -56,9 +54,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0"
             >
-              Élève-Ingénieur en 4ème année de Génie Informatique à l'ENSPY. <br />
-              Expert en <span className="text-primary-600 dark:text-primary-400 font-semibold">Intelligence Artificielle</span>, <span className="text-primary-600 dark:text-primary-400 font-semibold">Data Science</span> et <span className="text-primary-600 dark:text-primary-400 font-semibold">Développement Full Stack</span>.
-              <br />Je transforme des données complexes en solutions innovantes.
+              {t('hero.description')} <br />
+              <span className="text-primary-600 dark:text-primary-400 font-semibold">{t('hero.expertise')}</span>
+              <br />{t('hero.tagline')}
             </motion.p>
 
             <motion.div
@@ -78,7 +76,7 @@ const Hero = () => {
                   }
                 }}
               >
-                Voir mes projets
+                {t('hero.viewProjects')}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -98,11 +96,11 @@ const Hero = () => {
                     document.body.removeChild(link)
                   } catch (error) {
                     console.error('Erreur lors du téléchargement:', error)
-                    alert('Le téléchargement a échoué. Veuillez réessayer.')
+                    alert(t('hero.cvDownloadError'))
                   }
                 }}
               >
-                Télécharger CV
+                {t('hero.downloadCV')}
               </motion.button>
             </motion.div>
 
@@ -115,8 +113,8 @@ const Hero = () => {
               {[
                 { icon: Github, href: 'https://github.com/Delmat237', label: 'Delmat237' },
                 { icon: Linkedin, href: 'https://linkedin.com/leonel-azangue', label: 'leonel-azangue' },
-                { icon: Mail, href: 'mailto:azangueleonel9@gmail.com', label: 'azangueleonel9@gmail.com' },
-                { icon: Phone, href: 'tel:+237694773472', label: '+237 694773472' },
+                { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: CONTACT_EMAIL },
+                { icon: Phone, href: CONTACT_PHONE_TEL, label: CONTACT_PHONE },
               ].map((social) => (
                 <motion.a
                   key={social.label}
@@ -131,7 +129,6 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Image de profil */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -141,8 +138,8 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full blur-2xl opacity-20 -z-10"></div>
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary-500/30 overflow-hidden">
               <Image
-                src="/images/me.png" // Remplacez par le chemin de votre image
-                alt="Leonel Delmat AZANGUE"
+                src="/images/me.png"
+                alt={t('hero.name')}
                 width={320}
                 height={320}
                 className="w-full h-full object-cover"
@@ -152,7 +149,6 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Flèche vers le bas */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

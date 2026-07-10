@@ -1,4 +1,6 @@
-const competitionData = [
+import type { Competition } from './types'
+
+const competitionData: Competition[] = [
   {
     title: "Cursor Hackathon — J.U.I.N 2026",
     position: "2ème place",
@@ -10,7 +12,7 @@ const competitionData = [
     image: "/images/datapipe.jpg"
   },
   {
-    title: "WiSE HACK’25",
+    title: "WiSE HACK'25",
     position: "1er Prix",
     description: "Conception d'un moteur d'Instrumentation Dynamique de Binaires (DBI) avec DynamoRIO. Analyse instruction, détection de hotspots et hot-patching.",
     date: "2025",
@@ -70,4 +72,5 @@ const competitionData = [
     image: "/images/kaggle.jpg"
   }
 ]
+
 export default competitionData

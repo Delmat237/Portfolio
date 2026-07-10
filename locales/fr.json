@@ -11,7 +11,7 @@
     "projects": "Projets",
     "experience": "Expérience",
     "competitions": "Compétitions",
-    "association":"Engagement Associatives",
+    "association": "Engagement Associatives",
     "contact": "Contact",
     "admin": "Admin",
     "adminSpace": "Espace Admin",
@@ -22,35 +22,142 @@
   },
   "hero": {
     "welcome": "Salut, je suis",
+    "name": "Leonel Delmat AZANGUE",
+    "description": "Élève-Ingénieur en 4ème année de Génie Informatique à l'ENSPY.",
+    "expertise": "Expert en Intelligence Artificielle, Data Science et Développement Full Stack.",
+    "tagline": "Je transforme des données complexes en solutions innovantes.",
     "downloadCV": "Télécharger CV",
-    "viewProjects": "Voir mes projets"
+    "viewProjects": "Voir mes projets",
+    "cvDownloadError": "Le téléchargement a échoué. Veuillez réessayer."
   },
   "about": {
-    "title": "À propos de moi",
-    "description": "Élève ingénieur en informatique passionné par les technologies émergentes."
+    "title": "Mon",
+    "titleHighlight": "Parcours",
+    "subtitle": "Élève-ingénieur en Génie Informatique à l'ENSPY, titulaire d'une licence en Mathématiques.",
+    "paragraph1": "Passionné par les technologies émergentes, je me spécialise dans l'intersection entre l'IA, la cybersécurité et la science des données. Mon objectif est de développer des solutions innovantes pour résoudre des problèmes sociétaux complexes.",
+    "paragraph2": "Mon parcours en mathématiques me donne une approche analytique unique pour aborder les défis technologiques, tandis que ma pratique des échecs renforce ma capacité à anticiper les problèmes et élaborer des stratégies efficaces.",
+    "featureAiTitle": "Intelligence Artificielle",
+    "featureAiDesc": "Développement de modèles de ML/DL et recherche en IA",
+    "featureCyberTitle": "Cybersécurité",
+    "featureCyberDesc": "Pentesting, sécurisation des systèmes et cryptographie",
+    "featureDataTitle": "Science des Données",
+    "featureDataDesc": "Analyse de données complexes et visualisations avancées",
+    "featureDevTitle": "Développement",
+    "featureDevDesc": "Applications full-stack avec architectures modernes",
+    "featureChessTitle": "Stratégie & Échecs",
+    "featureChessDesc": "Pratique compétitive pour aiguiser ma pensée analytique",
+    "featureSportTitle": "Sport & Fitness",
+    "featureSportDesc": "Activité physique quotidienne pour équilibre mental",
+    "hobby": "Cinéphile - particulièrement intéressé par les films de sci-fi et les documentaires tech"
   },
   "skills": {
-    "title": "Mes Compétences",
-    "description": "Technologies que j'utilise régulièrement"
+    "title": "Mes",
+    "titleHighlight": "Compétences",
+    "description": "Technologies et outils que j'utilise pour créer des expériences exceptionnelles",
+    "technologiesTitle": "Stack",
+    "technologiesHighlight": "Technique",
+    "softSkillsTitle": "Soft",
+    "softSkillsHighlight": "Skills",
+    "spokenLanguagesTitle": "Langues",
+    "spokenLanguagesHighlight": "Parlées",
+    "categories": {
+      "programming": "Langages",
+      "ai": "IA & Data Science",
+      "agentic": "IA Agentique",
+      "devops": "DevOps & Infra",
+      "databases": "Bases de Données",
+      "math": "Mathématiques",
+      "softSkills": "Leadership & Soft Skills",
+      "spokenLanguages": "Langues"
+    },
+    "techCategories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Base de données",
+      "framework": "Frameworks",
+      "mobile": "Mobile",
+      "devops": "DevOps & Cloud",
+      "collaboration": "Collaboration",
+      "deployment": "Déploiement",
+      "other": "Autres"
+    },
+    "levels": {
+      "expert": "Maîtrise",
+      "intermediate": "Intermédiaire",
+      "learning": "En apprentissage",
+      "native": "Natif"
+    }
   },
   "education": {
-    "title": "Parcours Académique",
+    "title": "Formation",
+    "description": "Mon parcours éducatif et mes formations continues pour rester à jour avec les dernières technologies",
     "current": "Actuellement"
   },
   "projects": {
-    "title": "Mes Projets",
+    "title": "Mes",
+    "titleHighlight": "Projets",
+    "description": "Des systèmes d'IA à impact social aux plateformes Full-Stack : une sélection de projets qui illustrent ma vision d'une technologie utile et inclusive.",
     "viewCode": "Voir le code",
     "liveDemo": "Voir en ligne",
-    "description": "Projets récents avec diverses technologies"
+    "filterAll": "Tous"
+  },
+  "experience": {
+    "title": "Mon",
+    "titleHighlight": "Expérience",
+    "description": "Parcours professionnel et expériences qui ont façonné mes compétences en développement web"
+  },
+  "competitions": {
+    "title": "Mes",
+    "titleHighlight": "Compétitions",
+    "description": "Mes participations et résultats dans diverses compétitions techniques et hackathons",
+    "viewDetails": "Voir les détails"
+  },
+  "associations": {
+    "title": "Mon",
+    "titleHighlight": "Engagement",
+    "description": "Découvrez les associations et causes que je soutiens, témoignant de mon engagement envers la communauté"
+  },
+  "certifications": {
+    "title": "Mes",
+    "titleHighlight": "Certifications",
+    "description": "Mes acquis académiques et professionnels qui attestent de mes compétences",
+    "source": "Source",
+    "verify": "Vérifier cette certification",
+    "download": "Télécharger le certificat",
+    "verifyOnline": "Vérifier en ligne"
   },
   "contact": {
-    "title": "Contactez-moi",
-    "name": "Nom",
+    "title": "Contactez-",
+    "titleHighlight": "moi",
+    "subtitle": "Vous avez un projet en tête ? N'hésitez pas à me contacter pour discuter de vos besoins et voir comment je peux vous aider.",
+    "contactInfo": "Informations de contact",
+    "contactInfoDesc": "Je suis toujours ouvert aux nouvelles opportunités et aux projets intéressants. N'hésitez pas à me contacter !",
+    "sendMessage": "Envoyez-moi un message",
     "email": "Email",
+    "phone": "Téléphone",
+    "location": "Localisation",
+    "locationValue": "Yaoundé, Cameroun",
+    "name": "Nom",
+    "subject": "Sujet",
     "message": "Message",
-    "send": "Envoyer",
-    "success": "Message envoyé avec succès !",
-    "error": "Erreur lors de l'envoi"
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès !",
+    "error": "Erreur lors de l'envoi",
+    "networkError": "Une erreur réseau est survenue. Veuillez réessayer plus tard.",
+    "sendFailed": "Échec de l'envoi",
+    "placeholderName": "Votre nom",
+    "placeholderEmail": "votre@email.com",
+    "placeholderSubject": "Sujet de votre message",
+    "placeholderMessage": "Votre message..."
+  },
+  "footer": {
+    "brand": "Portfolio",
+    "description": "Ingénieur ayant les connaissances et compétences en Intelligence Artificielle, Cybersécurité et Analyse de Données. Solutions innovantes pour des problèmes complexes.",
+    "quickLinks": "Liens rapides",
+    "contact": "Contact",
+    "madeWith": "Fait avec",
+    "by": "par Delmat. Tous droits réservés"
   },
   "theme": {
     "light": "Clair",

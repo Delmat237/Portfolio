@@ -1,4 +1,6 @@
-const certificationData = [
+import type { Certification } from './types'
+
+const certificationData: Certification[] = [
   {
     title: "Humboldt Kolleg — Humboldt Research Hub Network Meeting",
     source: "Alexander von Humboldt Stiftung & Federal Ministry of Education and Research (Allemagne), ENSPY",
@@ -51,7 +53,7 @@ const certificationData = [
     title: "Memorial des Leaders",
     source: "ENSPY",
     description: "Participation et Certification.",
-    image: "/images/memorial.png", // Placeholder
+    image: "/images/memorial.png",
     reference: "#",
     file: "#"
   },
