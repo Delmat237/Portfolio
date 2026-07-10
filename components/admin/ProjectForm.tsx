@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Upload, Plus, Trash2 } from 'lucide-react';
+import { X, Plus, Trash2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
+import ImageInput from '@/components/admin/ImageInput';
 import type { Project } from '@/data/types';
 
 type ProjectFormValues = Partial<Project> & {
-  imageUrl?: string;
   url?: string;
 };
 
@@ -27,7 +27,6 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
     defaultValues: {
       ...project,
       url: project?.demo,
-      imageUrl: project?.image,
     }
   });
 
@@ -57,17 +56,6 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
 
   const removeTechnology = (tech: string) => {
     setTechnologies(technologies.filter((t: string) => t !== tech));
-  };
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImagePreview(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   return (
@@ -169,42 +157,12 @@ export default function ProjectForm({ project, onSave, onClose }: ProjectFormPro
             </div>
           </div>
 
-          {/* Image */}
-          <div>
-            <label className="block text-slate-700 dark:text-white mb-2">Image du projet</label>
-            <div className="space-y-3">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="hidden"
-                id="image-upload"
-              />
-              <label
-                htmlFor="image-upload"
-                className="flex items-center justify-center w-full h-32 border-2 border-dashed border-white/20 rounded-lg cursor-pointer hover:border-white/40 transition-colors"
-              >
-                {imagePreview ? (
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                ) : (
-                  <div className="text-center">
-                    <Upload className="mx-auto mb-2 text-slate-400" size={24} />
-                    <p className="text-slate-400">Cliquez pour uploader une image</p>
-                  </div>
-                )}
-              </label>
-              <input
-                {...register('imageUrl')}
-                className="w-full px-4 py-2 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
-                placeholder="Ou collez une URL d'image"
-                onChange={(e) => setImagePreview(e.target.value)}
-              />
-            </div>
-          </div>
+          <ImageInput
+            label="Image du projet"
+            id="project-image"
+            value={imagePreview}
+            onChange={setImagePreview}
+          />
 
           {/* URL du projet */}
           <div>

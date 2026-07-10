@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String   @db.Text
+  image        String
+  technologies String[]
+  category     String
+  tag          String?
+  github       String   @default("#")
+  status       String
+  demo         String   @default("#")
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Education {
+  id          Int      @id @default(autoincrement())
+  title       String
+  institution String
+  location    String
+  period      String
+  description String   @db.Text
+  status      String
+  grade       String
+  skills      String[]
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  title       String
+  company     String
+  location    String
+  period      String
+  description String[]
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Competition {
+  id           Int      @id @default(autoincrement())
+  title        String
+  position     String
+  description  String   @db.Text
+  date         String
+  team         String
+  technologies String[]
+  link         String   @default("#")
+  image        String
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Association {
+  id          Int      @id @default(autoincrement())
+  title       String
+  images      String[]
+  description String   @db.Text
+  roles       String[]
+  duration    String?
+  link        String?
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certification {
+  id          Int      @id @default(autoincrement())
+  title       String
+  source      String   @db.Text
+  description String   @db.Text
+  image       String
+  reference   String   @default("#")
+  file        String   @default("#")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

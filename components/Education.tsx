@@ -7,7 +7,7 @@ import { useEducation } from '@/hooks/useEducation';
 
 export default function Education() {
   const { t } = useAppContext();
-  const educations = useEducation();
+  const { educations, loading } = useEducation();
 
   return (
     <section id="education" className="py-20 px-6">
@@ -26,6 +26,10 @@ export default function Education() {
             {t('education.description')}
           </p>
         </motion.div>
+
+        {loading && (
+          <p className="text-center text-slate-500 dark:text-gray-400 mb-8">Chargement des formations…</p>
+        )}
 
         <div className="space-y-8">
           {educations.map((education, index) => (

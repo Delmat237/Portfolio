@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Trophy, Award, Calendar, Users, ExternalLink } from 'lucide-react'
-import competitionData from '@/data/competition'
+import { useCompetitions } from '@/hooks/useCompetitions'
 import { useAppContext } from '@/contexts/Appcontext'
 
 const Competitions = () => {
   const { t } = useAppContext()
-  const competitions = competitionData
+  const competitions = useCompetitions()
 
   return (
     <div className="min-h-screen">

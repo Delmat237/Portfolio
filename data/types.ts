@@ -23,6 +23,7 @@ export interface Education {
   status: string
   grade: string
   skills: string[]
+  image?: string
 }
 
 export type SkillLevel = 'expert' | 'intermediate' | 'learning' | 'native'
@@ -51,6 +52,7 @@ export interface TechCategory {
 }
 
 export interface Experience {
+  id?: number
   title: string
   company: string
   location: string
@@ -59,6 +61,7 @@ export interface Experience {
 }
 
 export interface Competition {
+  id?: number
   title: string
   position: string
   description: string
@@ -70,6 +73,7 @@ export interface Competition {
 }
 
 export interface Association {
+  id?: number
   title: string
   images: string[]
   description: string
@@ -79,6 +83,7 @@ export interface Association {
 }
 
 export interface Certification {
+  id?: number
   title: string
   source: string
   description: string

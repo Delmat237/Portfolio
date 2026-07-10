@@ -88,6 +88,8 @@ Ce portfolio a été développé avec les technologies suivantes :
 * **lucide-react** : Bibliothèque d'icônes React.
 * **Framer Motion** : Animations et transitions fluides.
 * **TypeScript** : Typage statique pour une meilleure maintenabilité.
+* **Prisma** : ORM pour la persistance PostgreSQL.
+* **PostgreSQL** : Base de données (Supabase, Neon, Vercel Postgres, etc.).
 
 ## Installation et utilisation
 
@@ -97,18 +99,63 @@ Pour exécuter ce portfolio en local :
 2. Naviguez vers le répertoire : `cd Portfolio`
 3. Installez les dépendances : `npm install` ou `yarn install`
 4. Copiez le fichier d'exemple de configuration : `cp .env.local.example .env.local`
-5. Renseignez les variables d'environnement dans `.env.local` (email, mot de passe admin)
+5. Configurez la base de données et les variables d'environnement (voir ci-dessous)
 6. Lancez le serveur de développement : `npm run dev` ou `yarn dev`
 7. Ouvrez votre navigateur à l'adresse `http://localhost:3000`
+
+### Configuration base de données
+
+Le portfolio utilise **Prisma + PostgreSQL** (compatible Supabase, Neon, Vercel Postgres).
+
+1. Créez une base PostgreSQL (ex. [Supabase](https://supabase.com) → *New project* → *Settings* → *Database* → *Connection string* → mode **URI**).
+2. Ajoutez l'URL dans `.env.local` :
+   ```
+   DATABASE_URL=postgresql://...
+   ADMIN_PASSWORD=votre-mot-de-passe-admin
+   ```
+3. Appliquez le schéma et peuplez les données initiales :
+   ```bash
+   npm run db:push
+   npm run db:seed
+   ```
+4. Accédez à `/admin`, connectez-vous avec `ADMIN_PASSWORD`.
+
+Les modifications admin sont persistées en base et visibles par **tous les visiteurs** en production.
+
+Sans `DATABASE_URL`, le site utilise les fichiers `data/*.ts` en fallback (développement local).
 
 ### Variables d'environnement
 
 Voir `.env.local.example` pour la liste complète des variables :
 
+* `DATABASE_URL` — connexion PostgreSQL (obligatoire en production)
+* `ADMIN_PASSWORD` — mot de passe de l'espace admin (serveur uniquement)
+* `ADMIN_API_SECRET` — optionnel, signature des sessions et token Bearer API
 * `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_SECURE`, `EMAIL_USER`, `EMAIL_PASS` — configuration SMTP pour le formulaire de contact
-* `NEXT_PUBLIC_ADMIN_PASSWORD` — mot de passe de l'espace admin (démo locale uniquement)
+* `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` — upload d'images via l'espace admin (route `/api/upload`, dossier `portfolio` sur Cloudinary)
+* `CLOUDINARY_UPLOAD_PRESET` — optionnel, uniquement si vous utilisez un preset unsigned
 
-> **Note :** Les modifications admin sont stockées dans le `localStorage` du navigateur. Elles sont visibles uniquement sur le même navigateur et ne sont pas synchronisées entre visiteurs.
+### Déploiement Vercel
+
+1. Poussez le code sur GitHub et importez le projet dans Vercel.
+2. Ajoutez les variables d'environnement (`DATABASE_URL`, `ADMIN_PASSWORD`, etc.) dans *Settings* → *Environment Variables*.
+3. Utilisez une base externe (Supabase/Neon) — le filesystem Vercel n'est pas persistant.
+4. Après le premier déploiement, exécutez localement :
+   ```bash
+   DATABASE_URL="..." npm run db:push
+   DATABASE_URL="..." npm run db:seed
+   ```
+
+### Upload d'images (admin)
+
+Dans l'espace admin (`/admin`), les formulaires projets et formations permettent d'ajouter une image de deux façons :
+
+1. **Lien URL** — coller l'URL d'une image existante
+2. **Upload** — envoyer un fichier vers Cloudinary via la route API sécurisée `/api/upload`
+
+Créez un compte sur [Cloudinary](https://cloudinary.com/), récupérez vos identifiants dans le Dashboard, puis renseignez-les dans `.env.local`. L'upload requiert une session admin valide (cookie httpOnly après connexion à `/admin`).
+
+> **Note :** Les compétences (`skills`) et technologies (`tech`) restent dans `data/*.ts` (contenu statique avec icônes). Les entités portfolio (projets, formations, expériences, compétitions, associations, certifications) sont en base. L'admin CRUD complet est disponible pour projets, formations et expériences ; les autres entités sont exposées via API et modifiables via les routes REST.
 
 ## Contribution
 

@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Calendar, MapPin } from 'lucide-react'
-import experienceData from '@/data/experience'
+import { useExperiences } from '@/hooks/useExperiences'
 import { useAppContext } from '@/contexts/Appcontext'
 
 const Experience = () => {
   const { t } = useAppContext()
-  const experiences = experienceData
+  const experiences = useExperiences()
 
   return (
     <section id="experience" className="section-padding">
@@ -30,7 +30,7 @@ const Experience = () => {
         <div className="max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
             <motion.div
-              key={exp.title}
+              key={exp.id ?? exp.title}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}

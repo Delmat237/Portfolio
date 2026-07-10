@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
-import associationData from '@/data/association'
+import { useAssociations } from '@/hooks/useAssociations'
 import { useAppContext } from '@/contexts/Appcontext'
 
 const Associations = () => {
   const { t } = useAppContext()
-  const associations = associationData
+  const associations = useAssociations()
 
   return (
     <section id="associations" className="section-padding bg-slate-50/50 dark:bg-dark-800/50 transition-colors duration-300">

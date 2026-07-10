@@ -105,7 +105,7 @@ const skillData: SkillCategory[] = [
     type: 'spoken',
     skills: [
       { name: 'Français', level: 'native', icon: MessageSquare },
-      { name: 'Anglais', level: 'expert', icon: MessageSquare },
+      { name: 'Anglais', level: 'intermediate', icon: MessageSquare },
     ]
   },
 ]

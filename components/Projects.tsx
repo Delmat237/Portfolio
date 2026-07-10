@@ -10,7 +10,7 @@ const FILTER_ALL = '__all__'
 
 const Projects = () => {
   const { t } = useAppContext()
-  const projectData = useProjects()
+  const { projects: projectData, loading } = useProjects()
   const categoryNames = Array.from(new Set(projectData.map((p) => p.category).filter(Boolean)))
   const categories = [
     { key: FILTER_ALL, label: t('projects.filterAll') },
@@ -41,6 +41,10 @@ const Projects = () => {
           </p>
         </motion.div>
 
+        {loading && (
+          <p className="text-center text-slate-500 dark:text-gray-400 mb-8">Chargement des projets…</p>
+        )}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +70,7 @@ const Projects = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.id ?? project.title}
               layout
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}

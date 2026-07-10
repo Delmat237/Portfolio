@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { X, Plus, Trash2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
+import ImageInput from '@/components/admin/ImageInput';
 import type { Education } from '@/data/types';
 
 interface EducationFormProps {
@@ -16,6 +17,7 @@ interface EducationFormProps {
 export default function EducationForm({ education, onSave, onClose }: EducationFormProps) {
   const [skills, setSkills] = useState(education?.skills || []);
   const [newSkill, setNewSkill] = useState('');
+  const [imagePreview, setImagePreview] = useState(education?.image || '');
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: (education || {}) as Partial<Education>
@@ -27,6 +29,7 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
       ...data,
       id: education?.id ?? 0,
       skills,
+      image: imagePreview || undefined,
       grade: data.grade || '',
       location: data.location || '',
       title: data.title || '',
@@ -190,6 +193,13 @@ export default function EducationForm({ education, onSave, onClose }: EducationF
               ))}
             </div>
           </div>
+
+          <ImageInput
+            label="Image de la formation (optionnel)"
+            id="education-image"
+            value={imagePreview}
+            onChange={setImagePreview}
+          />
 
           {/* Statut */}
           <div>

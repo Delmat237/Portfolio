@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { FileText, ExternalLink } from 'lucide-react'
-import certificationData from '@/data/certification'
+import { useCertifications } from '@/hooks/useCertifications'
 import { useAppContext } from '@/contexts/Appcontext'
 
 const Certifications = () => {
   const { t } = useAppContext()
-  const certifications = certificationData
+  const certifications = useCertifications()
 
   return (
     <div className="min-h-screen">
