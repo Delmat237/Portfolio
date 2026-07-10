@@ -3,6 +3,8 @@ import { spawnSync } from 'child_process'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
+import { applyDatabaseUrlEnv } from './normalize-database-url.mjs'
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 function loadEnvFile(filename) {
@@ -30,6 +32,15 @@ function loadEnvFile(filename) {
 
 loadEnvFile('.env')
 loadEnvFile('.env.local')
+
+if (!process.env.DATABASE_URL) {
+  console.error('DATABASE_URL manquant dans .env.local')
+  process.exit(1)
+}
+
+if (!applyDatabaseUrlEnv()) {
+  process.exit(1)
+}
 
 const result = spawnSync('npx', ['tsx', 'prisma/seed.ts'], {
   cwd: root,

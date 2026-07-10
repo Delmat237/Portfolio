@@ -3,6 +3,8 @@ import { spawnSync } from 'child_process'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
+import { applyDatabaseUrlEnv } from './normalize-database-url.mjs'
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 function loadEnvFile(filename) {
@@ -35,6 +37,10 @@ if (!process.env.DATABASE_URL) {
   console.error(
     'DATABASE_URL manquant. Copiez .env.local.example vers .env.local et renseignez la connexion Supabase.'
   )
+  process.exit(1)
+}
+
+if (!applyDatabaseUrlEnv()) {
   process.exit(1)
 }
 

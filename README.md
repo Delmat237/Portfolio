@@ -148,7 +148,16 @@ Voir `.env.local.example` pour la liste complète des variables :
    ```
    (Les scripts chargent automatiquement `.env.local`.)
 
-### Dépannage Supabase / erreurs 25P02
+### Dépannage Supabase
+
+#### Erreur P1001 — Can't reach database server
+
+1. **Projet en pause** (plan gratuit) → [supabase.com/dashboard](https://supabase.com/dashboard) → *Restore project*
+2. **Nouvelle URL** → *Settings* → *Database* → *Connection string* → copiez **Direct connection** ou **Session pooler** (port 5432)
+3. **Test réseau** : `npm run db:check`
+4. Si le port 5432 est bloqué par votre réseau, utilisez le **Session pooler** (`*.pooler.supabase.com`)
+
+#### Erreurs 25P02
 
 Si vous voyez **`25P02 current transaction is aborted`** ou des **500** sur `/api/experiences` :
 
