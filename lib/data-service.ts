@@ -12,7 +12,7 @@ import type {
   Experience,
   Project,
 } from '@/data/types'
-import { isDatabaseConfigured, prisma } from '@/lib/db'
+import { disconnectDb, isDatabaseConfigured, prisma } from '@/lib/db'
 import {
   toAssociation,
   toCertification,
@@ -28,8 +28,13 @@ async function withFallback<T>(fetcher: () => Promise<T[]>, fallback: T[]): Prom
     const rows = await fetcher()
     return rows.length > 0 ? rows : fallback
   } catch (error) {
-    console.error('Erreur lecture base de données, fallback statique:', error)
+    const code = (error as { code?: string })?.code
+    console.error('Erreur lecture base de données, fallback statique:', code ?? error)
     return fallback
+  } finally {
+    if (process.env.VERCEL === '1') {
+      await disconnectDb().catch(() => undefined)
+    }
   }
 }
 

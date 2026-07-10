@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import {
   badRequestResponse,
   requireAdmin,
+  runDb,
   serverErrorResponse,
 } from '@/lib/api-utils'
 import { getExperiences } from '@/lib/data-service'
@@ -35,15 +36,19 @@ export async function POST(request: NextRequest) {
       return badRequestResponse('Champs obligatoires manquants')
     }
 
-    const row = await prisma.experience.create({
-      data: {
-        title: body.title,
-        company: body.company,
-        location: body.location ?? '',
-        period: body.period,
-        description: body.description ?? [],
-      },
-    })
+    const { title, company, period, location, description } = body
+
+    const row = await runDb(() =>
+      prisma.experience.create({
+        data: {
+          title,
+          company,
+          location: location ?? '',
+          period,
+          description: description ?? [],
+        },
+      })
+    )
 
     return NextResponse.json(toExperience(row), { status: 201 })
   } catch (error) {

@@ -143,9 +143,20 @@ Voir `.env.local.example` pour la liste complète des variables :
 3. Utilisez une base externe (Supabase/Neon) — le filesystem Vercel n'est pas persistant.
 4. Après le premier déploiement, exécutez localement :
    ```bash
-   DATABASE_URL="..." npm run db:push
-   DATABASE_URL="..." npm run db:seed
+   npm run db:push
+   npm run db:seed
    ```
+   (Les scripts chargent automatiquement `.env.local`.)
+
+### Dépannage Supabase / erreurs 25P02
+
+Si vous voyez **`25P02 current transaction is aborted`** ou des **500** sur `/api/experiences` :
+
+1. **Vérifiez `DATABASE_URL` sur Vercel** — même valeur que `.env.local`, mot de passe URL-encodé si `@` ou `#`.
+2. **Créez les tables** — sans `npm run db:push`, les tables n'existent pas (erreur Prisma `P2021`).
+3. **Peuplez la base** — `npm run db:seed` après `db:push`.
+4. **Redéployez** — déclenchez un nouveau déploiement après avoir mis à jour les variables d'environnement.
+5. **Pooler Supabase (production)** — utilisez l'URL port **6543** avec `?pgbouncer=true&connection_limit=1` sur Vercel ; gardez le port **5432** pour `db:push` en local.
 
 ### Upload d'images (admin)
 
