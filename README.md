@@ -113,6 +113,7 @@ Le portfolio utilise **Prisma + PostgreSQL** (compatible Supabase, Neon, Vercel 
    DATABASE_URL=postgresql://...
    ADMIN_PASSWORD=votre-mot-de-passe-admin
    ```
+   > **Mot de passe avec caractères spéciaux** — dans `DATABASE_URL`, le mot de passe doit être [URL-encodé](https://developer.mozilla.org/fr/docs/Glossary/Percent-encoding) : `@` → `%40`, `#` → `%23`, `/` → `%2F`, `:` → `%3A`. Exemple : `Mon@Pass#2026` devient `Mon%40Pass%232026`. Sans encodage, PostgreSQL interprète mal l'hôte et les requêtes échouent (erreurs 500 / `25P02` en cascade).
 3. Appliquez le schéma et peuplez les données initiales :
    ```bash
    npm run db:push
@@ -138,7 +139,7 @@ Voir `.env.local.example` pour la liste complète des variables :
 ### Déploiement Vercel
 
 1. Poussez le code sur GitHub et importez le projet dans Vercel.
-2. Ajoutez les variables d'environnement (`DATABASE_URL`, `ADMIN_PASSWORD`, etc.) dans *Settings* → *Environment Variables*.
+2. Ajoutez les variables d'environnement (`DATABASE_URL`, `ADMIN_PASSWORD`, etc.) dans *Settings* → *Environment Variables*. Utilisez la même URL encodée que dans `.env.local` (mot de passe URL-encodé si caractères spéciaux).
 3. Utilisez une base externe (Supabase/Neon) — le filesystem Vercel n'est pas persistant.
 4. Après le premier déploiement, exécutez localement :
    ```bash
