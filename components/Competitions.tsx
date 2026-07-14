@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Trophy, Award, Calendar, Users, ExternalLink } from 'lucide-react'
 import { useCompetitions } from '@/hooks/useCompetitions'
 import { useAppContext } from '@/contexts/Appcontext'
+import MarkdownContent from '@/components/MarkdownContent'
 
 const Competitions = () => {
   const { t } = useAppContext()
@@ -82,9 +83,9 @@ const Competitions = () => {
                     )}
                   </div>
 
-                  <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                    {competition.description}
-                  </p>
+                  <div className="mb-4">
+                    <MarkdownContent content={competition.description} />
+                  </div>
 
                   <div className="flex flex-wrap gap-2 mb-3">
                     {competition.technologies.map((tech) => (

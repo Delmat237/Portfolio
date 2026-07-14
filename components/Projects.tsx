@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import { useAppContext } from '@/contexts/Appcontext'
 import { useProjects } from '@/hooks/useProjects'
+import MarkdownContent from '@/components/MarkdownContent'
 
 const FILTER_ALL = '__all__'
 
@@ -129,9 +130,9 @@ const Projects = () => {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+                <div className="mb-4">
+                  <MarkdownContent content={project.description} />
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span

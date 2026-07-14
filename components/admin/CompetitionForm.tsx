@@ -118,9 +118,13 @@ export default function CompetitionForm({ competition, onSave, onClose }: Compet
             <label className="block text-slate-700 dark:text-white mb-2">Description</label>
             <textarea
               {...register('description', { required: 'La description est requise' })}
-              rows={4}
-              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white resize-none"
+              rows={6}
+              placeholder={'Markdown supporté : **gras**, *liste*, # titre, retour à la ligne'}
+              className="w-full px-4 py-3 bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-lg text-slate-900 dark:text-white resize-none font-mono text-sm"
             />
+            <p className="text-slate-500 dark:text-gray-400 text-xs mt-1">
+              Markdown : **gras**, *italique*, # titre, - liste, retour à la ligne
+            </p>
           </div>
 
           <div>

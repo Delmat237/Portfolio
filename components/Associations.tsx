@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { useAssociations } from '@/hooks/useAssociations'
 import { useAppContext } from '@/contexts/Appcontext'
+import MarkdownContent from '@/components/MarkdownContent'
 
 const Associations = () => {
   const { t } = useAppContext()
@@ -76,9 +77,9 @@ const Associations = () => {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                   {association.title}
                 </h3>
-                <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                  {association.description}
-                </p>
+                <div className="mb-4">
+                  <MarkdownContent content={association.description} />
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {association.roles.map((role) => (
                     <span

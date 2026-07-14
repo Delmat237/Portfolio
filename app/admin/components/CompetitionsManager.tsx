@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Plus, Edit, Trash2 } from 'lucide-react'
 
 import type { Competition } from '@/data/types'
+import MarkdownContent from '@/components/MarkdownContent'
 
 type CompetitionsManagerProps = {
   competitions: Competition[]
@@ -57,9 +58,9 @@ export default function CompetitionsManager({
                   <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">
                     {competition.date} · {competition.team}
                   </p>
-                  <p className="text-slate-600 dark:text-gray-300 text-sm mt-3 line-clamp-3">
-                    {competition.description}
-                  </p>
+                  <div className="mt-3 line-clamp-4">
+                    <MarkdownContent content={competition.description} />
+                  </div>
                   <div className="flex flex-wrap gap-1 mt-3">
                     {competition.technologies.map((tech) => (
                       <span

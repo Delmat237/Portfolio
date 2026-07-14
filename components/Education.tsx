@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
 import { useAppContext } from '@/contexts/Appcontext';
 import { useEducation } from '@/hooks/useEducation';
+import MarkdownContent from '@/components/MarkdownContent';
 
 export default function Education() {
   const { t } = useAppContext();
@@ -91,9 +92,9 @@ export default function Education() {
                       </div>
                     </div>
 
-                    <p className="text-slate-600 dark:text-gray-300 mb-4 leading-relaxed">
-                      {education.description}
-                    </p>
+                    <div className="mb-4">
+                      <MarkdownContent content={education.description} />
+                    </div>
 
                     <div className="flex flex-wrap gap-2">
                       {education.skills.map((skill) => (

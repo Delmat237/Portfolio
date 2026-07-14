@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { FileText, ExternalLink } from 'lucide-react'
 import { useCertifications } from '@/hooks/useCertifications'
 import { useAppContext } from '@/contexts/Appcontext'
+import MarkdownContent from '@/components/MarkdownContent'
 
 const Certifications = () => {
   const { t } = useAppContext()
@@ -79,9 +80,9 @@ const Certifications = () => {
                     <span className="font-medium">{t('certifications.source')}: </span>
                     {certification.source}
                   </p>
-                  <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                    {certification.description}
-                  </p>
+                  <div className="mb-4">
+                    <MarkdownContent content={certification.description} />
+                  </div>
                   <a
                     href={certification.reference}
                     target="_blank"
