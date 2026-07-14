@@ -2,21 +2,24 @@
 
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, Calendar, Clock, LogOut, Lock, Briefcase } from 'lucide-react';
+import { Eye, Calendar, Clock, LogOut, Lock, Briefcase, Trophy } from 'lucide-react';
 import ProjectForm from '@/components/admin/ProjectForm';
 import EducationForm from '@/components/admin/EducationForm';
 import ExperienceForm from '@/components/admin/ExperienceForm';
+import CompetitionForm from '@/components/admin/CompetitionForm';
 import ProjectTracker from '@/components/admin/ProjectTracker';
 import ProjectsManager from 'app/admin/components/ProjectsManager';
 import EducationManager from 'app/admin/components/EducationManager';
 import ExperienceManager from 'app/admin/components/ExperienceManager';
+import CompetitionsManager from 'app/admin/components/CompetitionsManager';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useProjectsAdmin } from '@/hooks/useProjects';
 import { useEducationAdmin } from '@/hooks/useEducation';
 import { useExperiencesAdmin } from '@/hooks/useExperiences';
+import { useCompetitionsAdmin } from '@/hooks/useCompetitions';
 import { checkAdminSession, loginAdmin, logoutAdmin } from '@/lib/api-client';
-import type { Project, Education, Experience } from '@/data/types';
+import type { Project, Education, Experience, Competition } from '@/data/types';
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,9 +30,11 @@ export default function AdminDashboard() {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showEducationForm, setShowEducationForm] = useState(false);
   const [showExperienceForm, setShowExperienceForm] = useState(false);
+  const [showCompetitionForm, setShowCompetitionForm] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [editingEducation, setEditingEducation] = useState<Education | null>(null);
   const [editingExperience, setEditingExperience] = useState<Experience | null>(null);
+  const [editingCompetition, setEditingCompetition] = useState<Competition | null>(null);
 
   const {
     items: projects,
@@ -57,6 +62,15 @@ export default function AdminDashboard() {
     updateItem: updateExperience,
     deleteItem: deleteExperience,
   } = useExperiencesAdmin();
+
+  const {
+    items: competitions,
+    loading: competitionsLoading,
+    error: competitionsError,
+    createItem: createCompetition,
+    updateItem: updateCompetition,
+    deleteItem: deleteCompetition,
+  } = useCompetitionsAdmin();
 
   useEffect(() => {
     void checkAdminSession().then((authenticated) => {
@@ -154,6 +168,30 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleSaveCompetition = async (competition: Competition) => {
+    try {
+      if (competition.id) {
+        await updateCompetition(competition.id, competition);
+      } else {
+        const { id: _id, ...payload } = competition;
+        await createCompetition(payload);
+      }
+      setShowCompetitionForm(false);
+      setEditingCompetition(null);
+    } catch {
+      alert('Erreur lors de la sauvegarde de la compétition');
+    }
+  };
+
+  const handleDeleteCompetition = async (id: number) => {
+    if (!window.confirm('Êtes-vous sûr de vouloir supprimer cette compétition ?')) return;
+    try {
+      await deleteCompetition(id);
+    } catch {
+      alert('Erreur lors de la suppression');
+    }
+  };
+
   if (authLoading) {
     return (
       <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
@@ -204,10 +242,11 @@ export default function AdminDashboard() {
     { id: 'projects', label: 'Projets', icon: Eye },
     { id: 'education', label: 'Formations', icon: Calendar },
     { id: 'experience', label: 'Expériences', icon: Briefcase },
+    { id: 'competitions', label: 'Compétitions', icon: Trophy },
     { id: 'tracker', label: 'Suivi Projets', icon: Clock },
   ];
 
-  const dataError = projectsError || educationsError || experiencesError;
+  const dataError = projectsError || educationsError || experiencesError || competitionsError;
 
   return (
     <main className="min-h-screen transition-colors duration-300">
@@ -305,6 +344,19 @@ export default function AdminDashboard() {
                 )
               )}
 
+              {activeTab === 'competitions' && (
+                competitionsLoading ? (
+                  <p className="text-gray-500">Chargement des compétitions…</p>
+                ) : (
+                  <CompetitionsManager
+                    competitions={competitions}
+                    onDelete={handleDeleteCompetition}
+                    setShowForm={setShowCompetitionForm}
+                    setEditingCompetition={setEditingCompetition}
+                  />
+                )
+              )}
+
               {activeTab === 'tracker' && <ProjectTracker />}
             </motion.div>
           </AnimatePresence>
@@ -340,6 +392,17 @@ export default function AdminDashboard() {
               onClose={() => {
                 setShowExperienceForm(false);
                 setEditingExperience(null);
+              }}
+            />
+          )}
+
+          {showCompetitionForm && (
+            <CompetitionForm
+              competition={editingCompetition}
+              onSave={handleSaveCompetition}
+              onClose={() => {
+                setShowCompetitionForm(false);
+                setEditingCompetition(null);
               }}
             />
           )}

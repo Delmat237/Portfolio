@@ -16,6 +16,9 @@ export function normalizeDatabaseUrl(raw) {
 
     if (!url.searchParams.has('sslmode')) {
       url.searchParams.set('sslmode', 'require')
+    } else if (url.searchParams.get('sslmode')?.includes('?')) {
+      // Corrige les URLs mal formées (?sslmode=require?sslmode=require)
+      url.searchParams.set('sslmode', 'require')
     }
 
     if (process.env.VERCEL === '1' && !url.searchParams.has('connection_limit')) {
