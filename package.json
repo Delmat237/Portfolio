@@ -12,7 +12,8 @@
     "db:generate": "node scripts/prisma-cli.mjs generate",
     "db:push": "node scripts/prisma-cli.mjs db push",
     "db:migrate": "node scripts/prisma-cli.mjs migrate dev",
-    "db:seed": "node scripts/seed.mjs"
+    "db:seed": "node scripts/seed.mjs",
+    "db:secure": "node scripts/secure-rls.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

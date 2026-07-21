@@ -118,8 +118,11 @@ Le portfolio utilise **Prisma + PostgreSQL** (compatible Supabase, Neon, Vercel 
    ```bash
    npm run db:push
    npm run db:seed
+   npm run db:secure
    ```
 4. Accédez à `/admin`, connectez-vous avec `ADMIN_PASSWORD`.
+
+> **Sécurité Supabase (RLS)** — Sans Row Level Security, l'API publique PostgREST permet à quiconque de lire/modifier/supprimer vos données (`rls_disabled_in_public`). Le portfolio n'utilise que Prisma (rôle `postgres`) : activez le RLS avec `npm run db:secure` (ou exécutez `prisma/sql/enable-rls.sql` dans le SQL Editor). Aucune politique publique n'est créée volontairement.
 
 Les modifications admin sont persistées en base et visibles par **tous les visiteurs** en production.
 
@@ -149,6 +152,12 @@ Voir `.env.local.example` pour la liste complète des variables :
    (Les scripts chargent automatiquement `.env.local`.)
 
 ### Dépannage Supabase
+
+#### Alerte CRITICAL — Table publicly accessible / RLS disabled
+
+1. Lancez `npm run db:secure` (ou exécutez `prisma/sql/enable-rls.sql` dans *SQL Editor*).
+2. Dans Supabase → *Advisors*, rafraîchissez : l'alerte `rls_disabled_in_public` doit disparaître.
+3. Vérifiez que le site et `/admin` fonctionnent toujours (Prisma bypasse le RLS via `DATABASE_URL`).
 
 #### Erreur P1001 — Can't reach database server
 
